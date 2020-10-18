@@ -6,11 +6,8 @@ include './conn.php'; ?>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="">
-	<meta name="author" content="Carlos Alvarez - Alvarez.is">
+	<meta name="author" content="Alvin Mantovani">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/mdb.min.css" rel="stylesheet">
-	<link href="css/style.css" rel="stylesheet">
 
 	<!-- Le styles -->
 	<link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -97,11 +94,26 @@ include './conn.php'; ?>
 			flex-direction: column;
 			justify-content: space-between;
 			text-align: center;
-			font-size: 1.2rem
 		}
 
-		.menu--content>* {
-			background: grey;
+		.menu--content > *:first-child { /* tanggal */
+			font-size: 2.2rem
+		}
+
+		.menu--content > *:not(:first-child):not(:last-child) { /* menu */
+			font-size: 2.9rem
+		}
+
+		.menu--content > *:last-child { /* jam */
+			font-size: 4.4rem
+		}
+
+		.menu--content {
+			box-sizing: content-box !important;
+		}
+		.menu--content > * {
+			border:1px solid black;
+			box-sizing: content-box !important;
 		}
 
 		.menu--item {

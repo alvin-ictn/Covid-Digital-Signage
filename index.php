@@ -78,9 +78,10 @@ include './conn.php'; ?>
 		}
 
 		div[class$="content"] {
-			background: white;
+			background: #343a40;
 			width: 100%;
 			height: 100%;
+			color: white;
 		}
 
 		.running--content {
@@ -100,9 +101,14 @@ include './conn.php'; ?>
 			font-size: 2.2rem
 		}
 
-		.menu--content > *:not(:first-child):not(:last-child) { /* menu */
+		.menu--content > *:not(:first-child):not(:last-child) > div[class*="title"]{ /* menu */
+			font-size: 1.5rem
+		}
+
+		.menu--content > *:not(:first-child):not(:last-child) > div[class*="info"]{ /* menu */
 			font-size: 2.9rem
 		}
+		
 
 		.menu--content > *:last-child { /* jam */
 			font-size: 4.4rem
@@ -112,7 +118,7 @@ include './conn.php'; ?>
 			box-sizing: content-box !important;
 		}
 		.menu--content > * {
-			border:1px solid black;
+			
 			box-sizing: content-box !important;
 		}
 
@@ -195,10 +201,6 @@ include './conn.php'; ?>
 						setlocale(LC_ALL, 'IND');
 						echo strftime("%A, %e %B %G");?>
 				</div>
-				<div class="menu--content--item">
-					<div class="menu--content--item--title">Konfirmasi</div>
-					<div class="menu--content--item--info">12321321</div>
-				</div>
 				<script>
 					let thisdate = new Date();
 					let numDay = thisdate.getDay();
@@ -243,20 +245,24 @@ include './conn.php'; ?>
 					}
 				</script>
 				<div class="menu--content--item">
+					<div class="menu--content--item--title">Konfirmasi</div>
+					<div class="menu--content--item--info text-warning">12321321</div>
+				</div>
+				<div class="menu--content--item">
 					<div class="menu--content--item--title">Isolasi</div>
-					<div class="menu--content--item--info">12321321</div>
+					<div class="menu--content--item--info text-primary">12321321</div>
 				</div>
 				<div class="menu--content--item">
 					<div class="menu--content--item--title">Rawat</div>
-					<div class="menu--content--item--info">12321321</div>
+					<div class="menu--content--item--info text-info">12321321</div>
 				</div>
 				<div class="menu--content--item">
 					<div class="menu--content--item--title">Sembuh</div>
-					<div class="menu--content--item--info">12321321</div>
+					<div class="menu--content--item--info text-success">12321321</div>
 				</div>
 				<div class="menu--content--item">
 					<div class="menu--content--item--title">Meninggal</div>
-					<div class="menu--content--item--info">12321321</div>
+					<div class="menu--content--item--info text-danger">12321321</div>
 				</div>
 				<div class="menu--content--item" id="mytime">
 					<?php 

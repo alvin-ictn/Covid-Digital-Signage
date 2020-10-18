@@ -8,7 +8,7 @@ include './conn.php'; ?>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="author" content="Alvin Mantovani">
 	<link rel="stylesheet" href="test/assets/bootstrap/css/bootstrap.min.css">
-	<script type="text/javascript" src="car/jquery.min.js"></script>
+
 	<style>
 		*,
 		::after,
@@ -43,26 +43,26 @@ include './conn.php'; ?>
 		}
 
 		.profile--content {
-			box-shadow: inset -0px -10px 20px -8px rgba(0,0,0,0.4);
+			box-shadow: inset -0px -10px 20px -8px rgba(0, 0, 0, 0.4);
 			width: 100%;
 			height: 20%;
 			padding: 0 10px;
-			display:flex;
+			display: flex;
 			align-items: center;
 			justify-content: center;
 			flex-direction: column;
 		}
-		
-		.profile--content > img {
-			max-width:100%;
-			max-height:100%;
+
+		.profile--content>img {
+			max-width: 100%;
+			max-height: 100%;
 			height: auto !important;
 		}
 
 		.menu {
 			grid-area: 2 / 2 / 4 / 3;
 			background: yellow;
-			box-shadow: -10px 0px 10px -10px rgba(0,0,0,0.4);
+			box-shadow: -10px 0px 10px -10px rgba(0, 0, 0, 0.4);
 		}
 
 		div[class$="content"] {
@@ -96,14 +96,14 @@ include './conn.php'; ?>
 
 		.menu--content--item--title {
 			font-size: 1.4rem;
-			text-align:left;
+			text-align: left;
 			margin-left: 20px;
 			padding: 0;
 		}
 
 		.menu--content--item--percentage {
 			font-size: 1.4rem;
-			text-align:right;
+			text-align: right !important;
 		}
 
 		.menu--content>*:not(:first-child):not(:last-child)>div[class*="title"] {
@@ -116,7 +116,6 @@ include './conn.php'; ?>
 			font-size: 2.2rem
 		}
 
-
 		.menu--content>*:last-child {
 			/* jam */
 			font-size: 4.4rem
@@ -127,7 +126,6 @@ include './conn.php'; ?>
 		}
 
 		.menu--content>* {
-
 			box-sizing: content-box !important;
 		}
 
@@ -161,12 +159,9 @@ include './conn.php'; ?>
 			border: 0 !important;
 		}
 	</style>
-
 </head>
-
-<?php $datamain = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `konfigurasi`")); ?>
-
 <body style="background: #<?php echo $datamain[3] ?>">
+	<?php $datamain = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `konfigurasi`")); ?>
 	<div class="grid-container">
 		<div class="profile">
 			<div class="profile--content">
@@ -211,51 +206,7 @@ include './conn.php'; ?>
 					setlocale(LC_ALL, 'IND');
 					echo strftime("%A, %e %B %G"); ?>
 				</div>
-				<script>
-					let thisdate = new Date();
-					let numDay = thisdate.getDay();
-					let numMonth = thisdate.getMonth();
-					let dateData = {
-						days: ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'],
-						months: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']
-					}
-
-					$(document).ready(function() {
-						clockUpdate();
-						setInterval(clockUpdate, 1000);
-					})
-
-					function clockUpdate() {
-						date = new Date();
-
-						function addZero(x) {
-							if (x < 10) {
-								return x = '0' + x;
-							} else {
-								return x;
-							}
-						}
-
-						function twelveHour(x) {
-							if (x > 12) {
-								return x = x - 12;
-							} else if (x == 0) {
-								return x = 12;
-							} else {
-								return x;
-							}
-						}
-
-						let h = addZero(date.getHours());
-						let m = addZero(date.getMinutes());
-						let s = addZero(date.getSeconds());
-						$('#mytime').text(h + ':' + m + ':' + s)
-						$('#mydate').text(`${dateData.days[numDay]}, ${date.getDate()} ${dateData.months[numMonth]} ${date.getFullYear()}`)
-
-					}
-				</script>
-				<?php $datacovid = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `covid`"));
-				?>
+				<?php $datacovid = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `covid`")); ?>
 				<div class="menu--content--item">
 					<div class="menu--content--item--title">Konfirmasi</div>
 					<div class="menu--content--item--info text-warning">
@@ -266,7 +217,7 @@ include './conn.php'; ?>
 					<div class="row">
 						<div class="menu--content--item--title col-sm-6">Isolasi</div>
 						<div class="menu--content--item--percentage col-sm-3">
-							<?php echo number_format($datacovid["isolasi"]/$datacovid["konfirmasi"]*100, 2, ",", ".")."%";?>
+							<?php echo number_format($datacovid["isolasi"] / $datacovid["konfirmasi"] * 100, 2, ",", ".") . "%"; ?>
 						</div>
 					</div>
 					<div class="menu--content--item--info text-primary">
@@ -277,7 +228,7 @@ include './conn.php'; ?>
 					<div class="row">
 						<div class="menu--content--item--title col-sm-6">Rawat</div>
 						<div class="menu--content--item--percentage col-sm-3">
-						<?php echo number_format($datacovid["rawat"]/$datacovid["konfirmasi"]*100, 2, ",", ".")."%";?>
+							<?php echo number_format($datacovid["rawat"] / $datacovid["konfirmasi"] * 100, 2, ",", ".") . "%"; ?>
 						</div>
 					</div>
 					<div class="menu--content--item--info text-info">
@@ -288,7 +239,7 @@ include './conn.php'; ?>
 					<div class="row">
 						<div class="menu--content--item--title col-sm-6">Sembuh</div>
 						<div class="menu--content--item--percentage col-sm-3">
-						<?php echo number_format($datacovid["sembuh"]/$datacovid["konfirmasi"]*100, 2, ",", ".")."%";?>
+							<?php echo number_format($datacovid["sembuh"] / $datacovid["konfirmasi"] * 100, 2, ",", ".") . "%"; ?>
 						</div>
 					</div>
 					<div class="menu--content--item--info text-success">
@@ -299,7 +250,7 @@ include './conn.php'; ?>
 					<div class="row">
 						<div class="menu--content--item--title col-sm-6">Meninggal</div>
 						<div class="menu--content--item--percentage col-sm-3">
-						<?php echo number_format($datacovid["wafat"]/$datacovid["konfirmasi"]*100, 2, ",", ".")."%";?>
+							<?php echo number_format($datacovid["wafat"] / $datacovid["konfirmasi"] * 100, 2, ",", ".") . "%"; ?>
 						</div>
 					</div>
 					<div class="menu--content--item--info text-danger">
@@ -312,14 +263,54 @@ include './conn.php'; ?>
 				</div>
 			</div>
 		</div>
+		<div id="cek"></div>
 	</div>
 
-
-	</head>
 	<link rel="stylesheet" href="style_slider.css">
+	<script type="text/javascript" src="car/jquery.min.js"></script>
 	<script src="js/jquery.anythingslider.js"></script>
-	<script src="js/jquery.easing.1.2.js"></script>
+	<!-- <script src="js/jquery.easing.1.2.js"></script> -->
+	<script>
+		let thisdate = new Date();
+		let numDay = thisdate.getDay();
+		let numMonth = thisdate.getMonth();
+		let dateData = {
+			days: ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'],
+			months: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']
+		}
 
+		$(document).ready(function() {
+			clockUpdate();
+			setInterval(clockUpdate, 1000);
+		})
+
+		function clockUpdate() {
+			date = new Date();
+			function addZero(x) {
+				if (x < 10) {
+					return x = '0' + x;
+				} else {
+					return x;
+				}
+			}
+
+			function twelveHour(x) {
+				if (x > 12) {
+					return x = x - 12;
+				} else if (x == 0) {
+					return x = 12;
+				} else {
+					return x;
+				}
+			}
+
+			let h = addZero(date.getHours());
+			let m = addZero(date.getMinutes());
+			let s = addZero(date.getSeconds());
+			$('#mytime').text(h + ':' + m + ':' + s)
+			$('#mydate').text(`${dateData.days[numDay]}, ${date.getDate()} ${dateData.months[numMonth]} ${date.getFullYear()}`)
+		}
+	</script>
 	<script>
 		// DOM Ready
 		$(function() {
@@ -343,7 +334,6 @@ include './conn.php'; ?>
 					if (vid.length && typeof(vid[0].pause) !== 'undefined') {
 						vid[0].play();
 						vid[0].onplay = poll(vid);
-
 					}
 					//Reset time of prev video (now that it's out of view)
 					var prevVid = slider.$lastPage.find('video');
@@ -365,22 +355,15 @@ include './conn.php'; ?>
 			}
 		});
 	</script>
-	<div id="cek">
 
-	</div>
 
 	<script>
 		setInterval(
 			function() {
 				$('#cek').load('cek.php');
-
 			},
 			500);
 	</script>
-	<script src="assets/js/script.js"></script>
-
-	
-
 </body>
 
 </html>

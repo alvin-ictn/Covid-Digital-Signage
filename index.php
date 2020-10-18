@@ -38,7 +38,7 @@ include './conn.php'; ?>
 			margin-bottom: 20px;
 		}
 	</style>
-	
+
 	<style>
 		*,
 		::after,
@@ -97,28 +97,38 @@ include './conn.php'; ?>
 			text-align: center;
 		}
 
-		.menu--content > *:first-child { /* tanggal */
+		.menu--content>*:first-child {
+			/* tanggal */
 			font-size: 2.2rem
 		}
 
-		.menu--content > *:not(:first-child):not(:last-child) > div[class*="title"]{ /* menu */
-			font-size: 1.5rem
+		.menu--content>*:not(:first-child):not(:last-child)>* {
+			text-align: left;
+			margin-left: 20px;
 		}
 
-		.menu--content > *:not(:first-child):not(:last-child) > div[class*="info"]{ /* menu */
+		.menu--content>*:not(:first-child):not(:last-child)>div[class*="title"] {
+			/* menu */
+			font-size: 2rem;
+		}
+
+		.menu--content>*:not(:first-child):not(:last-child)>div[class*="info"] {
+			/* menu */
 			font-size: 2.9rem
 		}
-		
 
-		.menu--content > *:last-child { /* jam */
+
+		.menu--content>*:last-child {
+			/* jam */
 			font-size: 4.4rem
 		}
 
 		.menu--content {
 			box-sizing: content-box !important;
 		}
-		.menu--content > * {
-			
+
+		.menu--content>* {
+
 			box-sizing: content-box !important;
 		}
 
@@ -196,10 +206,10 @@ include './conn.php'; ?>
 		<div class="menu">
 			<div class="menu--content">
 				<div class="menu--content--item" id="mydate">
-						<?php 
-						date_default_timezone_set('Asia/Jakarta');
-						setlocale(LC_ALL, 'IND');
-						echo strftime("%A, %e %B %G");?>
+					<?php
+					date_default_timezone_set('Asia/Jakarta');
+					setlocale(LC_ALL, 'IND');
+					echo strftime("%A, %e %B %G"); ?>
 				</div>
 				<script>
 					let thisdate = new Date();
@@ -244,29 +254,53 @@ include './conn.php'; ?>
 
 					}
 				</script>
+				<?php $datacovid = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `covid`"));
+				?>
 				<div class="menu--content--item">
 					<div class="menu--content--item--title">Konfirmasi</div>
-					<div class="menu--content--item--info text-warning">12321321</div>
+					<div class="menu--content--item--info text-warning">
+						<?php echo number_format($datacovid["konfirmasi"], 0, ",", "."); ?>
+					</div>
 				</div>
 				<div class="menu--content--item">
-					<div class="menu--content--item--title">Isolasi</div>
-					<div class="menu--content--item--info text-primary">12321321</div>
+					<div class="row">
+						<div class="menu--content--item--title col-sm-6">Isolasi</div>
+						<div class="menu--content--item--percentage col-sm-6">10%</div>
+					</div>
+					<div class="menu--content--item--info text-primary">
+						<?php echo number_format($datacovid["isolasi"], 0, ",", "."); ?>
+					</div>
 				</div>
 				<div class="menu--content--item">
-					<div class="menu--content--item--title">Rawat</div>
-					<div class="menu--content--item--info text-info">12321321</div>
+					<div class="row">
+						<div class="menu--content--item--title col-sm-6">Rawat</div>
+						<div class="menu--content--item--percentage col-sm-6">10%</div>
+					</div>
+					<div class="menu--content--item--info text-info">
+						<?php echo number_format($datacovid["rawat"], 0, ",", "."); ?>
+					</div>
 				</div>
 				<div class="menu--content--item">
-					<div class="menu--content--item--title">Sembuh</div>
-					<div class="menu--content--item--info text-success">12321321</div>
+					<div class="row">
+						<div class="menu--content--item--title col-sm-6">Sembuh</div>
+						<div class="menu--content--item--percentage col-sm-6">10%</div>
+					</div>
+					<div class="menu--content--item--info text-success">
+						<?php echo number_format($datacovid["sembuh"], 0, ",", "."); ?>
+					</div>
 				</div>
 				<div class="menu--content--item">
-					<div class="menu--content--item--title">Meninggal</div>
-					<div class="menu--content--item--info text-danger">12321321</div>
+					<div class="row">
+						<div class="menu--content--item--title col-sm-6">Meninggal</div>
+						<div class="menu--content--item--percentage col-sm-6">10%</div>
+					</div>
+					<div class="menu--content--item--info text-danger">
+						<?php echo number_format($datacovid["wafat"], 0, ",", "."); ?>
+					</div>
 				</div>
 				<div class="menu--content--item" id="mytime">
-					<?php 
-								echo date("H:i:s"); ?>
+					<?php
+					echo date("H:i:s"); ?>
 				</div>
 			</div>
 		</div>
@@ -410,7 +444,6 @@ include './conn.php'; ?>
 		var year = date.getFullYear();
 		var monthNames = ["Januari", "Februari", "Maret", "April", "Mai", "Juni", "Juli", "Agustus", "September", "Oktober", "Nopember", "Desember"];
 		var dayNames = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jum'at", "Sabtu"];
-
 	</script>
 	<!--Carousel Wrapper-->
 

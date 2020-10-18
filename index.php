@@ -102,9 +102,19 @@ include './conn.php'; ?>
 			font-size: 2.2rem
 		}
 
-		.menu--content>*:not(:first-child):not(:last-child)>* {
-			text-align: left;
+		.row {
+			margin: 0;
+		}
+
+		.menu--content--item--title {
+			font-size: 2rem;
+			text-align:left;
 			margin-left: 20px;
+		}
+
+		.menu--content--item--percentage {
+			font-size: 2rem;
+			text-align:right;
 		}
 
 		.menu--content>*:not(:first-child):not(:last-child)>div[class*="title"] {
@@ -265,7 +275,9 @@ include './conn.php'; ?>
 				<div class="menu--content--item">
 					<div class="row">
 						<div class="menu--content--item--title col-sm-6">Isolasi</div>
-						<div class="menu--content--item--percentage col-sm-6">10%</div>
+						<div class="menu--content--item--percentage col-sm-3">
+							<?php echo number_format($datacovid["isolasi"]/$datacovid["konfirmasi"]*100, 2, ",", ".")."%";?>
+						</div>
 					</div>
 					<div class="menu--content--item--info text-primary">
 						<?php echo number_format($datacovid["isolasi"], 0, ",", "."); ?>
@@ -274,7 +286,9 @@ include './conn.php'; ?>
 				<div class="menu--content--item">
 					<div class="row">
 						<div class="menu--content--item--title col-sm-6">Rawat</div>
-						<div class="menu--content--item--percentage col-sm-6">10%</div>
+						<div class="menu--content--item--percentage col-sm-3">
+						<?php echo number_format($datacovid["rawat"]/$datacovid["konfirmasi"]*100, 2, ",", ".")."%";?>
+						</div>
 					</div>
 					<div class="menu--content--item--info text-info">
 						<?php echo number_format($datacovid["rawat"], 0, ",", "."); ?>
@@ -283,7 +297,9 @@ include './conn.php'; ?>
 				<div class="menu--content--item">
 					<div class="row">
 						<div class="menu--content--item--title col-sm-6">Sembuh</div>
-						<div class="menu--content--item--percentage col-sm-6">10%</div>
+						<div class="menu--content--item--percentage col-sm-3">
+						<?php echo number_format($datacovid["sembuh"]/$datacovid["konfirmasi"]*100, 2, ",", ".")."%";?>
+						</div>
 					</div>
 					<div class="menu--content--item--info text-success">
 						<?php echo number_format($datacovid["sembuh"], 0, ",", "."); ?>
@@ -292,7 +308,9 @@ include './conn.php'; ?>
 				<div class="menu--content--item">
 					<div class="row">
 						<div class="menu--content--item--title col-sm-6">Meninggal</div>
-						<div class="menu--content--item--percentage col-sm-6">10%</div>
+						<div class="menu--content--item--percentage col-sm-3">
+						<?php echo number_format($datacovid["wafat"]/$datacovid["konfirmasi"]*100, 2, ",", ".")."%";?>
+						</div>
 					</div>
 					<div class="menu--content--item--info text-danger">
 						<?php echo number_format($datacovid["wafat"], 0, ",", "."); ?>

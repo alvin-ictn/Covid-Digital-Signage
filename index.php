@@ -72,9 +72,14 @@ include './conn.php'; ?>
 			background: green;
 		}
 
+		.profile--content {
+			box-shadow: inset -0px -10px 20px -8px rgba(0,0,0,0.4);
+		}
+
 		.menu {
 			grid-area: 2 / 2 / 4 / 3;
 			background: yellow;
+			box-shadow: -10px 0px 10px -10px rgba(0,0,0,0.4);
 		}
 
 		div[class$="content"] {

@@ -1,0 +1,54 @@
+#clock .digits div{
+	text-align:left;
+	position:relative;
+	width: 19.6px;
+	height:35px;
+	display:inline-block;
+	margin:0 2.8px;
+}
+
+#clock .digits div span{
+	opacity:0;
+	position:absolute;
+
+	-webkit-transition:0.25s;
+	-moz-transition:0.25s;
+	transition:0.25s;
+}
+
+#clock .digits div span:before,
+#clock .digits div span:after{
+	content:'';
+	position:absolute;
+	width:0;
+	height:0;
+	border:3.5px solid transparent;
+}
+
+#clock .digits .d1{			height:3.5px;width:11.2px;top:0;left:4.2px;}
+#clock .digits .d1:before{	border-width:0 5px 5px 0;border-right-color:inherit;left:-3.5px;}
+#clock .digits .d1:after{	border-width:0 0 5px 5px;border-left-color:inherit;right:-3.5px;}
+
+#clock .digits .d2{			height:3.5px;width:11.2px;top:16.8px;left:4.2px;}
+#clock .digits .d2:before{	border-width:2.1px 2.8px 1.4px;border-right-color:inherit;left:-5.6px;}
+#clock .digits .d2:after{	border-width:2.1px 2.8px 1.4px;border-left-color:inherit;right:-5.6px;}
+
+#clock .digits .d3{			height:3.5px;width:11.2px;top:33.6px;left:4.2px;}
+#clock .digits .d3:before{	border-width:3.5px 3.5px 0 0;border-right-color:inherit;left:-3.5px;}
+#clock .digits .d3:after{	border-width:3.5px 0 0 3.5px;border-left-color:inherit;right:-3.5px;}
+
+#clock .digits .d4{			width:3.5px;height:9.8px;top:4.9px;left:0;}
+#clock .digits .d4:before{	border-width:0 5px 5px 0;border-bottom-color:inherit;top:-3.5px;}
+#clock .digits .d4:after{	border-width:0 0 5px 5px;border-left-color:inherit;bottom:-3.5px;}
+
+#clock .digits .d5{			width:3.5px;height:9.8px;top:4.9px;right:0;}
+#clock .digits .d5:before{	border-width:0 0 5px 5px;border-bottom-color:inherit;top:-3.5px;}
+#clock .digits .d5:after{	border-width:3.5px 0 0 5px;border-top-color:inherit;bottom:-3.5px;}
+
+#clock .digits .d6{			width:3.5px;height:9.8px;top:22.4px;left:0;}
+#clock .digits .d6:before{	border-width:0 3.5px 3.5px 0;border-bottom-color:inherit;top:-3.5px;}
+#clock .digits .d6:after{	border-width:0 0 3.5px 3.5px;border-left-color:inherit;bottom:-3.5px;}
+
+#clock .digits .d7{			width:3.5px;height:9.8px;top:22.4px;right:0;}
+#clock .digits .d7:before{	border-width:0 0 3.5px 3.5px;border-bottom-color:inherit;top:-3.5px;}
+#clock .digits .d7:after{	border-width:3.5px 0 0 5px;border-top-color:inherit;bottom:-3.5px;}

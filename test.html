@@ -1,0 +1,40 @@
+<script type="text/javascript">
+		function date_time(id)
+		{
+			date = new Date;
+			year = date.getFullYear();
+			month = date.getMonth();
+			months = new Array('Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember');
+			d = date.getDate();
+			day = date.getDay();
+			days = new Array('Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jum`at', 'Sabtu');
+			h = date.getHours();
+			if(h<10)
+			{
+					h = "0"+h;
+			}
+			m = date.getMinutes();
+			if(m<10)
+			{
+					m = "0"+m;
+			}
+			s = date.getSeconds();
+			if(s<10)
+			{
+					s = "0"+s;
+			}
+			data = ''+days[day]+', '+d+' '+months[month]+' '+year;
+			data2 = ''+h+':'+m+':'+s;
+			document.getElementById(id).innerHTML = data+"<br>"+data2;
+			setTimeout('date_time("'+id+'");','1000');
+			return true;
+		}
+	</script>
+<div class="half-unit">
+	      		<dtitle>Local Time</dtitle>
+	      		<hr>
+		      		<div class="clockcenter">
+			      		<span id="date_time"></span>
+						<script type="text/javascript">window.onload = date_time('date_time');</script>
+		      		</div>
+			</div>

@@ -74,6 +74,17 @@ include './conn.php'; ?>
 
 		.profile--content {
 			box-shadow: inset -0px -10px 20px -8px rgba(0,0,0,0.4);
+			width: 100%;
+			height: 20%;
+			padding: 0 10px;
+			display:flex;
+			align-items: center;
+		}
+		
+		.profile--content > img {
+			max-width:100%;
+			max-height:100%;
+			height: auto !important;
 		}
 
 		.menu {
@@ -186,7 +197,7 @@ include './conn.php'; ?>
 	<div class="grid-container">
 		<div class="profile">
 			<div class="profile--content">
-				<img src="./assets/images/logo.png" />
+				<img src="./Adobe-Logo.png" />
 			</div>
 		</div>
 		<div class="slider">

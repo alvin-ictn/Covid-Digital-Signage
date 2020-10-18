@@ -79,6 +79,8 @@ include './conn.php'; ?>
 			padding: 0 10px;
 			display:flex;
 			align-items: center;
+			justify-content: center;
+			flex-direction: column;
 		}
 		
 		.profile--content > img {
@@ -198,6 +200,7 @@ include './conn.php'; ?>
 		<div class="profile">
 			<div class="profile--content">
 				<img src="./Adobe-Logo.png" />
+				<p>Adobo Corporation</p>
 			</div>
 		</div>
 		<div class="slider">

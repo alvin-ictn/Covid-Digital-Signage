@@ -7,38 +7,8 @@ include './conn.php'; ?>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="author" content="Alvin Mantovani">
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-
-	<!-- Le styles -->
-	<link href="assets/css/bootstrap.css" rel="stylesheet">
-	<link href="assets/css/maincsseditet6june.css" rel="stylesheet">
-	<link href="assets/css/font-style.css" rel="stylesheet">
-	<link href="assets/css/flexslider.css" rel="stylesheet">
-	<!---------- CAROUSEL SPECIAL ---------->
+	<link rel="stylesheet" href="test/assets/bootstrap/css/bootstrap.min.css">
 	<script type="text/javascript" src="car/jquery.min.js"></script>
-	<script type="text/javascript" src="car/bootstrap.min.js"></script>
-	<style type="text/css">
-		@import url('car/bootstrap-combined.min.css');
-
-		#myCarousel {
-			margin-top: 0px;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-		}
-
-		.carousel-linked-nav,
-		.item img {
-			display: block;
-			margin: 0 auto;
-		}
-
-		.carousel-linked-nav {
-			width: 120px;
-			margin-bottom: 20px;
-		}
-	</style>
-
 	<style>
 		*,
 		::after,
@@ -117,7 +87,7 @@ include './conn.php'; ?>
 
 		.menu--content>*:first-child {
 			/* tanggal */
-			font-size: 2.2rem
+			font-size: 1.4rem
 		}
 
 		.row {
@@ -125,24 +95,25 @@ include './conn.php'; ?>
 		}
 
 		.menu--content--item--title {
-			font-size: 2rem;
+			font-size: 1.4rem;
 			text-align:left;
 			margin-left: 20px;
+			padding: 0;
 		}
 
 		.menu--content--item--percentage {
-			font-size: 2rem;
+			font-size: 1.4rem;
 			text-align:right;
 		}
 
 		.menu--content>*:not(:first-child):not(:last-child)>div[class*="title"] {
 			/* menu */
-			font-size: 2rem;
+			font-size: 1.4rem;
 		}
 
 		.menu--content>*:not(:first-child):not(:last-child)>div[class*="info"] {
 			/* menu */
-			font-size: 2.9rem
+			font-size: 2.2rem
 		}
 
 
@@ -406,94 +377,9 @@ include './conn.php'; ?>
 			},
 			500);
 	</script>
-
-
-	<!------------------ FLIP CLOCK -->
-	<script type="text/javascript">
-		var clock;
-
-		$(document).ready(function() {
-			clock = $('.clock').FlipClock({
-				clockFace: 'TwentyFourHourClock',
-				showSeconds: false
-			});
-		});
-	</script>
-
-	<!-- NOTY JAVASCRIPT -->
-	<script type="text/javascript" src="assets/js/noty/jquery.noty.js"></script>
-	<script type="text/javascript" src="assets/js/noty/layouts/top.js"></script>
-	<script type="text/javascript" src="assets/js/noty/layouts/topLeft.js"></script>
-	<script type="text/javascript" src="assets/js/noty/layouts/topRight.js"></script>
-	<script type="text/javascript" src="assets/js/noty/layouts/topCenter.js"></script>
-
-	<!-- You can add more layouts if you want -->
-	<script type="text/javascript" src="assets/js/noty/themes/default.js"></script>
-	<!-- <script type="text/javascript" src="assets/js/dash-noty.js"></script> This is a Noty bubble when you init the theme-->
-
-	<script src="assets/js/jquery.flexslider.js" type="text/javascript"></script>
-	<script src="assets/js/moment.min.js"></script>
 	<script src="assets/js/script.js"></script>
 
-	<script>
-		function enableAutoplay() {
-			$(".panel").children()[0].autoplay = true;
-			$(".panel").children()[0].load();
-			console.log($(".panel").children()[0].load());
-			console.log($(".panel").children()[0].autoplay);
-		}
-
-		function toggleMute() {
-			var video = $(".panel").children()[0];
-			if (video.muted) {
-				video.muted = false;
-				video.play()
-			} else {
-
-				video.muted = true;
-				video.play()
-			}
-			console.log(video.muted)
-		}
-		$(document).ready(function() {
-			var interval = setInterval(function() {
-				var momentNow = moment().locale("id");
-				$("#date-part").html(momentNow.format("DD "));
-				$("#day-part").html(
-					momentNow
-					.format("dddd")
-					.substring(0, 3)
-					.toUpperCase()
-
-				);
-
-				$("#month-part").html(momentNow.format("DD MMMM"));
-			}, 100);
-
-
-		});
-	</script>
-
-	<script>
-		var date = new Date();
-		var day = date.getDate();
-		var month = date.getMonth() + 1;
-		var year = date.getFullYear();
-		var monthNames = ["Januari", "Februari", "Maret", "April", "Mai", "Juni", "Juli", "Agustus", "September", "Oktober", "Nopember", "Desember"];
-		var dayNames = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jum'at", "Sabtu"];
-	</script>
-	<!--Carousel Wrapper-->
-
-	<!-- /Start your project here-->
-
-	<!-- SCRIPTS -->
-	<!-- JQuery -->
-
-	<!-- Bootstrap tooltips -->
-	<script type="text/javascript" src="js/popper.min.js"></script>
-	<!-- Bootstrap core JavaScript -->
-
-	<!-- MDB core JavaScript -->
+	
 
 </body>
 

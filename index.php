@@ -333,20 +333,58 @@ include './conn.php'; ?>
 		</div>
 		<div class="menu">
 			<div class="menu--content">
-				<div class="menu--content--item" id="#mytime"><?php echo date("d F Y H:i:s");?></div>
+				<div class="menu--content--item" id="mydate">
+						<?php 
+						date_default_timezone_set('Asia/Jakarta');
+						setlocale(LC_ALL, 'IND');
+						echo strftime("%A, %e %B %G");?>
+				</div>
 				<div class="menu--content--item">
 					<div class="menu--content--item--title">Konfirmasi</div>
 					<div class="menu--content--item--info">12321321</div>
 				</div>
 				<script>
-					let numDay = new Date().getDay();
-					let numMonth = new Date().getMonth();
+					let thisdate = new Date();
+					let numDay = thisdate.getDay();
+					let numMonth = thisdate.getMonth();
 					let dateData = {
 						days: ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'],
-						months: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember' ]
+						months: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']
 					}
-					let timeDOM = document.querySelector('#mytime');
 
+					$(document).ready(function() {
+						clockUpdate();
+						setInterval(clockUpdate, 1000);
+					})
+
+					function clockUpdate() {
+						date = new Date();
+
+						function addZero(x) {
+							if (x < 10) {
+								return x = '0' + x;
+							} else {
+								return x;
+							}
+						}
+
+						function twelveHour(x) {
+							if (x > 12) {
+								return x = x - 12;
+							} else if (x == 0) {
+								return x = 12;
+							} else {
+								return x;
+							}
+						}
+
+						let h = addZero(date.getHours());
+						let m = addZero(date.getMinutes());
+						let s = addZero(date.getSeconds());
+						$('#mytime').text(h + ':' + m + ':' + s)
+						$('#mydate').text(`${dateData.days[numDay]}, ${date.getDate()} ${dateData.months[numMonth]} ${date.getFullYear()}`)
+
+					}
 				</script>
 				<div class="menu--content--item">
 					<div class="menu--content--item--title">Isolasi</div>
@@ -364,7 +402,10 @@ include './conn.php'; ?>
 					<div class="menu--content--item--title">Meninggal</div>
 					<div class="menu--content--item--info">12321321</div>
 				</div>
-				<div class="menu--content--item">10:20:30</div>
+				<div class="menu--content--item" id="mytime">
+					<?php 
+								echo date("H:i:s"); ?>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -508,11 +549,6 @@ include './conn.php'; ?>
 		var monthNames = ["Januari", "Februari", "Maret", "April", "Mai", "Juni", "Juli", "Agustus", "September", "Oktober", "Nopember", "Desember"];
 		var dayNames = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jum'at", "Sabtu"];
 
-		var monthLabel = document.getElementsByClassName("month-label")[0].innerHTML = monthNames[date.getMonth()];
-
-		var dayLabel = document.getElementsByClassName("day-label")[0].innerHTML = day;
-
-		var weekdayLabel = document.getElementsByClassName("weekday-label")[0].innerHTML = dayNames[date.getDay(0)];
 	</script>
 	<!--Carousel Wrapper-->
 

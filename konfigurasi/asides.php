@@ -24,6 +24,16 @@
 		</div>
 		<div class="link-green">
 			<a href="#">
+
+			<i class="fa fa-bahai"></i> Virus
+
+			</a>
+			<ul class="sub-links">
+				<li><a href="text.php">Virus</a></li>
+			</ul>
+		</div>
+		<div class="link-green">
+			<a href="#">
 				<i class="fa fa-cogs"></i>General
 			</a>
 			<ul class="sub-links">

@@ -1,17 +1,14 @@
+<script>
+	$(function() {
 
-	<script>
+		var links = $('.sidebar-links > div');
 
-		$(function () {
+		links.on('click', function() {
 
-			var links = $('.sidebar-links > div');
+			links.removeClass('selected');
+			$(this).addClass('selected');
 
-			links.on('click', function () {
-
-				links.removeClass('selected');
-				$(this).addClass('selected');
-
-			});
 		});
-
-	</script>
-	<script src="assets/js/bootstrap.js"></script>
+	});
+</script>
+<script src="assets/js/bootstrap.js"></script>

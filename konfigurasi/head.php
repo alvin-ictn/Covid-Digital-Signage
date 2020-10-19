@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="assets/demo.css">
 	<link rel="stylesheet" href="assets/sidebar-collapse.css">
 
-	<link rel="stylesheet" href="assets/fontawesome/css/all.css">
+	<link rel="stylesheet" href="assets/fontawesome/css/pro.min.css">
 	<link rel="stylesheet" href="assets/css/buttons.css">
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/css/bootstrap-glyphicons.css">

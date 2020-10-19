@@ -61,7 +61,7 @@ include './conn.php'; ?>
                       </button>
                     </div>
                     <div class="modal-body">
-                      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                      <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
                         <li class="nav-item">
                           <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Image</a>
                         </li>
@@ -84,9 +84,11 @@ include './conn.php'; ?>
 
 
               <div class="tab-pane fade" id="slider" role="tabpanel" aria-labelledby="list-messages-list">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                  Launch demo modal
-                </button>
+                <div class="row justify-content-center my-4">
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Launch demo modal
+                  </button>
+                </div>
                 <table class="table">
                   <thead>
                     <tr>

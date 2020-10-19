@@ -63,7 +63,7 @@
 	margin: 0;
 }
 
-.sidebar-links div > a i.fa {
+.sidebar-links div > a i[class*="fa"] {
 	position: relative;
 	font-size: 20px;
 	top: 3px;
@@ -102,7 +102,7 @@
 	border-color: #487db2;
 }
 
-.sidebar-links div.link-blue > a i.fa {
+.sidebar-links div.link-blue > a i[class*="fa"] {
 	color: #487db2;
 }
 
@@ -110,7 +110,7 @@
 	border-color: #da4545;
 }
 
-.sidebar-links div.link-red > a i.fa {
+.sidebar-links div.link-red > a i[class*="fa"] {
 	color: #da4545;
 }
 
@@ -118,7 +118,7 @@
 	border-color: #d0d237;
 }
 
-.sidebar-links div.link-yellow > a i.fa {
+.sidebar-links div.link-yellow > a i[class*="fa"] {
 	color: #d0d237;
 }
 
@@ -126,7 +126,7 @@
 	border-color: #86be2e;
 }
 
-.sidebar-links div.link-green > a i.fa {
+.sidebar-links div.link-green > a i[class*="fa"] {
 	color: #86be2e;
 }
 
@@ -166,7 +166,7 @@
 		border-top-style: solid;
 	}
 
-	.sidebar-links div > a i.fa {
+	.sidebar-links div > a i[class*="fa"] {
 		display: block;
 		margin: 0 auto 5px;
 	}
@@ -230,7 +230,7 @@
 		border-left-style: solid;
 	}
 
-	.sidebar-links div > a i.fa {
+	.sidebar-links div > a i[class*="fa"] {
 		display: inline-block;
 		font-size: 20px;
 		width: 20px;

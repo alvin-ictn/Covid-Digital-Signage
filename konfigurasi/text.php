@@ -40,7 +40,7 @@ if (isset($_POST['addberita'])) {
 </style>
 
 <body>
-	<?php include 'asides2.php'; ?>
+	<?php include 'asides.php'; ?>
 	<link rel="stylesheet" href="assets/css/close.css" />
 	<link rel="stylesheet" href="conditional/bootstrap-iso.css">
 	<div id="tambah-databerita" class="modal fade" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="top:5%;">

@@ -1,11 +1,12 @@
 <html>
+
 <head>
-<?php include 'head.php'; ?>
+	<?php include 'head.php'; ?>
 </head>
 
 <body>
 
-<?php include 'asides.php'; ?>
+	<?php include 'asides.php'; ?>
 
 	<div class="main-content">
 
@@ -16,7 +17,7 @@
 
 			<h1>Freebie: 5 Responsive Sidebar Templates</h1>
 
-	
+
 
 			<ul>
 				test
@@ -29,4 +30,5 @@
 	<?php include 'foot.php'; ?>
 
 </body>
+
 </html>

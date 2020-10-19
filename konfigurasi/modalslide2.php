@@ -24,7 +24,6 @@
 								<small style="margin-left:5px;margin-top:5px;">Best Resolution 1280x1440</small>	
 					</div> 
 				<fieldset>		
-						<?php echo set_progress(); ?>	
 				</div>				 
 				<div class="modal-footer">
 					<button class="btn btn-primary " name="tambahslide" type="submit"><i class="glyphicon glyphicon-ok"></i>Upload</button>

@@ -20,7 +20,6 @@
 			</a>
 			<ul class="sub-links">
 				<li><a href="text.php">Running Text</a></li>
-				<li><a href="agenda.php">Agenda</a></li>
 			</ul>
 		</div>
 		<div class="link-green">

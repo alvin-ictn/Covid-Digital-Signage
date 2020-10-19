@@ -51,7 +51,6 @@
 						<small style="margin-left:5px;margin-top:5px;">Maximum resolution 1280x720</small>	
 					</div>          					
 				</div>
-				<?php echo set_progress(); ?>	
 				<small style="margin-left:5px;margin-top:5px;">Type File Widescreen 16:9</small>				
 				<div class="modal-footer">
 					<button class="btn btn-primary " name="tambahslide" type="submit">

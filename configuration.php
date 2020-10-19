@@ -81,9 +81,9 @@ include './conn.php'; ?>
                               <label for="inputDuration">Durasi (ms)</label>
                               <input type="text" class="form-control" id="inputDuration" placeholder="eg: 1000" onKeyPress="return event.charCode >= 48 && event.charCode <= 57">
                             </div>
-                            <div class="form-check">
-                              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                            <div class="form-group">
+                              <label for="inputFile">Upload Image</label>
+                              <input type="file" class="form-control-file" id="inputFile">
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                           </form>

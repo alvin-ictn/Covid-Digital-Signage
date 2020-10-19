@@ -70,7 +70,24 @@ include './conn.php'; ?>
                         </li>
                       </ul>
                       <div class="tab-content" id="pills-tabContent">
-                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">Image</div>
+                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                          <form>
+                            <div class="form-group">
+                              <label for="inputDescription">Deskripsi Gambar</label>
+                              <input type="text" class="form-control" id="inputDescription" aria-describedby="imageDescription" placeholder="Deskripsi Gambar">
+                              <small id="imageDescription" class="form-text text-muted">Masukan Deskripsi dengan jelas.</small>
+                            </div>
+                            <div class="form-group">
+                              <label for="inputDuration">Durasi (ms)</label>
+                              <input type="text" class="form-control" id="inputDuration" placeholder="eg: 1000" onKeyPress="return event.charCode >= 48 && event.charCode <= 57">
+                            </div>
+                            <div class="form-check">
+                              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                          </form>
+                        </div>
                         <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">Video</div>
                       </div>
                     </div>

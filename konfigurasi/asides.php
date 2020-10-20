@@ -38,7 +38,7 @@
 				<i class="fa fa-bahai"></i> Covid
 			</a>
 			<ul class="sub-links">
-				<li><a href="text.php">Covid Data</a></li>
+				<li><a href="covid.php">Covid Data</a></li>
 			</ul>
 		</div>
 		<div class="link-green">

@@ -101,8 +101,8 @@ if (isset($_POST['postImage'])) {
 			<span>choose file</span>
 			<input type="file" name="gambar" value="Choose File" accept="image/*">
 		</div>
-		<button class="btn btn-warning " name="postImage" type="submit">
-			Edit
+		<button class="btn btn-info " name="postImage" type="submit">
+			Upload
 		</button>
 	</form>
 </div>

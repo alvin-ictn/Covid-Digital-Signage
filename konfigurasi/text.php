@@ -134,7 +134,6 @@ if (isset($_POST['addberita'])) {
 			</div>
 		</div>
 	</div>
-	<div class="container">
 		<h1>Running Text</h1>
 		<button class="btn btn-success waves-effect waves-light" data-id='0' data-toggle="modal" data-target="#tambah-databerita"><i class="glyphicon glyphicon-plus"></i> Berita</button>
 
@@ -174,7 +173,7 @@ if (isset($_POST['addberita'])) {
 				</table>
 			</div>
 		</div>
-	</div>
+	
 
 	<?php include 'foot.php'; ?>
 </body>

@@ -2,29 +2,26 @@
 include './conn.php';
 include 'head.php';
 
-if (isset($_POST['tambahslide'])) {
+if (isset($_POST['postImage'])) {
 	if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-		$lokasi = 'C:/xampp/htdocs/darq/konfigurasi/gambar/slide-kanan-bawah/';
+		$lokasi = 'C:/xampp/htdocs/darq/konfigurasi/gambar/logo/';
 	} else {
-		$lokasi = '/var/www/konfigurasi/gambar/slide-kanan-bawah/';
+		$lokasi = '/var/www/konfigurasi/gambar/logo/';
 	}
 	$judul = basename($_FILES['gambar']['name']);
-	$uploadfile = $lokasi . $judul;
-	if (file_exists($uploadfile)) {
-		echo "<div class='alert alert-danger' role='alert' style='width:70%;float:none;margin:0 auto;'>
-<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-<strong>Terjadi Kesalahan!</strong> File sejenisnya sudah ada!</div>";
-	} else {
-		if (move_uploaded_file($_FILES['gambar']['tmp_name'], $uploadfile)) {
-			$keterangan = $_POST['keterangan'];
-			mysqli_query($con, "INSERT INTO `kanan_bawah`(`keterangan`,`judul`) VALUES ('$keterangan','$judul')");
-		}
+	$uploadfile = $lokasi . "logo.png";
+
+	if (move_uploaded_file($_FILES['gambar']['tmp_name'], $uploadfile)) {
+		echo "
+		<div class='alert alert-success' role='alert' style='width:70%;float:none;margin:0 auto;'>
+			<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+		<strong>Selamat!</strong> Logo Berhasil di upload!</div>";
 	}
 } elseif (isset($_POST['edit'])) {
 	if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-		$lokasi = 'C:/xampp/htdocs/darq/konfigurasi/gambar/slide-kanan-bawah/';
+		$lokasi = 'C:/xampp/htdocs/darq/konfigurasi/gambar/logo/';
 	} else {
-		$lokasi = '/var/www/konfigurasi/gambar/slide-kanan-bawah/';
+		$lokasi = '/var/www/konfigurasi/gambar/logo/';
 	}
 	$judul = basename($_FILES['gambar']['name']);
 	$uploadfile = $lokasi . $judul;
@@ -94,11 +91,15 @@ if (isset($_POST['tambahslide'])) {
 <div class="mt-5 pt-5 container">
 	<form enctype="multipart/form-data" method="post">
 		<div class="logoContainer">
-			<img src="./placeholder.svg">
+			<img src="<?php if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+									echo './gambar/logo/logo.png';
+								} else {
+									echo './gambar/logo/logo.png';
+								} ?>">
 		</div>
 		<div class="fileContainer sprite">
 			<span>choose file</span>
-			<input type="file" value="Choose File" accept="image/*">
+			<input type="file" name="gambar" value="Choose File" accept="image/*">
 		</div>
 		<button class="btn btn-warning " name="postImage" type="submit">
 			Edit

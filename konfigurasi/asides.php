@@ -13,7 +13,7 @@
 			<i class="fal fa-hand-receiving"></i>Logo
 			</a>
 			<ul class="sub-links">
-				<li><a href="slider1.php">Slider Utama</a></li>
+				<li><a href="logo.php">Logo Changer</a></li>
 			</ul>
 		</div>
 		<div class="link-blue <?php if($uri[sizeof($uri)-1] == "slider1.php") { echo "selected"; }?>">
@@ -51,7 +51,7 @@
 		</div>
 		<div class="link-yellow">
 			<a href="refresh.php">
-				<i class="fa fa-check"></i> <span>Apply changed</span> </i>
+				<i class="fa fa-check"></i> <span>Apply</span> </i>
 			</a>
 		</div>
 	</div>

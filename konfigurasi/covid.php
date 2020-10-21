@@ -71,7 +71,10 @@ if (isset($_POST['default2'])) {
   mysqli_query($con, "UPDATE `covidstyle` SET `suspek`='$txt1', `konfirmasi`='$txt2', `isolasi`='$txt3',`rawat`='$txt4', `sembuh`='$txt5',`wafat`='$txt6' WHERE id=2");
 }
 ?>
-<?php $datacovid = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `covid`")); ?>
+<?php $datacovid = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `covid`")); 
+$styledata1 = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `covidstyle` WHERE id=1"));
+$styledata2 = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `covidstyle` WHERE id=2"));
+?>
 <style>
   .logoContainer {
     width: 400px;
@@ -232,6 +235,25 @@ if (isset($_POST['default2'])) {
       <button class="btn btn-danger" name="default2" type="submit">Set Default 2</button>
     </form>
   </div>
+  <?php 
+    $bgAdj1 = explode(", ",$styledata1[1]); 
+    $bgAdj2 = explode(", ",$styledata1[2]);
+    $bgAdj3 = explode(", ",$styledata1[3]);
+    $bgAdj4 = explode(", ",$styledata1[4]);
+    $bgAdj5 = explode(", ",$styledata1[5]);
+    $bgAdj6 = explode(", ",$styledata1[6]);
+    $txtAdj1 = explode(", ",$styledata2[1]); 
+    $txtAdj2 = explode(", ",$styledata2[2]);
+    $txtAdj3 = explode(", ",$styledata2[3]);
+    $txtAdj4 = explode(", ",$styledata2[4]);
+    $txtAdj5 = explode(", ",$styledata2[5]);
+    $txtAdj6 = explode(", ",$styledata2[6]);
+    $bgAdj1[0] = str_replace("rgba(","",$bgAdj1[0]);
+    $txtAdj1[0] = str_replace("rgb(","",$txtAdj1[0]);
+    $bgAdj1[3] = str_replace(")","",$bgAdj1[3]);
+    $txtAdj1[2] = str_replace(")","",$txtAdj1[2]);
+    echo dechex(str_replace("rgba(","",$bgAdj1[0]));
+  ?>
   <div class="w-100 d-flex flex-wrap">
     <div class="card p-0 m-4">
       <form class="w-100" enctype="multipart/form-data" method="post">

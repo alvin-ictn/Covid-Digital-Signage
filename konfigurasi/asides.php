@@ -16,7 +16,17 @@
 				<li><a href="logo.php">Logo Changer</a></li>
 			</ul>
 		</div>
-		<div class="link-blue <?php if($uri[sizeof($uri)-1] == "slider1.php") { echo "selected"; }?>">
+		<div class="link-blue 
+		<?php if($uri[sizeof($uri)-1] == "logo.php") { echo "selected"; }?>">
+			<a href="#">
+			<i class="fal fa-hand-receiving"></i>Logo
+			</a>
+			<ul class="sub-links">
+				<li><a href="logo.php">Logo Changer</a></li>
+			</ul>
+		</div>
+		<div class="link-red 
+		<?php if($uri[sizeof($uri)-1] == "slider1.php") { echo "selected"; }?>">
 			<a href="#">
 				<i class="fa fa-clone"></i>Slider
 			</a>

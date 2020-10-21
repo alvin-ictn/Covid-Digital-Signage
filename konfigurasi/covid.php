@@ -71,7 +71,7 @@ if (isset($_POST['default2'])) {
   mysqli_query($con, "UPDATE `covidstyle` SET `suspek`='$txt1', `konfirmasi`='$txt2', `isolasi`='$txt3',`rawat`='$txt4', `sembuh`='$txt5',`wafat`='$txt6' WHERE id=2");
 }
 ?>
-<?php $datacovid = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `covid`")); 
+<?php $datacovid = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `covid`"));
 $styledata1 = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `covidstyle` WHERE id=1"));
 $styledata2 = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `covidstyle` WHERE id=2"));
 ?>
@@ -235,24 +235,83 @@ $styledata2 = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `covidstyle` 
       <button class="btn btn-danger" name="default2" type="submit">Set Default 2</button>
     </form>
   </div>
-  <?php 
-    $bgAdj1 = explode(", ",$styledata1[1]); 
-    $bgAdj2 = explode(", ",$styledata1[2]);
-    $bgAdj3 = explode(", ",$styledata1[3]);
-    $bgAdj4 = explode(", ",$styledata1[4]);
-    $bgAdj5 = explode(", ",$styledata1[5]);
-    $bgAdj6 = explode(", ",$styledata1[6]);
-    $txtAdj1 = explode(", ",$styledata2[1]); 
-    $txtAdj2 = explode(", ",$styledata2[2]);
-    $txtAdj3 = explode(", ",$styledata2[3]);
-    $txtAdj4 = explode(", ",$styledata2[4]);
-    $txtAdj5 = explode(", ",$styledata2[5]);
-    $txtAdj6 = explode(", ",$styledata2[6]);
-    $bgAdj1[0] = str_replace("rgba(","",$bgAdj1[0]);
-    $txtAdj1[0] = str_replace("rgb(","",$txtAdj1[0]);
-    $bgAdj1[3] = str_replace(")","",$bgAdj1[3]);
-    $txtAdj1[2] = str_replace(")","",$txtAdj1[2]);
-    echo dechex(str_replace("rgba(","",$bgAdj1[0]));
+  <?php
+  $bgAdj1 = explode(", ", $styledata1[1]);
+  $bgAdj2 = explode(", ", $styledata1[2]);
+  $bgAdj3 = explode(", ", $styledata1[3]);
+  $bgAdj4 = explode(", ", $styledata1[4]);
+  $bgAdj5 = explode(", ", $styledata1[5]);
+  $bgAdj6 = explode(", ", $styledata1[6]);
+  $txtAdj1 = explode(", ", $styledata2[1]);
+  $txtAdj2 = explode(", ", $styledata2[2]);
+  $txtAdj3 = explode(", ", $styledata2[3]);
+  $txtAdj4 = explode(", ", $styledata2[4]);
+  $txtAdj5 = explode(", ", $styledata2[5]);
+  $txtAdj6 = explode(", ", $styledata2[6]);
+  $bgAdj1[0] = str_replace("rgba(", "", $bgAdj1[0]);
+  $txtAdj1[0] = str_replace("rgb(", "", $txtAdj1[0]);
+  $bgAdj1[3] = str_replace(")", "", $bgAdj1[3]);
+  $txtAdj1[2] = str_replace(")", "", $txtAdj1[2]);
+
+  $setBg1 =
+    dechex(str_replace("rgba(", "", $bgAdj1[0])) .
+    dechex(str_replace("rgba(", "", $bgAdj1[1])) .
+    dechex(str_replace("rgba(", "", $bgAdj1[2]));
+
+  $setBg2 =
+    dechex(str_replace("rgba(", "", $bgAdj2[0])) .
+    dechex(str_replace("rgba(", "", $bgAdj2[1])) .
+    dechex(str_replace("rgba(", "", $bgAdj2[2]));
+
+  $setBg3 =
+    dechex(str_replace("rgba(", "", $bgAdj3[0])) .
+    dechex(str_replace("rgba(", "", $bgAdj3[1])) .
+    dechex(str_replace("rgba(", "", $bgAdj3[2]));
+
+  $setBg4 =
+    dechex(str_replace("rgba(", "", $bgAdj4[0])) .
+    dechex(str_replace("rgba(", "", $bgAdj4[1])) .
+    dechex(str_replace("rgba(", "", $bgAdj4[2]));
+
+  $setBg5 =
+    dechex(str_replace("rgba(", "", $bgAdj5[0])) .
+    dechex(str_replace("rgba(", "", $bgAdj5[1])) .
+    dechex(str_replace("rgba(", "", $bgAdj5[2]));
+
+  $setBg6 =
+    dechex(str_replace("rgba(", "", $bgAdj6[0])) .
+    dechex(str_replace("rgba(", "", $bgAdj6[1])) .
+    dechex(str_replace("rgba(", "", $bgAdj6[2]));
+
+  $setTxt1 =
+    dechex(str_replace("rgba(", "", $txtAdj1[0])) .
+    dechex(str_replace("rgba(", "", $txtAdj1[1])) .
+    dechex(str_replace("rgba(", "", $txtAdj1[2]));
+
+  $setTxt2 =
+    dechex(str_replace("rgba(", "", $txtAdj2[0])) .
+    dechex(str_replace("rgba(", "", $txtAdj2[1])) .
+    dechex(str_replace("rgba(", "", $txtAdj2[2]));
+
+  $setTxt3 =
+    dechex(str_replace("rgba(", "", $txtAdj3[0])) .
+    dechex(str_replace("rgba(", "", $txtAdj3[1])) .
+    dechex(str_replace("rgba(", "", $txtAdj3[2]));
+
+  $setTxt4 =
+    dechex(str_replace("rgba(", "", $txtAdj4[0])) .
+    dechex(str_replace("rgba(", "", $txtAdj4[1])) .
+    dechex(str_replace("rgba(", "", $txtAdj4[2]));
+
+  $setTxt5 =
+    dechex(str_replace("rgba(", "", $txtAdj5[0])) .
+    dechex(str_replace("rgba(", "", $txtAdj5[1])) .
+    dechex(str_replace("rgba(", "", $txtAdj5[2]));
+
+  $setTxt6 =
+    dechex(str_replace("rgba(", "", $txtAdj6[0])) .
+    dechex(str_replace("rgba(", "", $txtAdj6[1])) .
+    dechex(str_replace("rgba(", "", $txtAdj6[2]));
   ?>
   <div class="w-100 d-flex flex-wrap">
     <div class="card p-0 m-4">
@@ -263,11 +322,11 @@ $styledata2 = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `covidstyle` 
         <div class="card-body">
           <div class="align-items-center my-2">
             <label class="m-0 text-center font-weight-bold">Background</label>
-            <input class="text-center form-control" onChange="update(this.jscolor, '#pr1','bg')" onInput="update(this.jscolor, '#pr1','bg')" value="FFEECC" data-jscolor="{alpha:0.7}" type="unknown">
+            <input class="text-center form-control" onChange="update(this.jscolor, '#pr1','bg')" onInput="update(this.jscolor, '#pr1','bg')" value="<?php echo $setBg1 ?>" data-jscolor="{alpha:<?php echo $bgAdj1[3] ?>}" type="unknown">
           </div>
           <div class="align-items-center my-2">
             <label class="m-0 text-center font-weight-bold">Text Color</label>
-            <input class="text-center form-control" onChange="update(this.jscolor, '#pr1','txt')" onInput="update(this.jscolor, '#pr1','txt')" value="CCFFAA" data-jscolor="{alpha:1}" type="unknown">
+            <input class="text-center form-control" onChange="update(this.jscolor, '#pr1','txt')" onInput="update(this.jscolor, '#pr1','txt')" value="<?php echo $setTxt1 ?>" data-jscolor="{alpha:1}" type="unknown">
           </div>
         </div>
         <input type="hidden" id="post_suspek_bg" name="post_suspek_bg" value="" />
@@ -285,11 +344,11 @@ $styledata2 = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `covidstyle` 
         <div class="card-body">
           <div class="align-items-center my-2">
             <label class="m-0 text-center font-weight-bold">Background</label>
-            <input class="text-center form-control" onChange="update(this.jscolor, '#pr2','bg')" onInput="update(this.jscolor, '#pr2','bg')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+            <input class="text-center form-control" onChange="update(this.jscolor, '#pr2','bg')" onInput="update(this.jscolor, '#pr2','bg')" value="<?php echo $setBg2 ?>" data-jscolor="{alpha:<?php echo $bgAdj2[3] ?>}" type="unknown">
           </div>
           <div class="align-items-center my-2">
             <label class="m-0 text-center font-weight-bold">Text Color</label>
-            <input class="text-center form-control" onChange="update(this.jscolor, '#pr2','txt')" onInput="update(this.jscolor, '#pr2','txt')" value="CCFFAA" data-jscolor="{alpha:1}" type="unknown">
+            <input class="text-center form-control" onChange="update(this.jscolor, '#pr2','txt')" onInput="update(this.jscolor, '#pr2','txt')" value="<?php echo $setTxt2 ?>" data-jscolor="{alpha:1}" type="unknown">
           </div>
         </div>
         <input type="hidden" id="post_konfirmasi_bg" name="post_konfirmasi_bg" value="" />
@@ -306,11 +365,11 @@ $styledata2 = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `covidstyle` 
         <div class="card-body">
           <div class="align-items-center my-2">
             <label class="m-0 text-center font-weight-bold">Background</label>
-            <input class="text-center form-control" onChange="update(this.jscolor, '#pr3','bg')" onInput="update(this.jscolor, '#pr3','bg')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+            <input class="text-center form-control" onChange="update(this.jscolor, '#pr3','bg')" onInput="update(this.jscolor, '#pr3','bg')" value="<?php echo $setBg3 ?>" data-jscolor="{alpha:<?php echo $bgAdj3[3] ?>}" type="unknown">
           </div>
           <div class="align-items-center my-2">
             <label class="m-0 text-center font-weight-bold">Text Color</label>
-            <input class="text-center form-control" onChange="update(this.jscolor, '#pr3','txt')" onInput="update(this.jscolor, '#pr3','txt')" value="CCFFAA" data-jscolor="{alpha:1}" type="unknown">
+            <input class="text-center form-control" onChange="update(this.jscolor, '#pr3','txt')" onInput="update(this.jscolor, '#pr3','txt')" value="<?php echo $setTxt3 ?>" data-jscolor="{alpha:1}" type="unknown">
           </div>
         </div>
         <input type="hidden" id="post_isolasi_bg" name="post_isolasi_bg" value="" />
@@ -327,11 +386,11 @@ $styledata2 = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `covidstyle` 
         <div class="card-body">
           <div class="align-items-center my-2">
             <label class="m-0 text-center font-weight-bold">Background</label>
-            <input class="text-center form-control" onChange="update(this.jscolor, '#pr4','bg')" onInput="update(this.jscolor, '#pr4','bg')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+            <input class="text-center form-control" onChange="update(this.jscolor, '#pr4','bg')" onInput="update(this.jscolor, '#pr4','bg')" value="<?php echo $setBg4 ?>" data-jscolor="{alpha:<?php echo $bgAdj4[3] ?>}" type="unknown">
           </div>
           <div class="align-items-center my-2">
             <label class="m-0 text-center font-weight-bold">Text Color</label>
-            <input class="text-center form-control" onChange="update(this.jscolor, '#pr4','txt')" onInput="update(this.jscolor, '#pr4','txt')" value="CCFFAA" data-jscolor="{alpha:1}" type="unknown">
+            <input class="text-center form-control" onChange="update(this.jscolor, '#pr4','txt')" onInput="update(this.jscolor, '#pr4','txt')" value="<?php echo $setTxt4 ?>" data-jscolor="{alpha:1}" type="unknown">
           </div>
         </div>
         <input type="hidden" id="post_rawat_bg" name="post_rawat_bg" value="" />
@@ -348,11 +407,11 @@ $styledata2 = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `covidstyle` 
         <div class="card-body">
           <div class="align-items-center my-2">
             <label class="m-0 text-center font-weight-bold">Background</label>
-            <input class="text-center form-control" onChange="update(this.jscolor, '#pr5','bg')" onInput="update(this.jscolor, '#pr5','bg')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+            <input class="text-center form-control" onChange="update(this.jscolor, '#pr5','bg')" onInput="update(this.jscolor, '#pr5','bg')" value="<?php echo $setBg5 ?>" data-jscolor="{alpha:<?php echo $bgAdj5[3] ?>}" type="unknown">
           </div>
           <div class="align-items-center my-2">
             <label class="m-0 text-center font-weight-bold">Text Color</label>
-            <input class="text-center form-control" onChange="update(this.jscolor, '#pr5','txt')" onInput="update(this.jscolor, '#pr5','txt')" value="CCFFAA" data-jscolor="{alpha:1}" type="unknown">
+            <input class="text-center form-control" onChange="update(this.jscolor, '#pr5','txt')" onInput="update(this.jscolor, '#pr5','txt')" value="<?php echo $setTxt5 ?>" data-jscolor="{alpha:1}" type="unknown">
           </div>
         </div>
         <input type="hidden" id="post_sembuh_bg" name="post_sembuh_bg" value="" />
@@ -369,11 +428,11 @@ $styledata2 = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `covidstyle` 
         <div class="card-body">
           <div class="align-items-center my-2">
             <label class="m-0 text-center font-weight-bold">Background</label>
-            <input class="text-center form-control" onChange="update(this.jscolor, '#pr6','bg')" onInput="update(this.jscolor, '#pr6','bg')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+            <input class="text-center form-control" onChange="update(this.jscolor, '#pr6','bg')" onInput="update(this.jscolor, '#pr6','bg')" value="<?php echo $setBg6 ?>" data-jscolor="{alpha:<?php echo $bgAdj6[3] ?>}" type="unknown">
           </div>
           <div class="align-items-center my-2">
             <label class="m-0 text-center font-weight-bold">Text Color</label>
-            <input class="text-center form-control" onChange="update(this.jscolor, '#pr6','txt')" onInput="update(this.jscolor, '#pr6','txt')" value="CCFFAA" data-jscolor="{alpha:1}" type="unknown">
+            <input class="text-center form-control" onChange="update(this.jscolor, '#pr6','txt')" onInput="update(this.jscolor, '#pr6','txt')" value="<?php echo $setTxt6 ?>" data-jscolor="{alpha:1}" type="unknown">
           </div>
         </div>
         <input type="hidden" id="post_wafat_bg" name="post_wafat_bg" value="" />

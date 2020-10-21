@@ -10,6 +10,24 @@ if (isset($_POST['updateCovid'])) {
   $wafat = join("", explode(".", $_POST['wafat']));
   mysqli_query($con, "UPDATE `covid` SET `konfirmasi`='$konfirmasi', `isolasi`='$isolasi',`rawat`='$rawat', `sembuh`='$sembuh',`wafat`='$wafat' WHERE id=1");
 }
+
+$defaultValue = [
+  ['transparent','rgba(248, 249, 250, 1)'],
+  ['transparent','rgba(255, 193, 7, 1)'],
+  ['transparent','rgba(0, 123, 255, 1)'],
+  ['transparent','rgba(23, 162, 184, 1)'],
+  ['transparent','rgba(40, 167, 69, 1)'],
+  ['transparent','rgba(220, 53, 69, 1)']
+];
+
+$defaultValue2 = [
+  ['rgba(248, 249, 250, 1)','rgba(52, 58, 64, 1)'],
+  ['rgba(255, 193, 7, 1)','rgba(248, 249, 250, 1)'],
+  ['rgba(0, 123, 255, 1)','rgba(248, 249, 250, 1)'],
+  ['rgba(23, 162, 184, 1)','rgba(248, 249, 250, 1)'],
+  ['rgba(40, 167, 69, 1)','rgba(248, 249, 250, 1)'],
+  ['rgba(220, 53, 69, 1)','rgba(248, 249, 250, 1)']
+];
 ?>
 <?php $datacovid = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `covid`")); ?>
 <style>
@@ -181,16 +199,16 @@ if (isset($_POST['updateCovid'])) {
       <div class="card-body">
         <div class="align-items-center my-2">
           <label class="m-0 text-center font-weight-bold">Background</label>
-          <input class="text-center form-control" onChange="update(this.jscolor, '#pr1')" onInput="update(this.jscolor, '#pr1')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+          <input class="text-center form-control" onChange="update(this.jscolor, '#pr2','bg')" onInput="update(this.jscolor, '#pr2','bg')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
         </div>
         <div class="align-items-center my-2">
           <label class="m-0 text-center font-weight-bold">Text Color</label>
-          <input class="text-center form-control" onChange="update(this.jscolor, '#pr1')" onInput="update(this.jscolor, '#pr1')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+          <input class="text-center form-control" onChange="update(this.jscolor, '#pr2','txt')" onInput="update(this.jscolor, '#pr2','txt')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
         </div>
       </div>
       <input type="hidden" id="#post_konfirmasi_bg" name="post_konfirmasi_bg" value=""/>
       <input type="hidden" id="#post_konfirmasi_txt" name="post_konfirmasi_txt" value=""/>
-      <em id="pr1" style="display:inline-block; padding:1em;">change event</em>
+      <em id="pr2" style="display:inline-block; padding:1em;">change event</em>
     </div>
     <div class="card p-0 m-4">
       <div class="card-header">
@@ -199,16 +217,16 @@ if (isset($_POST['updateCovid'])) {
       <div class="card-body">
         <div class="align-items-center my-2">
           <label class="m-0 text-center font-weight-bold">Background</label>
-          <input class="text-center form-control" onChange="update(this.jscolor, '#pr1')" onInput="update(this.jscolor, '#pr1')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+          <input class="text-center form-control" onChange="update(this.jscolor, '#pr3','bg')" onInput="update(this.jscolor, '#pr3','bg')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
         </div>
         <div class="align-items-center my-2">
           <label class="m-0 text-center font-weight-bold">Text Color</label>
-          <input class="text-center form-control" onChange="update(this.jscolor, '#pr1')" onInput="update(this.jscolor, '#pr1')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+          <input class="text-center form-control" onChange="update(this.jscolor, '#pr3','txt')" onInput="update(this.jscolor, '#pr3','txt')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
         </div>
       </div>
       <input type="hidden" id="#post_isolasi_bg" name="post_isolasi_bg" value=""/>
       <input type="hidden" id="#post_isolasi_txt" name="post_isolasi_txt" value=""/>
-      <em id="pr1" style="display:inline-block; padding:1em;">change event</em>
+      <em id="pr3" style="display:inline-block; padding:1em;">change event</em>
     </div>
     <div class="card p-0 m-4">
       <div class="card-header">
@@ -217,16 +235,16 @@ if (isset($_POST['updateCovid'])) {
       <div class="card-body">
         <div class="align-items-center my-2">
           <label class="m-0 text-center font-weight-bold">Background</label>
-          <input class="text-center form-control" onChange="update(this.jscolor, '#pr1')" onInput="update(this.jscolor, '#pr1')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+          <input class="text-center form-control" onChange="update(this.jscolor, '#pr4','bg')" onInput="update(this.jscolor, '#pr4','bg')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
         </div>
         <div class="align-items-center my-2">
           <label class="m-0 text-center font-weight-bold">Text Color</label>
-          <input class="text-center form-control" onChange="update(this.jscolor, '#pr1')" onInput="update(this.jscolor, '#pr1')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+          <input class="text-center form-control" onChange="update(this.jscolor, '#pr4','txt')" onInput="update(this.jscolor, '#pr4','txt')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
         </div>
       </div>
       <input type="hidden" id="#post_rawat_bg" name="post_rawat_bg" value=""/>
       <input type="hidden" id="#post_rawat_txt" name="post_rawat_txt" value=""/>
-      <em id="pr1" style="display:inline-block; padding:1em;">change event</em>
+      <em id="pr4" style="display:inline-block; padding:1em;">change event</em>
     </div>
     <div class="card p-0 m-4">
       <div class="card-header">
@@ -235,16 +253,16 @@ if (isset($_POST['updateCovid'])) {
       <div class="card-body">
         <div class="align-items-center my-2">
           <label class="m-0 text-center font-weight-bold">Background</label>
-          <input class="text-center form-control" onChange="update(this.jscolor, '#pr1')" onInput="update(this.jscolor, '#pr1')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+          <input class="text-center form-control" onChange="update(this.jscolor, '#pr5','bg')" onInput="update(this.jscolor, '#pr5','bg')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
         </div>
         <div class="align-items-center my-2">
           <label class="m-0 text-center font-weight-bold">Text Color</label>
-          <input class="text-center form-control" onChange="update(this.jscolor, '#pr1')" onInput="update(this.jscolor, '#pr1')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+          <input class="text-center form-control" onChange="update(this.jscolor, '#pr5','txt')" onInput="update(this.jscolor, '#pr5','txt')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
         </div>
       </div>
       <input type="hidden" id="#post_sembuh_bg" name="post_sembuh_bg" value=""/>
       <input type="hidden" id="#post_sembuh_txt" name="post_suspek_txt" value=""/>
-      <em id="pr1" style="display:inline-block; padding:1em;">change event</em>
+      <em id="pr5" style="display:inline-block; padding:1em;">change event</em>
     </div>
     <div class="card p-0 m-4">
       <div class="card-header">
@@ -253,16 +271,16 @@ if (isset($_POST['updateCovid'])) {
       <div class="card-body">
         <div class="align-items-center my-2">
           <label class="m-0 text-center font-weight-bold">Background</label>
-          <input class="text-center form-control" onChange="update(this.jscolor, '#pr1')" onInput="update(this.jscolor, '#pr1')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+          <input class="text-center form-control" onChange="update(this.jscolor, '#pr6','bg')" onInput="update(this.jscolor, '#pr6','bg')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
         </div>
         <div class="align-items-center my-2">
           <label class="m-0 text-center font-weight-bold">Text Color</label>
-          <input class="text-center form-control" onChange="update(this.jscolor, '#pr1')" onInput="update(this.jscolor, '#pr1')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+          <input class="text-center form-control" onChange="update(this.jscolor, '#pr6','txt')" onInput="update(this.jscolor, '#pr6','txt')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
         </div>
       </div>
       <input type="hidden" id="#post_wafat_bg" name="post_wafat_bg" value=""/>
       <input type="hidden" id="#post_wafat_txt" name="post_wafat_txt" value=""/>
-      <em id="pr1" style="display:inline-block; padding:1em;">change event</em>
+      <em id="pr6" style="display:inline-block; padding:1em;">change event</em>
     </div>
   </div>
 </div>

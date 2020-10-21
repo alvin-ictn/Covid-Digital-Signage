@@ -386,7 +386,11 @@ $styledata2 = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM `covidstyle` W
         </div>
         <input type="hidden" id="post_suspek_bg" name="post_suspek_bg" value="" />
         <input type="hidden" id="post_suspek_txt" name="post_suspek_txt" value="" />
-        <em id="pr1" style="display:inline-block; padding:1em;">Suspek</em>
+        <em id="pr1" style="
+          display:inline-block; 
+          padding:1em;
+          background-color:<?php echo $styledata1[1]?>;
+          color:<?php echo $styledata2[1]?>">Suspek</em>
         <button class="btn btn-danger" name="updateSuspek" type="submit">Update</button>
       </form>
     </div>
@@ -408,7 +412,11 @@ $styledata2 = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM `covidstyle` W
         </div>
         <input type="hidden" id="post_konfirmasi_bg" name="post_konfirmasi_bg" value="" />
         <input type="hidden" id="post_konfirmasi_txt" name="post_konfirmasi_txt" value="" />
-        <em id="pr2" style="display:inline-block; padding:1em;">Konfirmasi</em>
+        <em id="pr2" style="
+          display:inline-block; 
+          padding:1em;
+          background-color:<?php echo $styledata1[2]?>;
+          color:<?php echo $styledata2[2]?>">Konfirmasi</em>
         <button class="btn btn-danger" name="updateKonfirmasi" type="submit">Update</button>
       </form>
     </div>
@@ -429,7 +437,11 @@ $styledata2 = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM `covidstyle` W
         </div>
         <input type="hidden" id="post_isolasi_bg" name="post_isolasi_bg" value="" />
         <input type="hidden" id="post_isolasi_txt" name="post_isolasi_txt" value="" />
-        <em id="pr3" style="display:inline-block; padding:1em;">Isolasi</em>
+        <em id="pr3" style="
+          display:inline-block; 
+          padding:1em;
+          background-color:<?php echo $styledata1[3]?>;
+          color:<?php echo $styledata2[3]?>">Isolasi</em>
         <button class="btn btn-danger" name="updateIsolasi" type="submit">Update</button>
       </form>
     </div>
@@ -450,7 +462,11 @@ $styledata2 = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM `covidstyle` W
         </div>
         <input type="hidden" id="post_rawat_bg" name="post_rawat_bg" value="" />
         <input type="hidden" id="post_rawat_txt" name="post_rawat_txt" value="" />
-        <em id="pr4" style="display:inline-block; padding:1em;">Rawat</em>
+        <em id="pr4" style="
+          display:inline-block; 
+          padding:1em;
+          background-color:<?php echo $styledata1[4]?>;
+          color:<?php echo $styledata2[4]?>">Rawat</em>
         <button class="btn btn-danger" name="updateRawat" type="submit">Update</button>
       </form>
     </div>
@@ -471,7 +487,11 @@ $styledata2 = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM `covidstyle` W
         </div>
         <input type="hidden" id="post_sembuh_bg" name="post_sembuh_bg" value="" />
         <input type="hidden" id="post_sembuh_txt" name="post_suspek_txt" value="" />
-        <em id="pr5" style="display:inline-block; padding:1em;">Sembuh</em>
+        <em id="pr5" style="
+          display:inline-block; 
+          padding:1em;
+          background-color:<?php echo $styledata1[5]?>;
+          color:<?php echo $styledata2[5]?>">Sembuh</em>
         <button class="btn btn-danger" name="updateSembuh" type="submit">Update</button>
       </form>
     </div>
@@ -492,7 +512,11 @@ $styledata2 = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM `covidstyle` W
         </div>
         <input type="hidden" id="post_wafat_bg" name="post_wafat_bg" value="" />
         <input type="hidden" id="post_wafat_txt" name="post_wafat_txt" value="" />
-        <em id="pr6" style="display:inline-block; padding:1em;">Meninggal</em>
+        <em id="pr6" style="
+          display:inline-block; 
+          padding:1em;
+          background-color:<?php echo $styledata1[6]?>;
+          color:<?php echo $styledata2[6]?>">Meninggal</em>
         <button class="btn btn-danger" name="updateWafat" type="submit">Update</button>
       </form>
     </div>

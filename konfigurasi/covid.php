@@ -143,18 +143,87 @@ if (isset($_POST['updateCovid'])) {
       </button>
     </form>
   </div>
-  <div class="row-100">
-    <div class="col-lg-2 col-md-2 col-sm-2">
-
-      <input onChange="update(this.jscolor, '#pr3')" onInput="update(this.jscolor, '#pr4')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
-
-      <em id="pr3" style="display:inline-block; padding:1em;">change event</em>
-      <em id="pr4" style="display:inline-block; padding:1em;">input event</em>
+  <div class="w-100 d-flex flex-wrap">
+    <div class="card p-0 m-4">
+      <div class="card-header">
+        <label class="font-weight-bold m-0">Konfirmasi</label>
+      </div>
+      <div class="card-body">
+        <div class="align-items-center my-2">
+          <label class="m-0 text-center font-weight-bold">Background</label>
+          <input class="text-center form-control" onChange="update(this.jscolor, '#pr1')" onInput="update(this.jscolor, '#pr1')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+        </div>
+        <div class="align-items-center my-2">
+          <label class="m-0 text-center font-weight-bold">Text Color</label>
+          <input class="text-center form-control" onChange="update(this.jscolor, '#pr1')" onInput="update(this.jscolor, '#pr1')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+        </div>
+      </div>
+      <em id="pr1" style="display:inline-block; padding:1em;">change event</em>
     </div>
-    <div class="col-lg-2 col-md-2 col-sm-2"></div>
-    <div class="col-lg-2 col-md-2 col-sm-2"></div>
-    <div class="col-lg-2 col-md-2 col-sm-2"></div>
-    <div class="col-lg-2 col-md-2 col-sm-2"></div>
+    <div class="card p-0 m-4">
+      <div class="card-header">
+        <label class="font-weight-bold m-0">Isolasi</label>
+      </div>
+      <div class="card-body">
+        <div class="align-items-center my-2">
+          <label class="m-0 text-center font-weight-bold">Background</label>
+          <input class="text-center form-control" onChange="update(this.jscolor, '#pr1')" onInput="update(this.jscolor, '#pr1')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+        </div>
+        <div class="align-items-center my-2">
+          <label class="m-0 text-center font-weight-bold">Text Color</label>
+          <input class="text-center form-control" onChange="update(this.jscolor, '#pr1')" onInput="update(this.jscolor, '#pr1')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+        </div>
+      </div>
+      <em id="pr1" style="display:inline-block; padding:1em;">change event</em>
+    </div>
+    <div class="card p-0 m-4">
+      <div class="card-header">
+        <label class="font-weight-bold m-0">Rawat</label>
+      </div>
+      <div class="card-body">
+        <div class="align-items-center my-2">
+          <label class="m-0 text-center font-weight-bold">Background</label>
+          <input class="text-center form-control" onChange="update(this.jscolor, '#pr1')" onInput="update(this.jscolor, '#pr1')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+        </div>
+        <div class="align-items-center my-2">
+          <label class="m-0 text-center font-weight-bold">Text Color</label>
+          <input class="text-center form-control" onChange="update(this.jscolor, '#pr1')" onInput="update(this.jscolor, '#pr1')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+        </div>
+      </div>
+      <em id="pr1" style="display:inline-block; padding:1em;">change event</em>
+    </div>
+    <div class="card p-0 m-4">
+      <div class="card-header">
+        <label class="font-weight-bold m-0">Sembuh</label>
+      </div>
+      <div class="card-body">
+        <div class="align-items-center my-2">
+          <label class="m-0 text-center font-weight-bold">Background</label>
+          <input class="text-center form-control" onChange="update(this.jscolor, '#pr1')" onInput="update(this.jscolor, '#pr1')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+        </div>
+        <div class="align-items-center my-2">
+          <label class="m-0 text-center font-weight-bold">Text Color</label>
+          <input class="text-center form-control" onChange="update(this.jscolor, '#pr1')" onInput="update(this.jscolor, '#pr1')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+        </div>
+      </div>
+      <em id="pr1" style="display:inline-block; padding:1em;">change event</em>
+    </div>
+    <div class="card p-0 m-4">
+      <div class="card-header">
+        <label class="font-weight-bold m-0">Meninggal</label>
+      </div>
+      <div class="card-body">
+        <div class="align-items-center my-2">
+          <label class="m-0 text-center font-weight-bold">Background</label>
+          <input class="text-center form-control" onChange="update(this.jscolor, '#pr1')" onInput="update(this.jscolor, '#pr1')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+        </div>
+        <div class="align-items-center my-2">
+          <label class="m-0 text-center font-weight-bold">Text Color</label>
+          <input class="text-center form-control" onChange="update(this.jscolor, '#pr1')" onInput="update(this.jscolor, '#pr1')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+        </div>
+      </div>
+      <em id="pr1" style="display:inline-block; padding:1em;">change event</em>
+    </div>
   </div>
 </div>
 <script src="../js/jscolor.js"></script>

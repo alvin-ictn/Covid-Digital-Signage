@@ -111,6 +111,18 @@ if (isset($_POST['updateCovid'])) {
         white <?php echo (($datacovid[5] * 100 / $datacovid[1]) + 1) . "%" ?>,
         transparent 100%);
   }
+
+  @media(max-width:900px) {
+    .card.p-0.m-4 {
+      width: 40%;
+    }
+  }
+
+  @media(max-width:717px) {
+    .card.p-0.m-4 {
+      width: 100%;
+    }
+  }
 </style>
 
 <?php include 'asides.php' ?>
@@ -146,6 +158,24 @@ if (isset($_POST['updateCovid'])) {
   <div class="w-100 d-flex flex-wrap">
     <div class="card p-0 m-4">
       <div class="card-header">
+        <label class="font-weight-bold m-0">Suspek</label>
+      </div>
+      <div class="card-body">
+        <div class="align-items-center my-2">
+          <label class="m-0 text-center font-weight-bold">Background</label>
+          <input class="text-center form-control" onChange="update(this.jscolor, '#pr1','bg')" onInput="update(this.jscolor, '#pr1','bg')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+        </div>
+        <div class="align-items-center my-2">
+          <label class="m-0 text-center font-weight-bold">Text Color</label>
+          <input class="text-center form-control" onChange="update(this.jscolor, '#pr1','txt')" onInput="update(this.jscolor, '#pr1','txt')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+        </div>
+      </div>
+      <input type="hidden" id="#post_suspek_bg" name="post_suspek_bg" value=""/>
+      <input type="hidden" id="#post_suspek_txt" name="post_suspek_txt" value=""/>
+      <em id="pr1" style="display:inline-block; padding:1em;">change event</em>
+    </div>
+    <div class="card p-0 m-4">
+      <div class="card-header">
         <label class="font-weight-bold m-0">Konfirmasi</label>
       </div>
       <div class="card-body">
@@ -158,6 +188,8 @@ if (isset($_POST['updateCovid'])) {
           <input class="text-center form-control" onChange="update(this.jscolor, '#pr1')" onInput="update(this.jscolor, '#pr1')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
         </div>
       </div>
+      <input type="hidden" id="#post_konfirmasi_bg" name="post_konfirmasi_bg" value=""/>
+      <input type="hidden" id="#post_konfirmasi_txt" name="post_konfirmasi_txt" value=""/>
       <em id="pr1" style="display:inline-block; padding:1em;">change event</em>
     </div>
     <div class="card p-0 m-4">
@@ -174,6 +206,8 @@ if (isset($_POST['updateCovid'])) {
           <input class="text-center form-control" onChange="update(this.jscolor, '#pr1')" onInput="update(this.jscolor, '#pr1')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
         </div>
       </div>
+      <input type="hidden" id="#post_isolasi_bg" name="post_isolasi_bg" value=""/>
+      <input type="hidden" id="#post_isolasi_txt" name="post_isolasi_txt" value=""/>
       <em id="pr1" style="display:inline-block; padding:1em;">change event</em>
     </div>
     <div class="card p-0 m-4">
@@ -190,6 +224,8 @@ if (isset($_POST['updateCovid'])) {
           <input class="text-center form-control" onChange="update(this.jscolor, '#pr1')" onInput="update(this.jscolor, '#pr1')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
         </div>
       </div>
+      <input type="hidden" id="#post_rawat_bg" name="post_rawat_bg" value=""/>
+      <input type="hidden" id="#post_rawat_txt" name="post_rawat_txt" value=""/>
       <em id="pr1" style="display:inline-block; padding:1em;">change event</em>
     </div>
     <div class="card p-0 m-4">
@@ -206,6 +242,8 @@ if (isset($_POST['updateCovid'])) {
           <input class="text-center form-control" onChange="update(this.jscolor, '#pr1')" onInput="update(this.jscolor, '#pr1')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
         </div>
       </div>
+      <input type="hidden" id="#post_sembuh_bg" name="post_sembuh_bg" value=""/>
+      <input type="hidden" id="#post_sembuh_txt" name="post_suspek_txt" value=""/>
       <em id="pr1" style="display:inline-block; padding:1em;">change event</em>
     </div>
     <div class="card p-0 m-4">
@@ -222,6 +260,8 @@ if (isset($_POST['updateCovid'])) {
           <input class="text-center form-control" onChange="update(this.jscolor, '#pr1')" onInput="update(this.jscolor, '#pr1')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
         </div>
       </div>
+      <input type="hidden" id="#post_wafat_bg" name="post_wafat_bg" value=""/>
+      <input type="hidden" id="#post_wafat_txt" name="post_wafat_txt" value=""/>
       <em id="pr1" style="display:inline-block; padding:1em;">change event</em>
     </div>
   </div>

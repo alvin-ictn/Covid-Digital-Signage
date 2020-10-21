@@ -11,6 +11,11 @@ if (isset($_POST['updateCovid'])) {
   mysqli_query($con, "UPDATE `covid` SET `konfirmasi`='$konfirmasi', `isolasi`='$isolasi',`rawat`='$rawat', `sembuh`='$sembuh',`wafat`='$wafat' WHERE id=1");
 }
 
+if (isset($_POST['updateSuspek'])) {
+  echo $_POST['post_suspek_bg'];
+  echo $_POST['post_suspek_txt'];
+}
+
 $defaultValue = [
   ['transparent', 'rgb(248, 249, 250)'],
   ['transparent', 'rgb(255, 193, 7)'],
@@ -209,8 +214,8 @@ if (isset($_POST['default2'])) {
             <input class="text-center form-control" onChange="update(this.jscolor, '#pr1','txt')" onInput="update(this.jscolor, '#pr1','txt')" value="CCFFAA" data-jscolor="{alpha:1}" type="unknown">
           </div>
         </div>
-        <input type="hidden" id="#post_suspek_bg" name="post_suspek_bg" value="" />
-        <input type="hidden" id="#post_suspek_txt" name="post_suspek_txt" value="" />
+        <input type="hidden" id="post_suspek_bg" name="post_suspek_bg" value="" />
+        <input type="hidden" id="post_suspek_txt" name="post_suspek_txt" value="" />
         <em id="pr1" style="display:inline-block; padding:1em;">Suspek</em>
         <button class="btn btn-danger" name="updateSuspek" type="submit">Update</button>
       </form>
@@ -231,8 +236,8 @@ if (isset($_POST['default2'])) {
             <input class="text-center form-control" onChange="update(this.jscolor, '#pr2','txt')" onInput="update(this.jscolor, '#pr2','txt')" value="CCFFAA" data-jscolor="{alpha:1}" type="unknown">
           </div>
         </div>
-        <input type="hidden" id="#post_konfirmasi_bg" name="post_konfirmasi_bg" value="" />
-        <input type="hidden" id="#post_konfirmasi_txt" name="post_konfirmasi_txt" value="" />
+        <input type="hidden" id="post_konfirmasi_bg" name="post_konfirmasi_bg" value="" />
+        <input type="hidden" id="post_konfirmasi_txt" name="post_konfirmasi_txt" value="" />
         <em id="pr2" style="display:inline-block; padding:1em;">Konfirmasi</em>
         <button class="btn btn-danger" name="updateKonfirmasi" type="submit">Update</button>
       </form>
@@ -252,8 +257,8 @@ if (isset($_POST['default2'])) {
             <input class="text-center form-control" onChange="update(this.jscolor, '#pr3','txt')" onInput="update(this.jscolor, '#pr3','txt')" value="CCFFAA" data-jscolor="{alpha:1}" type="unknown">
           </div>
         </div>
-        <input type="hidden" id="#post_isolasi_bg" name="post_isolasi_bg" value="" />
-        <input type="hidden" id="#post_isolasi_txt" name="post_isolasi_txt" value="" />
+        <input type="hidden" id="post_isolasi_bg" name="post_isolasi_bg" value="" />
+        <input type="hidden" id="post_isolasi_txt" name="post_isolasi_txt" value="" />
         <em id="pr3" style="display:inline-block; padding:1em;">Isolasi</em>
         <button class="btn btn-danger" name="updateIsolasi" type="submit">Update</button>
       </form>
@@ -273,8 +278,8 @@ if (isset($_POST['default2'])) {
             <input class="text-center form-control" onChange="update(this.jscolor, '#pr4','txt')" onInput="update(this.jscolor, '#pr4','txt')" value="CCFFAA" data-jscolor="{alpha:1}" type="unknown">
           </div>
         </div>
-        <input type="hidden" id="#post_rawat_bg" name="post_rawat_bg" value="" />
-        <input type="hidden" id="#post_rawat_txt" name="post_rawat_txt" value="" />
+        <input type="hidden" id="post_rawat_bg" name="post_rawat_bg" value="" />
+        <input type="hidden" id="post_rawat_txt" name="post_rawat_txt" value="" />
         <em id="pr4" style="display:inline-block; padding:1em;">Rawat</em>
         <button class="btn btn-danger" name="updateRawat" type="submit">Update</button>
       </form>
@@ -294,8 +299,8 @@ if (isset($_POST['default2'])) {
             <input class="text-center form-control" onChange="update(this.jscolor, '#pr5','txt')" onInput="update(this.jscolor, '#pr5','txt')" value="CCFFAA" data-jscolor="{alpha:1}" type="unknown">
           </div>
         </div>
-        <input type="hidden" id="#post_sembuh_bg" name="post_sembuh_bg" value="" />
-        <input type="hidden" id="#post_sembuh_txt" name="post_suspek_txt" value="" />
+        <input type="hidden" id="post_sembuh_bg" name="post_sembuh_bg" value="" />
+        <input type="hidden" id="post_sembuh_txt" name="post_suspek_txt" value="" />
         <em id="pr5" style="display:inline-block; padding:1em;">Sembuh</em>
         <button class="btn btn-danger" name="updateSembuh" type="submit">Update</button>
       </form>
@@ -315,8 +320,8 @@ if (isset($_POST['default2'])) {
             <input class="text-center form-control" onChange="update(this.jscolor, '#pr6','txt')" onInput="update(this.jscolor, '#pr6','txt')" value="CCFFAA" data-jscolor="{alpha:1}" type="unknown">
           </div>
         </div>
-        <input type="hidden" id="#post_wafat_bg" name="post_wafat_bg" value="" />
-        <input type="hidden" id="#post_wafat_txt" name="post_wafat_txt" value="" />
+        <input type="hidden" id="post_wafat_bg" name="post_wafat_bg" value="" />
+        <input type="hidden" id="post_wafat_txt" name="post_wafat_txt" value="" />
         <em id="pr6" style="display:inline-block; padding:1em;">Meninggal</em>
         <button class="btn btn-danger" name="updateWafat" type="submit">Update</button>
       </form>
@@ -326,8 +331,6 @@ if (isset($_POST['default2'])) {
 <script src="../js/jscolor.js"></script>
 <script>
   function update(picker, selector, text="bg") {
-    // console.log(picker.toRGBString())
-    // console.log(picker)
     if(text === "bg"){
       document.querySelector(selector).style.background = picker.toBackground();
     }else if(text === "txt"){
@@ -335,8 +338,9 @@ if (isset($_POST['default2'])) {
     }
     let bgDiv = document.querySelector(selector).parentNode.children[2];
     let txtDiv = document.querySelector(selector).parentNode.children[3];
-    bgDiv.value = picker.toBackground();
+    bgDiv.value = picker.toRGBAString();
     txtDiv.value = picker.toRGBString();
+ 
   }
   $("input:text").on('focus focusout', function() {
     let main = $("#confirm");

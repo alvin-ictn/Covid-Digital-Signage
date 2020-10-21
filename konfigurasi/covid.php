@@ -12,21 +12,21 @@ if (isset($_POST['updateCovid'])) {
 }
 
 $defaultValue = [
-  ['transparent', 'rgba(248, 249, 250, 1)'],
-  ['transparent', 'rgba(255, 193, 7, 1)'],
-  ['transparent', 'rgba(0, 123, 255, 1)'],
-  ['transparent', 'rgba(23, 162, 184, 1)'],
-  ['transparent', 'rgba(40, 167, 69, 1)'],
-  ['transparent', 'rgba(220, 53, 69, 1)']
+  ['transparent', 'rgb(248, 249, 250)'],
+  ['transparent', 'rgb(255, 193, 7)'],
+  ['transparent', 'rgb(0, 123, 255)'],
+  ['transparent', 'rgb(23, 162, 184)'],
+  ['transparent', 'rgb(40, 167, 69)'],
+  ['transparent', 'rgb(220, 53, 69)']
 ];
 
 $defaultValue2 = [
-  ['rgba(248, 249, 250, 1)', 'rgba(52, 58, 64, 1)'],
-  ['rgba(255, 193, 7, 1)', 'rgba(248, 249, 250, 1)'],
-  ['rgba(0, 123, 255, 1)', 'rgba(248, 249, 250, 1)'],
-  ['rgba(23, 162, 184, 1)', 'rgba(248, 249, 250, 1)'],
-  ['rgba(40, 167, 69, 1)', 'rgba(248, 249, 250, 1)'],
-  ['rgba(220, 53, 69, 1)', 'rgba(248, 249, 250, 1)']
+  ['rgba(248, 249, 250, 1)', 'rgb(52, 58, 64)'],
+  ['rgba(255, 193, 7, 1)', 'rgb(248, 249, 250)'],
+  ['rgba(0, 123, 255, 1)', 'rgb(248, 249, 250)'],
+  ['rgba(23, 162, 184, 1)', 'rgb(248, 249, 250)'],
+  ['rgba(40, 167, 69, 1)', 'rgb(248, 249, 250)'],
+  ['rgba(220, 53, 69, 1)', 'rgb(248, 249, 250)']
 ];
 
 if (isset($_POST['default1'])) {
@@ -206,7 +206,7 @@ if (isset($_POST['default2'])) {
           </div>
           <div class="align-items-center my-2">
             <label class="m-0 text-center font-weight-bold">Text Color</label>
-            <input class="text-center form-control" onChange="update(this.jscolor, '#pr1','txt')" onInput="update(this.jscolor, '#pr1','txt')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+            <input class="text-center form-control" onChange="update(this.jscolor, '#pr1','txt')" onInput="update(this.jscolor, '#pr1','txt')" value="CCFFAA" data-jscolor="{alpha:1}" type="unknown">
           </div>
         </div>
         <input type="hidden" id="#post_suspek_bg" name="post_suspek_bg" value="" />
@@ -228,7 +228,7 @@ if (isset($_POST['default2'])) {
           </div>
           <div class="align-items-center my-2">
             <label class="m-0 text-center font-weight-bold">Text Color</label>
-            <input class="text-center form-control" onChange="update(this.jscolor, '#pr2','txt')" onInput="update(this.jscolor, '#pr2','txt')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+            <input class="text-center form-control" onChange="update(this.jscolor, '#pr2','txt')" onInput="update(this.jscolor, '#pr2','txt')" value="CCFFAA" data-jscolor="{alpha:1}" type="unknown">
           </div>
         </div>
         <input type="hidden" id="#post_konfirmasi_bg" name="post_konfirmasi_bg" value="" />
@@ -249,7 +249,7 @@ if (isset($_POST['default2'])) {
           </div>
           <div class="align-items-center my-2">
             <label class="m-0 text-center font-weight-bold">Text Color</label>
-            <input class="text-center form-control" onChange="update(this.jscolor, '#pr3','txt')" onInput="update(this.jscolor, '#pr3','txt')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+            <input class="text-center form-control" onChange="update(this.jscolor, '#pr3','txt')" onInput="update(this.jscolor, '#pr3','txt')" value="CCFFAA" data-jscolor="{alpha:1}" type="unknown">
           </div>
         </div>
         <input type="hidden" id="#post_isolasi_bg" name="post_isolasi_bg" value="" />
@@ -270,7 +270,7 @@ if (isset($_POST['default2'])) {
           </div>
           <div class="align-items-center my-2">
             <label class="m-0 text-center font-weight-bold">Text Color</label>
-            <input class="text-center form-control" onChange="update(this.jscolor, '#pr4','txt')" onInput="update(this.jscolor, '#pr4','txt')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+            <input class="text-center form-control" onChange="update(this.jscolor, '#pr4','txt')" onInput="update(this.jscolor, '#pr4','txt')" value="CCFFAA" data-jscolor="{alpha:1}" type="unknown">
           </div>
         </div>
         <input type="hidden" id="#post_rawat_bg" name="post_rawat_bg" value="" />
@@ -291,7 +291,7 @@ if (isset($_POST['default2'])) {
           </div>
           <div class="align-items-center my-2">
             <label class="m-0 text-center font-weight-bold">Text Color</label>
-            <input class="text-center form-control" onChange="update(this.jscolor, '#pr5','txt')" onInput="update(this.jscolor, '#pr5','txt')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+            <input class="text-center form-control" onChange="update(this.jscolor, '#pr5','txt')" onInput="update(this.jscolor, '#pr5','txt')" value="CCFFAA" data-jscolor="{alpha:1}" type="unknown">
           </div>
         </div>
         <input type="hidden" id="#post_sembuh_bg" name="post_sembuh_bg" value="" />
@@ -312,7 +312,7 @@ if (isset($_POST['default2'])) {
           </div>
           <div class="align-items-center my-2">
             <label class="m-0 text-center font-weight-bold">Text Color</label>
-            <input class="text-center form-control" onChange="update(this.jscolor, '#pr6','txt')" onInput="update(this.jscolor, '#pr6','txt')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+            <input class="text-center form-control" onChange="update(this.jscolor, '#pr6','txt')" onInput="update(this.jscolor, '#pr6','txt')" value="CCFFAA" data-jscolor="{alpha:1}" type="unknown">
           </div>
         </div>
         <input type="hidden" id="#post_wafat_bg" name="post_wafat_bg" value="" />
@@ -326,13 +326,15 @@ if (isset($_POST['default2'])) {
 <script src="../js/jscolor.js"></script>
 <script>
   function update(picker, selector, text="bg") {
-    console.log(picker.toHEXString())
+    // console.log(picker.toRGBString())
+    // console.log(picker)
     if(text === "bg"){
       document.querySelector(selector).style.background = picker.toBackground()
     }else if(text === "txt"){
-      document.querySelector(selector).style.color = picker.toHEXString()
+      document.querySelector(selector).style.color = picker.toRGBString()
     }
-    
+    let bgDiv = document.querySelector(selector).parentNode.children[2];
+    let txtDiv = document.querySelector(selector).parentNode.children[3];
   }
   $("input:text").on('focus focusout', function() {
     let main = $("#confirm");

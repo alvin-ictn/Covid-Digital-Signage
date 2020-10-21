@@ -39,6 +39,7 @@ if (isset($_POST['postImage'])) {
   }
 }
 ?>
+<?php $datacovid = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `covid`")); ?>
 <style>
   .logoContainer {
     width: 400px;
@@ -86,34 +87,93 @@ if (isset($_POST['postImage'])) {
     position: absolute;
     cursor: pointer;
   }
+  
+  form.w-100 {
+    font-weight: 700;
+  }
+  form.w-100 > *:nth-child(1) > input {
+    background: 
+      linear-gradient(to right, 
+        #fff350 0%, 
+        #ffc107 50%, 
+        #c79100 100%);
+  }
+
+  form.w-100 > *:nth-child(2) > input {
+    background: 
+      linear-gradient(to right, 
+        #69a9ff 0%, 
+        #007bff <?php echo $datacovid[2]*100/$datacovid[1]."%"?>,
+        #0050cb <?php echo $datacovid[2]*100/$datacovid[1]."%"?>,
+        white <?php echo (($datacovid[2]*100/$datacovid[1])+1)."%"?>,
+        transparent 100%);
+  }
+
+  form.w-100 > *:nth-child(3) > input {
+    background: 
+      linear-gradient(to right, 
+        #60d4ea 0%, 
+        #17a2b8 <?php echo $datacovid[3]*50/$datacovid[1]."%"?>,
+        #007388 <?php echo $datacovid[3]*100/$datacovid[1]."%"?>,
+        white <?php echo (($datacovid[3]*100/$datacovid[1])+1)."%"?>,
+        transparent 100%);
+  }
+
+  form.w-100 > *:nth-child(4) > input {
+    background: 
+    linear-gradient(to right, 
+      #64da73 0%, 
+      #28a745 <?php echo $datacovid[4]*50/$datacovid[1]."%"?>, 
+      #007717 <?php echo $datacovid[4]*100/$datacovid[1]."%"?>,
+      white <?php echo (($datacovid[4]*100/$datacovid[1])+1)."%"?>,
+      transparent 100%);
+  }
+
+  form.w-100 > *:nth-child(5) > input {
+    background: 
+      linear-gradient(to right, 
+        #ff6b70 0%, 
+        #dc3545 <?php echo $datacovid[5]*50/$datacovid[1]."%"?>, 
+        #a3001e <?php echo $datacovid[5]*100/$datacovid[1]."%"?>,
+        white <?php echo (($datacovid[5]*100/$datacovid[1])+1)."%"?>,
+        transparent 100%);
+  }
+
+  
 </style>
 
 <?php include 'asides.php' ?>
+
 <div class="main-content">
   <div class="row w-100">
     <form class="w-100" enctype="multipart/form-data" method="post">
       <div class="row align-items-center my-2">
         <label class="w-25 m-0 text-right mr-4">Konfirmasi</label>
-        <input type="text" class="text-center form-control w-50 mr-4" />
+        <input type="text" class="text-center form-control w-50 mr-4" 
+          value="<?php echo number_format($datacovid[1], 0, ",", ".")?>"/>
       </div>
       <div class="row align-items-center my-2">
         <label class="w-25 m-0 text-right mr-4">Isolasi</label>
-        <input type="text" class="text-center form-control w-50 mr-4" />
+        <input type="text" class="text-center form-control w-50 mr-4" 
+          value="<?php echo number_format($datacovid[2], 0, ",", ".")?>"/>
       </div>
       <div class="row align-items-center my-2">
         <label class="w-25 m-0 text-right mr-4">Rawat</label>
-        <input type="text" class="text-center form-control w-50 mr-4" />
+        <input type="text" class="text-center form-control w-50 mr-4" 
+        value="<?php echo number_format($datacovid[3], 0, ",", ".")?>"/>
       </div>
       <div class="row align-items-center my-2">
         <label class="w-25 m-0 text-right mr-4">Sembuh</label>
-        <input type="text" class="text-center form-control w-50 mr-4" />
+        <input type="text" class="text-center form-control w-50 mr-4" 
+        value="<?php echo number_format($datacovid[4], 0, ",", ".")?>"/>
       </div>
       <div class="row align-items-center my-2">
         <label class="w-25 m-0 text-right mr-4">Meninggal</label>
-        <input type="text" class="text-center form-control w-50 mr-4" />
+        <input type="text" class="text-center form-control w-50 mr-4" 
+        value="<?php echo number_format($datacovid[5], 0, ",", ".")?>"/>
       </div>
       <button class="btn btn-info mt-4" name="postImage" type="submit">
-        Upload
+        Update
       </button>
     </form>
   </div>

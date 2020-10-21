@@ -12,25 +12,25 @@ if (isset($_POST['updateCovid'])) {
 }
 
 $defaultValue = [
-  ['transparent','rgba(248, 249, 250, 1)'],
-  ['transparent','rgba(255, 193, 7, 1)'],
-  ['transparent','rgba(0, 123, 255, 1)'],
-  ['transparent','rgba(23, 162, 184, 1)'],
-  ['transparent','rgba(40, 167, 69, 1)'],
-  ['transparent','rgba(220, 53, 69, 1)']
+  ['transparent', 'rgba(248, 249, 250, 1)'],
+  ['transparent', 'rgba(255, 193, 7, 1)'],
+  ['transparent', 'rgba(0, 123, 255, 1)'],
+  ['transparent', 'rgba(23, 162, 184, 1)'],
+  ['transparent', 'rgba(40, 167, 69, 1)'],
+  ['transparent', 'rgba(220, 53, 69, 1)']
 ];
 
 $defaultValue2 = [
-  ['rgba(248, 249, 250, 1)','rgba(52, 58, 64, 1)'],
-  ['rgba(255, 193, 7, 1)','rgba(248, 249, 250, 1)'],
-  ['rgba(0, 123, 255, 1)','rgba(248, 249, 250, 1)'],
-  ['rgba(23, 162, 184, 1)','rgba(248, 249, 250, 1)'],
-  ['rgba(40, 167, 69, 1)','rgba(248, 249, 250, 1)'],
-  ['rgba(220, 53, 69, 1)','rgba(248, 249, 250, 1)']
+  ['rgba(248, 249, 250, 1)', 'rgba(52, 58, 64, 1)'],
+  ['rgba(255, 193, 7, 1)', 'rgba(248, 249, 250, 1)'],
+  ['rgba(0, 123, 255, 1)', 'rgba(248, 249, 250, 1)'],
+  ['rgba(23, 162, 184, 1)', 'rgba(248, 249, 250, 1)'],
+  ['rgba(40, 167, 69, 1)', 'rgba(248, 249, 250, 1)'],
+  ['rgba(220, 53, 69, 1)', 'rgba(248, 249, 250, 1)']
 ];
 
 if (isset($_POST['default1'])) {
-   mysqli_query($con, "UPDATE `covid` SET `konfirmasi`='$konfirmasi', `isolasi`='$isolasi',`rawat`='$rawat', `sembuh`='$sembuh',`wafat`='$wafat' WHERE id=1");
+  mysqli_query($con, "UPDATE `covid` SET `konfirmasi`='$konfirmasi', `isolasi`='$isolasi',`rawat`='$rawat', `sembuh`='$sembuh',`wafat`='$wafat' WHERE id=1");
 }
 
 if (isset($_POST['default2'])) {
@@ -93,9 +93,9 @@ if (isset($_POST['default2'])) {
   form.w-100>*:nth-child(1)>input {
     background:
       linear-gradient(to right,
-        #fff350 0%,
-        #ffc107 50%,
-        #c79100 100%);
+        #ffffff 0%,
+        #f8f9fa 50%,
+        #c5c6c7 100%);
   }
 
   form.w-100>*:nth-child(2)>input {
@@ -110,9 +110,9 @@ if (isset($_POST['default2'])) {
     background:
       linear-gradient(to right,
         #69a9ff 0%,
-        #007bff <?php echo $datacovid[3] * 50 / $datacovid[1] . "%" ?>,
-        #0050cb <?php echo $datacovid[3] * 100 / $datacovid[1] . "%" ?>,
-        white <?php echo (($datacovid[3] * 100 / $datacovid[1]) + 1) . "%" ?>,
+        #007bff <?php echo $datacovid[3] * 50 / $datacovid[2] . "%" ?>,
+        #0050cb <?php echo $datacovid[3] * 100 / $datacovid[2] . "%" ?>,
+        white <?php echo (($datacovid[3] * 100 / $datacovid[2]) + 1) . "%" ?>,
         transparent 100%);
   }
 
@@ -120,9 +120,9 @@ if (isset($_POST['default2'])) {
     background:
       linear-gradient(to right,
         #60d4ea 0%,
-        #17a2b8 <?php echo $datacovid[4] * 50 / $datacovid[1] . "%" ?>,
-        #007388 <?php echo $datacovid[4] * 100 / $datacovid[1] . "%" ?>,
-        white <?php echo (($datacovid[4] * 100 / $datacovid[1]) + 1) . "%" ?>,
+        #17a2b8 <?php echo $datacovid[4] * 50 / $datacovid[2] . "%" ?>,
+        #007388 <?php echo $datacovid[4] * 100 / $datacovid[2] . "%" ?>,
+        white <?php echo (($datacovid[4] * 100 / $datacovid[2]) + 1) . "%" ?>,
         transparent 100%);
   }
 
@@ -130,9 +130,9 @@ if (isset($_POST['default2'])) {
     background:
       linear-gradient(to right,
         #64da73 0%,
-        #28a745 <?php echo $datacovid[5] * 50 / $datacovid[1] . "%" ?>,
-        #007717 <?php echo $datacovid[5] * 100 / $datacovid[1] . "%" ?>,
-        white <?php echo (($datacovid[5] * 100 / $datacovid[1]) + 1) . "%" ?>,
+        #28a745 <?php echo $datacovid[5] * 50 / $datacovid[2] . "%" ?>,
+        #007717 <?php echo $datacovid[5] * 100 / $datacovid[2] . "%" ?>,
+        white <?php echo (($datacovid[5] * 100 / $datacovid[2]) + 1) . "%" ?>,
         transparent 100%);
   }
 
@@ -140,9 +140,9 @@ if (isset($_POST['default2'])) {
     background:
       linear-gradient(to right,
         #ff6b70 0%,
-        #dc3545 <?php echo $datacovid[6] * 50 / $datacovid[1] . "%" ?>,
-        #a3001e <?php echo $datacovid[6] * 100 / $datacovid[1] . "%" ?>,
-        white <?php echo (($datacovid[6] * 100 / $datacovid[1]) + 1) . "%" ?>,
+        #dc3545 <?php echo $datacovid[6] * 50 / $datacovid[2] . "%" ?>,
+        #a3001e <?php echo $datacovid[6] * 100 / $datacovid[2] . "%" ?>,
+        white <?php echo (($datacovid[6] * 100 / $datacovid[2]) + 1) . "%" ?>,
         transparent 100%);
   }
 
@@ -195,120 +195,144 @@ if (isset($_POST['default2'])) {
   </div>
   <div class="w-100 d-flex flex-wrap">
     <div class="card p-0 m-4">
-      <div class="card-header">
-        <label class="font-weight-bold m-0">Suspek</label>
-      </div>
-      <div class="card-body">
-        <div class="align-items-center my-2">
-          <label class="m-0 text-center font-weight-bold">Background</label>
-          <input class="text-center form-control" onChange="update(this.jscolor, '#pr1','bg')" onInput="update(this.jscolor, '#pr1','bg')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+      <form class="w-100" enctype="multipart/form-data" method="post">
+        <div class="card-header">
+          <label class="font-weight-bold m-0">Suspek</label>
         </div>
-        <div class="align-items-center my-2">
-          <label class="m-0 text-center font-weight-bold">Text Color</label>
-          <input class="text-center form-control" onChange="update(this.jscolor, '#pr1','txt')" onInput="update(this.jscolor, '#pr1','txt')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+        <div class="card-body">
+          <div class="align-items-center my-2">
+            <label class="m-0 text-center font-weight-bold">Background</label>
+            <input class="text-center form-control" onChange="update(this.jscolor, '#pr1','bg')" onInput="update(this.jscolor, '#pr1','bg')" value="FFEECC" data-jscolor="{alpha:0.7}" type="unknown">
+          </div>
+          <div class="align-items-center my-2">
+            <label class="m-0 text-center font-weight-bold">Text Color</label>
+            <input class="text-center form-control" onChange="update(this.jscolor, '#pr1','txt')" onInput="update(this.jscolor, '#pr1','txt')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+          </div>
         </div>
-      </div>
-      <input type="hidden" id="#post_suspek_bg" name="post_suspek_bg" value=""/>
-      <input type="hidden" id="#post_suspek_txt" name="post_suspek_txt" value=""/>
-      <em id="pr1" style="display:inline-block; padding:1em;">change event</em>
+        <input type="hidden" id="#post_suspek_bg" name="post_suspek_bg" value="" />
+        <input type="hidden" id="#post_suspek_txt" name="post_suspek_txt" value="" />
+        <em id="pr1" style="display:inline-block; padding:1em;">Suspek</em>
+        <button class="btn btn-danger" name="updateSuspek" type="submit">Update</button>
+      </form>
+    </div>
+
+    <div class="card p-0 m-4">
+      <form class="w-100" enctype="multipart/form-data" method="post">
+        <div class="card-header">
+          <label class="font-weight-bold m-0">Konfirmasi</label>
+        </div>
+        <div class="card-body">
+          <div class="align-items-center my-2">
+            <label class="m-0 text-center font-weight-bold">Background</label>
+            <input class="text-center form-control" onChange="update(this.jscolor, '#pr2','bg')" onInput="update(this.jscolor, '#pr2','bg')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+          </div>
+          <div class="align-items-center my-2">
+            <label class="m-0 text-center font-weight-bold">Text Color</label>
+            <input class="text-center form-control" onChange="update(this.jscolor, '#pr2','txt')" onInput="update(this.jscolor, '#pr2','txt')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+          </div>
+        </div>
+        <input type="hidden" id="#post_konfirmasi_bg" name="post_konfirmasi_bg" value="" />
+        <input type="hidden" id="#post_konfirmasi_txt" name="post_konfirmasi_txt" value="" />
+        <em id="pr2" style="display:inline-block; padding:1em;">Konfirmasi</em>
+        <button class="btn btn-danger" name="updateKonfirmasi" type="submit">Update</button>
+      </form>
     </div>
     <div class="card p-0 m-4">
-      <div class="card-header">
-        <label class="font-weight-bold m-0">Konfirmasi</label>
-      </div>
-      <div class="card-body">
-        <div class="align-items-center my-2">
-          <label class="m-0 text-center font-weight-bold">Background</label>
-          <input class="text-center form-control" onChange="update(this.jscolor, '#pr2','bg')" onInput="update(this.jscolor, '#pr2','bg')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+      <form class="w-100" enctype="multipart/form-data" method="post">
+        <div class="card-header">
+          <label class="font-weight-bold m-0">Isolasi</label>
         </div>
-        <div class="align-items-center my-2">
-          <label class="m-0 text-center font-weight-bold">Text Color</label>
-          <input class="text-center form-control" onChange="update(this.jscolor, '#pr2','txt')" onInput="update(this.jscolor, '#pr2','txt')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+        <div class="card-body">
+          <div class="align-items-center my-2">
+            <label class="m-0 text-center font-weight-bold">Background</label>
+            <input class="text-center form-control" onChange="update(this.jscolor, '#pr3','bg')" onInput="update(this.jscolor, '#pr3','bg')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+          </div>
+          <div class="align-items-center my-2">
+            <label class="m-0 text-center font-weight-bold">Text Color</label>
+            <input class="text-center form-control" onChange="update(this.jscolor, '#pr3','txt')" onInput="update(this.jscolor, '#pr3','txt')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+          </div>
         </div>
-      </div>
-      <input type="hidden" id="#post_konfirmasi_bg" name="post_konfirmasi_bg" value=""/>
-      <input type="hidden" id="#post_konfirmasi_txt" name="post_konfirmasi_txt" value=""/>
-      <em id="pr2" style="display:inline-block; padding:1em;">change event</em>
+        <input type="hidden" id="#post_isolasi_bg" name="post_isolasi_bg" value="" />
+        <input type="hidden" id="#post_isolasi_txt" name="post_isolasi_txt" value="" />
+        <em id="pr3" style="display:inline-block; padding:1em;">Isolasi</em>
+        <button class="btn btn-danger" name="updateIsolasi" type="submit">Update</button>
+      </form>
     </div>
     <div class="card p-0 m-4">
-      <div class="card-header">
-        <label class="font-weight-bold m-0">Isolasi</label>
-      </div>
-      <div class="card-body">
-        <div class="align-items-center my-2">
-          <label class="m-0 text-center font-weight-bold">Background</label>
-          <input class="text-center form-control" onChange="update(this.jscolor, '#pr3','bg')" onInput="update(this.jscolor, '#pr3','bg')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+      <form class="w-100" enctype="multipart/form-data" method="post">
+        <div class="card-header">
+          <label class="font-weight-bold m-0">Rawat</label>
         </div>
-        <div class="align-items-center my-2">
-          <label class="m-0 text-center font-weight-bold">Text Color</label>
-          <input class="text-center form-control" onChange="update(this.jscolor, '#pr3','txt')" onInput="update(this.jscolor, '#pr3','txt')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+        <div class="card-body">
+          <div class="align-items-center my-2">
+            <label class="m-0 text-center font-weight-bold">Background</label>
+            <input class="text-center form-control" onChange="update(this.jscolor, '#pr4','bg')" onInput="update(this.jscolor, '#pr4','bg')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+          </div>
+          <div class="align-items-center my-2">
+            <label class="m-0 text-center font-weight-bold">Text Color</label>
+            <input class="text-center form-control" onChange="update(this.jscolor, '#pr4','txt')" onInput="update(this.jscolor, '#pr4','txt')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+          </div>
         </div>
-      </div>
-      <input type="hidden" id="#post_isolasi_bg" name="post_isolasi_bg" value=""/>
-      <input type="hidden" id="#post_isolasi_txt" name="post_isolasi_txt" value=""/>
-      <em id="pr3" style="display:inline-block; padding:1em;">change event</em>
+        <input type="hidden" id="#post_rawat_bg" name="post_rawat_bg" value="" />
+        <input type="hidden" id="#post_rawat_txt" name="post_rawat_txt" value="" />
+        <em id="pr4" style="display:inline-block; padding:1em;">Rawat</em>
+        <button class="btn btn-danger" name="updateRawat" type="submit">Update</button>
+      </form>
     </div>
     <div class="card p-0 m-4">
-      <div class="card-header">
-        <label class="font-weight-bold m-0">Rawat</label>
-      </div>
-      <div class="card-body">
-        <div class="align-items-center my-2">
-          <label class="m-0 text-center font-weight-bold">Background</label>
-          <input class="text-center form-control" onChange="update(this.jscolor, '#pr4','bg')" onInput="update(this.jscolor, '#pr4','bg')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+      <form class="w-100" enctype="multipart/form-data" method="post">
+        <div class="card-header">
+          <label class="font-weight-bold m-0">Sembuh</label>
         </div>
-        <div class="align-items-center my-2">
-          <label class="m-0 text-center font-weight-bold">Text Color</label>
-          <input class="text-center form-control" onChange="update(this.jscolor, '#pr4','txt')" onInput="update(this.jscolor, '#pr4','txt')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+        <div class="card-body">
+          <div class="align-items-center my-2">
+            <label class="m-0 text-center font-weight-bold">Background</label>
+            <input class="text-center form-control" onChange="update(this.jscolor, '#pr5','bg')" onInput="update(this.jscolor, '#pr5','bg')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+          </div>
+          <div class="align-items-center my-2">
+            <label class="m-0 text-center font-weight-bold">Text Color</label>
+            <input class="text-center form-control" onChange="update(this.jscolor, '#pr5','txt')" onInput="update(this.jscolor, '#pr5','txt')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+          </div>
         </div>
-      </div>
-      <input type="hidden" id="#post_rawat_bg" name="post_rawat_bg" value=""/>
-      <input type="hidden" id="#post_rawat_txt" name="post_rawat_txt" value=""/>
-      <em id="pr4" style="display:inline-block; padding:1em;">change event</em>
+        <input type="hidden" id="#post_sembuh_bg" name="post_sembuh_bg" value="" />
+        <input type="hidden" id="#post_sembuh_txt" name="post_suspek_txt" value="" />
+        <em id="pr5" style="display:inline-block; padding:1em;">Sembuh</em>
+        <button class="btn btn-danger" name="updateSembuh" type="submit">Update</button>
+      </form>
     </div>
     <div class="card p-0 m-4">
-      <div class="card-header">
-        <label class="font-weight-bold m-0">Sembuh</label>
-      </div>
-      <div class="card-body">
-        <div class="align-items-center my-2">
-          <label class="m-0 text-center font-weight-bold">Background</label>
-          <input class="text-center form-control" onChange="update(this.jscolor, '#pr5','bg')" onInput="update(this.jscolor, '#pr5','bg')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+      <form class="w-100" enctype="multipart/form-data" method="post">
+        <div class="card-header">
+          <label class="font-weight-bold m-0">Meninggal</label>
         </div>
-        <div class="align-items-center my-2">
-          <label class="m-0 text-center font-weight-bold">Text Color</label>
-          <input class="text-center form-control" onChange="update(this.jscolor, '#pr5','txt')" onInput="update(this.jscolor, '#pr5','txt')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+        <div class="card-body">
+          <div class="align-items-center my-2">
+            <label class="m-0 text-center font-weight-bold">Background</label>
+            <input class="text-center form-control" onChange="update(this.jscolor, '#pr6','bg')" onInput="update(this.jscolor, '#pr6','bg')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+          </div>
+          <div class="align-items-center my-2">
+            <label class="m-0 text-center font-weight-bold">Text Color</label>
+            <input class="text-center form-control" onChange="update(this.jscolor, '#pr6','txt')" onInput="update(this.jscolor, '#pr6','txt')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
+          </div>
         </div>
-      </div>
-      <input type="hidden" id="#post_sembuh_bg" name="post_sembuh_bg" value=""/>
-      <input type="hidden" id="#post_sembuh_txt" name="post_suspek_txt" value=""/>
-      <em id="pr5" style="display:inline-block; padding:1em;">change event</em>
-    </div>
-    <div class="card p-0 m-4">
-      <div class="card-header">
-        <label class="font-weight-bold m-0">Meninggal</label>
-      </div>
-      <div class="card-body">
-        <div class="align-items-center my-2">
-          <label class="m-0 text-center font-weight-bold">Background</label>
-          <input class="text-center form-control" onChange="update(this.jscolor, '#pr6','bg')" onInput="update(this.jscolor, '#pr6','bg')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
-        </div>
-        <div class="align-items-center my-2">
-          <label class="m-0 text-center font-weight-bold">Text Color</label>
-          <input class="text-center form-control" onChange="update(this.jscolor, '#pr6','txt')" onInput="update(this.jscolor, '#pr6','txt')" value="CCFFAA" data-jscolor="{alpha:0.7}" type="unknown">
-        </div>
-      </div>
-      <input type="hidden" id="#post_wafat_bg" name="post_wafat_bg" value=""/>
-      <input type="hidden" id="#post_wafat_txt" name="post_wafat_txt" value=""/>
-      <em id="pr6" style="display:inline-block; padding:1em;">change event</em>
+        <input type="hidden" id="#post_wafat_bg" name="post_wafat_bg" value="" />
+        <input type="hidden" id="#post_wafat_txt" name="post_wafat_txt" value="" />
+        <em id="pr6" style="display:inline-block; padding:1em;">Meninggal</em>
+        <button class="btn btn-danger" name="updateWafat" type="submit">Update</button>
+      </form>
     </div>
   </div>
 </div>
 <script src="../js/jscolor.js"></script>
 <script>
-  function update(picker, selector) {
-    console.log(picker)
-    document.querySelector(selector).style.background = picker.toBackground()
+  function update(picker, selector, text="bg") {
+    console.log(picker.toHEXString())
+    if(text === "bg"){
+      document.querySelector(selector).style.background = picker.toBackground()
+    }else if(text === "txt"){
+      document.querySelector(selector).style.color = picker.toHEXString()
+    }
+    
   }
   $("input:text").on('focus focusout', function() {
     let main = $("#confirm");
@@ -324,8 +348,8 @@ if (isset($_POST['default2'])) {
       var regExp = /\(([^)]+)\)/;
       let col = [element[1], element[2], element[3]];
       col = col.map(item => regExp.exec(item)[1])
-      if(this.id === "suspek") return;
-      
+      if (this.id === "suspek") return;
+
       if (this.id === "confirm") {
         let otherdata = document.querySelectorAll('.text-center');
         for (let i = 2; i < otherdata.length; i++) {
@@ -336,8 +360,6 @@ if (isset($_POST['default2'])) {
           col = col.map(item => regExp.exec(item)[1])
           otherdata[i].style.backgroundImage = `linear-gradient(to right, rgba(${col[0]}) 0%, rgba(${col[1]}) ${calc/2}%, rgba(${col[2]}) ${calc}%, white ${calc+1}%, transparent 100%)`
         }
-
-
       } else {
         this.style.backgroundImage = `linear-gradient(to right, rgba(${col[0]}) 0%, rgba(${col[1]}) ${calc/2}%, rgba(${col[2]}) ${calc}%, white ${calc+1}%, transparent 100%)`;
       }

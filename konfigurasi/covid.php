@@ -329,12 +329,14 @@ if (isset($_POST['default2'])) {
     // console.log(picker.toRGBString())
     // console.log(picker)
     if(text === "bg"){
-      document.querySelector(selector).style.background = picker.toBackground()
+      document.querySelector(selector).style.background = picker.toBackground();
     }else if(text === "txt"){
-      document.querySelector(selector).style.color = picker.toRGBString()
+      document.querySelector(selector).style.color = picker.toRGBString();
     }
     let bgDiv = document.querySelector(selector).parentNode.children[2];
     let txtDiv = document.querySelector(selector).parentNode.children[3];
+    bgDiv.value = picker.toBackground();
+    txtDiv.value = picker.toRGBString();
   }
   $("input:text").on('focus focusout', function() {
     let main = $("#confirm");

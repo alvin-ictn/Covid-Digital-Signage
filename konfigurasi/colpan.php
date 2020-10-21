@@ -10,10 +10,10 @@ function set_progress($val = 0) {
 }
 if (isset($_POST['btn-save'])) {
     $jarak = $_POST['jarak'];
-	$color1 = $_POST['color1'];
-	$color2 = $_POST['color2'];
-	$clockcolor = $_POST['clockcolor'];
-	$textcolor = $_POST['textcolor'];
+		$color1 = $_POST['color1'];
+		$color2 = $_POST['color2'];
+		$clockcolor = $_POST['clockcolor'];
+		$textcolor = $_POST['textcolor'];
     mysqli_query($con,"UPDATE `konfigurasi` SET `jarak`='$jarak',`color1`='$color1',`color2`='$color2',`clockcolor`='$clockcolor',`textcolor`='$textcolor' WHERE id=1");
 }?>
 <html>

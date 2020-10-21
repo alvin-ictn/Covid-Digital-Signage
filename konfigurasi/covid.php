@@ -3,12 +3,13 @@ include './conn.php';
 include 'head.php';
 
 if (isset($_POST['updateCovid'])) {
+  $suspek = join("", explode(".", $_POST['suspek']));
   $konfirmasi = join("", explode(".", $_POST['konfirmasi']));
   $isolasi = join("", explode(".", $_POST['isolasi']));
   $rawat = join("", explode(".", $_POST['rawat']));
   $sembuh = join("", explode(".", $_POST['sembuh']));
   $wafat = join("", explode(".", $_POST['wafat']));
-  mysqli_query($con, "UPDATE `covid` SET `konfirmasi`='$konfirmasi', `isolasi`='$isolasi',`rawat`='$rawat', `sembuh`='$sembuh',`wafat`='$wafat' WHERE id=1");
+  mysqli_query($con, "UPDATE `covid` SET `suspek`='$suspek', `konfirmasi`='$konfirmasi', `isolasi`='$isolasi',`rawat`='$rawat', `sembuh`='$sembuh',`wafat`='$wafat' WHERE id=1");
 }
 
 if (isset($_POST['updateSuspek'])) {
@@ -35,11 +36,39 @@ $defaultValue2 = [
 ];
 
 if (isset($_POST['default1'])) {
-  mysqli_query($con, "UPDATE `covid` SET `konfirmasi`='$konfirmasi', `isolasi`='$isolasi',`rawat`='$rawat', `sembuh`='$sembuh',`wafat`='$wafat' WHERE id=1");
+  $bg1 = $defaultValue[0][0];
+  $bg2 = $defaultValue[1][0];
+  $bg3 = $defaultValue[2][0];
+  $bg4 = $defaultValue[3][0];
+  $bg5 = $defaultValue[4][0];
+  $bg6 = $defaultValue[5][0];
+  $txt1 = $defaultValue[0][1];
+  $txt2 = $defaultValue[1][1];
+  $txt3 = $defaultValue[2][1];
+  $txt4 = $defaultValue[3][1];
+  $txt5 = $defaultValue[4][1];
+  $txt6 = $defaultValue[5][1];
+
+  mysqli_query($con, "UPDATE `covidstyle` SET `suspek`='$bg1', `konfirmasi`='$bg2', `isolasi`='$bg3',`rawat`='$bg4', `sembuh`='$bg5',`wafat`='$bg6' WHERE id=1");
+  mysqli_query($con, "UPDATE `covidstyle` SET `suspek`='$txt1', `konfirmasi`='$txt2', `isolasi`='$txt3',`rawat`='$txt4', `sembuh`='$txt5',`wafat`='$txt6' WHERE id=2");
 }
 
 if (isset($_POST['default2'])) {
-  mysqli_query($con, "UPDATE `covid` SET `konfirmasi`='$konfirmasi', `isolasi`='$isolasi',`rawat`='$rawat', `sembuh`='$sembuh',`wafat`='$wafat' WHERE id=1");
+  $bg1 = $defaultValue2[0][0];
+  $bg2 = $defaultValue2[1][0];
+  $bg3 = $defaultValue2[2][0];
+  $bg4 = $defaultValue2[3][0];
+  $bg5 = $defaultValue2[4][0];
+  $bg6 = $defaultValue2[5][0];
+  $txt1 = $defaultValue2[0][1];
+  $txt2 = $defaultValue2[1][1];
+  $txt3 = $defaultValue2[2][1];
+  $txt4 = $defaultValue2[3][1];
+  $txt5 = $defaultValue2[4][1];
+  $txt6 = $defaultValue2[5][1];
+
+  mysqli_query($con, "UPDATE `covidstyle` SET `suspek`='$bg1', `konfirmasi`='$bg2', `isolasi`='$bg3',`rawat`='$bg4', `sembuh`='$bg5',`wafat`='$bg6' WHERE id=1");
+  mysqli_query($con, "UPDATE `covidstyle` SET `suspek`='$txt1', `konfirmasi`='$txt2', `isolasi`='$txt3',`rawat`='$txt4', `sembuh`='$txt5',`wafat`='$txt6' WHERE id=2");
 }
 ?>
 <?php $datacovid = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `covid`")); ?>
@@ -47,7 +76,6 @@ if (isset($_POST['default2'])) {
   .logoContainer {
     width: 400px;
     margin: 15px auto 0 auto;
-    /*background: url(http://img1.wikia.nocookie.net/__cb20130901213905/battlebears/images/9/98/Team-icon-placeholder.png) no-repeat 0 0;*/
     padding: 11px 10px 21px 10px;
     text-align: center;
     line-height: 120px;
@@ -198,6 +226,12 @@ if (isset($_POST['default2'])) {
       </button>
     </form>
   </div>
+  <div class="row">
+    <form class="w-100" enctype="multipart/form-data" method="post">
+      <button class="btn btn-danger" name="default1" type="submit">Set Default 1</button>
+      <button class="btn btn-danger" name="default2" type="submit">Set Default 2</button>
+    </form>
+  </div>
   <div class="w-100 d-flex flex-wrap">
     <div class="card p-0 m-4">
       <form class="w-100" enctype="multipart/form-data" method="post">
@@ -330,17 +364,16 @@ if (isset($_POST['default2'])) {
 </div>
 <script src="../js/jscolor.js"></script>
 <script>
-  function update(picker, selector, text="bg") {
-    if(text === "bg"){
+  function update(picker, selector, text = "bg") {
+    if (text === "bg") {
       document.querySelector(selector).style.background = picker.toBackground();
-    }else if(text === "txt"){
+    } else if (text === "txt") {
       document.querySelector(selector).style.color = picker.toRGBString();
     }
     let bgDiv = document.querySelector(selector).parentNode.children[2];
     let txtDiv = document.querySelector(selector).parentNode.children[3];
     bgDiv.value = picker.toRGBAString();
     txtDiv.value = picker.toRGBString();
- 
   }
   $("input:text").on('focus focusout', function() {
     let main = $("#confirm");

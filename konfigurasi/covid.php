@@ -103,7 +103,7 @@ if (isset($_POST['postImage'])) {
     background: 
       linear-gradient(to right, 
         #69a9ff 0%, 
-        #007bff <?php echo $datacovid[2]*100/$datacovid[1]."%"?>,
+        #007bff <?php echo $datacovid[2]*50/$datacovid[1]."%"?>,
         #0050cb <?php echo $datacovid[2]*100/$datacovid[1]."%"?>,
         white <?php echo (($datacovid[2]*100/$datacovid[1])+1)."%"?>,
         transparent 100%);
@@ -198,11 +198,11 @@ if (isset($_POST['postImage'])) {
         let otherdata = document.querySelectorAll('.text-center');
         for(let i = 1;i<otherdata.length;i++){
           let otherval = otherdata[i].value.split('.').join('');
-          let basePercentage = otherval / main.val().split('.').join("") * 100;
-          console.log(otherdata[i].style.backgroundImage)
-          // element = otherdata[i].css('background-Image').split("rgb");
+          let calc = otherval / main.val().split('.').join("") * 100;
+          element = getComputedStyle(otherdata[i]).backgroundImage.split("rgb");
           col = [element[1],element[2],element[3]];
-          // console.log(col)
+          col = col.map(item => regExp.exec(item)[1])
+          otherdata[i].style.backgroundImage = `linear-gradient(to right, rgba(${col[0]}) 0%, rgba(${col[1]}) ${calc/2}%, rgba(${col[2]}) ${calc}%, white ${calc+1}%, transparent 100%)`
         }
         
         

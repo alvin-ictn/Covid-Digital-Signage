@@ -150,7 +150,7 @@ if (isset($_POST['postImage'])) {
       <div class="row align-items-center my-2">
         <label class="w-25 m-0 text-right mr-4">Konfirmasi</label>
         <input type="text" class="text-center form-control w-50 mr-4" 
-          value="<?php echo number_format($datacovid[1], 0, ",", ".")?>"/>
+          value="<?php echo number_format($datacovid[1], 0, ",", ".")?>" id="confirm"/>
       </div>
       <div class="row align-items-center my-2">
         <label class="w-25 m-0 text-right mr-4">Isolasi</label>
@@ -180,26 +180,37 @@ if (isset($_POST['postImage'])) {
 
 </div>
 <script>
-  $("input:file").change(function() {
-    var fileName = $(this).val();
-    if (fileName.length > 0) {
-      $(this).parent().children('span').html(fileName);
-    } else {
-      $(this).parent().children('span').html("Choose file");
+  $("input:text").on('focus focusout',function(){
+    let main = $("#confirm");
+    let data = this.value;
+    if(event.type === "focus") {
+      data = data.split('.').join("")
+      this.value = data
     }
-  });
-  //file input preview
-  function readURL(input) {
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-      reader.onload = function(e) {
-        $('.logoContainer img').attr('src', e.target.result);
+    if(event.type === "blur") {
+      this.value = data.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+      let calc = data / main.val().split('.').join("") * 100
+      let element = $(this).css('background-Image').split("rgb");
+      var regExp = /\(([^)]+)\)/;
+      let col = [element[1],element[2],element[3]];
+      col = col.map(item => regExp.exec(item)[1])
+      if(this.id === "confirm") {
+        let otherdata = document.querySelectorAll('.text-center');
+        for(let i = 1;i<otherdata.length;i++){
+          let otherval = otherdata[i].value.split('.').join('');
+          let basePercentage = otherval / main.val().split('.').join("") * 100;
+          console.log(otherdata[i].style.backgroundImage)
+          // element = otherdata[i].css('background-Image').split("rgb");
+          col = [element[1],element[2],element[3]];
+          // console.log(col)
+        }
+        
+        
+      }else {
+        this.style.backgroundImage = `linear-gradient(to right, rgba(${col[0]}) 0%, rgba(${col[1]}) ${calc/2}%, rgba(${col[2]}) ${calc}%, white ${calc+1}%, transparent 100%)`;
       }
-      reader.readAsDataURL(input.files[0]);
     }
-  }
-  $("input:file").change(function() {
-    readURL(this);
   });
+  
 </script>
 <?php include 'foot.php'; ?>

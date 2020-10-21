@@ -22,24 +22,38 @@ include './conn.php'; ?>
 			width: 100vw;
 			height: 100vh;
 			display: grid;
-			grid-template-columns: 80% 20%;
-			grid-template-rows: 25% 55% 20%;
+			grid-template-columns: 20% 60% 20%;
+			grid-template-rows: 20% 60% 20%;
 			gap: 0px 0px;
+			grid-template-areas:
+				"slider slider logo"
+				"slider slider menu"
+				"waktu running menu";
 		}
 
 		.running {
-			grid-area: 3 / 1 / 4 / 2;
+			grid-area: running;
 			background: red;
 		}
 
+		.waktu {
+			grid-area: waktu;
+		}
+
 		.slider {
-			grid-area: 1 / 1 / 3 / 2;
+			grid-area: slider;
 			background: blue;
 		}
 
 		.profile {
-			grid-area: 1 / 2 / 2 / 3;
+			grid-area: logo;
 			background: green;
+		}
+
+		.menu {
+			grid-area: menu;
+			background: yellow;
+			box-shadow: -10px 0px 10px -10px rgba(0, 0, 0, 0.4);
 		}
 
 		.profile--content {
@@ -57,12 +71,6 @@ include './conn.php'; ?>
 			max-width: 100%;
 			max-height: 100%;
 			height: auto !important;
-		}
-
-		.menu {
-			grid-area: 2 / 2 / 4 / 3;
-			background: yellow;
-			box-shadow: -10px 0px 10px -10px rgba(0, 0, 0, 0.4);
 		}
 
 		div[class$="content"] {
@@ -85,9 +93,24 @@ include './conn.php'; ?>
 			text-align: center;
 		}
 
-		.menu--content>*:first-child {
-			/* tanggal */
-			font-size: 1.4rem
+		.menu--content--item:nth-child(1){
+			background-color:red;
+		}
+
+		.menu--content--item:nth-child(1){
+			background-color:red;
+		}
+
+		.menu--content--item:nth-child(1){
+			background-color:red;
+		}
+
+		.menu--content--item:nth-child(1){
+			background-color:red;
+		}
+
+		.menu--content--item:nth-child(1){
+			background-color:red;
 		}
 
 		.row {
@@ -106,19 +129,14 @@ include './conn.php'; ?>
 			text-align: right !important;
 		}
 
-		.menu--content>*:not(:first-child):not(:last-child)>div[class*="title"] {
+		.menu--content>* >div[class*="title"] {
 			/* menu */
 			font-size: 1.4rem;
 		}
 
-		.menu--content>*:not(:first-child):not(:last-child)>div[class*="info"] {
+		.menu--content>*>div[class*="info"] {
 			/* menu */
 			font-size: 2.2rem
-		}
-
-		.menu--content>*:last-child {
-			/* jam */
-			font-size: 4.4rem
 		}
 
 		.menu--content {
@@ -160,6 +178,7 @@ include './conn.php'; ?>
 		}
 	</style>
 </head>
+
 <body style="background: #<?php echo $datamain[3] ?>">
 	<?php $datamain = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `konfigurasi`")); ?>
 	<div class="grid-container">
@@ -189,24 +208,25 @@ include './conn.php'; ?>
 				</ul>
 			</div>
 		</div>
+		<div style="border:1px solid white;" class="waktu" id="waktu"></div>
 		<div class="running">
 			<div class="running--content">
 				<?php
 				$bodytext = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `beritagabung`ORDER BY ID DESC LIMIT 1"));
 				$jeda = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `konfigurasi`"));
 				?>
-				<marquee style="font-size:45px;"><?php echo $bodytext[1]; ?></marquee>
+				<marquee style="font-size:5rem;"><?php echo $bodytext[1]; ?></marquee>
 			</div>
 		</div>
 		<div class="menu">
 			<div class="menu--content">
-				<div class="menu--content--item" id="mydate">
-					<?php
-					date_default_timezone_set('Asia/Jakarta');
-					setlocale(LC_ALL, 'IND');
-					echo strftime("%A, %e %B %G"); ?>
-				</div>
 				<?php $datacovid = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `covid`")); ?>
+				<div class="menu--content--item">
+					<div class="menu--content--item--title">Suspek</div>
+					<div class="menu--content--item--info text-light">
+						<?php echo number_format($datacovid["suspek"], 0, ",", "."); ?>
+					</div>
+				</div>
 				<div class="menu--content--item">
 					<div class="menu--content--item--title">Konfirmasi</div>
 					<div class="menu--content--item--info text-warning">
@@ -257,10 +277,7 @@ include './conn.php'; ?>
 						<?php echo number_format($datacovid["wafat"], 0, ",", "."); ?>
 					</div>
 				</div>
-				<div class="menu--content--item" id="mytime">
-					<?php
-					echo date("H:i:s"); ?>
-				</div>
+
 			</div>
 		</div>
 		<div id="cek"></div>
@@ -276,7 +293,7 @@ include './conn.php'; ?>
 		let numMonth = thisdate.getMonth();
 		let dateData = {
 			days: ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'],
-			months: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']
+			months: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des']
 		}
 
 		$(document).ready(function() {
@@ -286,6 +303,7 @@ include './conn.php'; ?>
 
 		function clockUpdate() {
 			date = new Date();
+
 			function addZero(x) {
 				if (x < 10) {
 					return x = '0' + x;
@@ -307,8 +325,53 @@ include './conn.php'; ?>
 			let h = addZero(date.getHours());
 			let m = addZero(date.getMinutes());
 			let s = addZero(date.getSeconds());
-			$('#mytime').text(h + ':' + m + ':' + s)
-			$('#mydate').text(`${dateData.days[numDay]}, ${date.getDate()} ${dateData.months[numMonth]} ${date.getFullYear()}`)
+			$('#waktu').html(`
+			<div class="d-flex justify-content-between flex-column justify-content-end align-items-end h-100">
+				<div class="row w-100">
+					<div class="p-0 d-flex justify-content-between w-100">
+						<div style="
+								width:80px; 
+								height: 80px;"
+								class="
+								m-2 
+								p-0 
+								d-flex 
+								flex-column
+								justify-content-center 
+								align-items-center 
+								badge 
+								badge-primary">
+							<p 
+								style="font-size: 50px"
+								class="m-0">${date.getDate()}</p>
+							<p 
+								style="font-size: 20px"
+								class="m-0">${dateData.months[numMonth]}</p>
+						</div>
+						<div 
+							style="
+								width:150px; 
+								height: 80px;"
+							class="
+								m-2 
+								p-0 
+								d-flex 
+								flex-column
+								justify-content-center 
+								align-items-center 
+								badge 
+								badge-success">
+							<p 
+								style="font-size: 60px"
+								class="m-0">${date.getFullYear()}</p>
+						</div>
+					</div>
+				</div>
+				<div style="font-size: 2.05vw" class="text-center justify-content-center row w-100 bg-danger">
+					<label class="font-weight-bold mx-2 text-light">${dateData.days[numDay]}, ${h}:${m}:${s}</label>
+				</div>
+			</div>
+			`);
 		}
 	</script>
 	<script>

@@ -236,6 +236,10 @@ $styledata2 = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `covidstyle` 
     </form>
   </div>
   <?php
+  function zeroAdd($num, $lim)
+  {
+     return (strlen($num) >= $lim) ? $num : "0" . $num;
+  }
   $bgAdj1 = explode(", ", $styledata1[1]);
   $bgAdj2 = explode(", ", $styledata1[2]);
   $bgAdj3 = explode(", ", $styledata1[3]);
@@ -254,64 +258,64 @@ $styledata2 = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `covidstyle` 
   $txtAdj1[2] = str_replace(")", "", $txtAdj1[2]);
 
   $setBg1 =
-    dechex(str_replace("rgba(", "", $bgAdj1[0])) .
-    dechex(str_replace("rgba(", "", $bgAdj1[1])) .
-    dechex(str_replace("rgba(", "", $bgAdj1[2]));
+    zeroAdd(dechex(str_replace("rgba(", "", $bgAdj1[0])),2) .
+    zeroAdd(dechex(str_replace("rgba(", "", $bgAdj1[1])),2) .
+    zeroAdd(dechex(str_replace("rgba(", "", $bgAdj1[2])),2);
 
   $setBg2 =
-    dechex(str_replace("rgba(", "", $bgAdj2[0])) .
-    dechex(str_replace("rgba(", "", $bgAdj2[1])) .
-    dechex(str_replace("rgba(", "", $bgAdj2[2]));
+    zeroAdd(dechex(str_replace("rgba(", "", $bgAdj2[0])),2) .
+    zeroAdd(dechex(str_replace("rgba(", "", $bgAdj2[1])),2) .
+    zeroAdd(dechex(str_replace("rgba(", "", $bgAdj2[2])),2);
 
   $setBg3 =
-    dechex(str_replace("rgba(", "", $bgAdj3[0])) .
-    dechex(str_replace("rgba(", "", $bgAdj3[1])) .
-    dechex(str_replace("rgba(", "", $bgAdj3[2]));
+    zeroAdd(dechex(str_replace("rgba(", "", $bgAdj3[0])),2) .
+    zeroAdd(dechex(str_replace("rgba(", "", $bgAdj3[1])),2) .
+    zeroAdd(dechex(str_replace("rgba(", "", $bgAdj3[2])),2);
 
   $setBg4 =
-    dechex(str_replace("rgba(", "", $bgAdj4[0])) .
-    dechex(str_replace("rgba(", "", $bgAdj4[1])) .
-    dechex(str_replace("rgba(", "", $bgAdj4[2]));
+    zeroAdd(dechex(str_replace("rgba(", "", $bgAdj4[0])),2) .
+    zeroAdd(dechex(str_replace("rgba(", "", $bgAdj4[1])),2) .
+    zeroAdd(dechex(str_replace("rgba(", "", $bgAdj4[2])),2);
 
   $setBg5 =
-    dechex(str_replace("rgba(", "", $bgAdj5[0])) .
-    dechex(str_replace("rgba(", "", $bgAdj5[1])) .
-    dechex(str_replace("rgba(", "", $bgAdj5[2]));
+    zeroAdd(dechex(str_replace("rgba(", "", $bgAdj5[0])),2) .
+    zeroAdd(dechex(str_replace("rgba(", "", $bgAdj5[1])),2) .
+    zeroAdd(dechex(str_replace("rgba(", "", $bgAdj5[2])),2);
 
   $setBg6 =
-    dechex(str_replace("rgba(", "", $bgAdj6[0])) .
-    dechex(str_replace("rgba(", "", $bgAdj6[1])) .
-    dechex(str_replace("rgba(", "", $bgAdj6[2]));
+    zeroAdd(dechex(str_replace("rgba(", "", $bgAdj6[0])),2) .
+    zeroAdd(dechex(str_replace("rgba(", "", $bgAdj6[1])),2) .
+    zeroAdd(dechex(str_replace("rgba(", "", $bgAdj6[2])),2);
 
   $setTxt1 =
-    dechex(str_replace("rgba(", "", $txtAdj1[0])) .
-    dechex(str_replace("rgba(", "", $txtAdj1[1])) .
-    dechex(str_replace("rgba(", "", $txtAdj1[2]));
+    zeroAdd(dechex(str_replace("rgb(", "", $txtAdj1[0])),2) .
+    zeroAdd(dechex(str_replace("rgb(", "", $txtAdj1[1])),2) .
+    zeroAdd(dechex(str_replace(")", "", $txtAdj1[2])),2);
 
   $setTxt2 =
-    dechex(str_replace("rgba(", "", $txtAdj2[0])) .
-    dechex(str_replace("rgba(", "", $txtAdj2[1])) .
-    dechex(str_replace("rgba(", "", $txtAdj2[2]));
+    zeroAdd(dechex(str_replace("rgb(", "", $txtAdj2[0])),2) .
+    zeroAdd(dechex(str_replace("rgb(", "", $txtAdj2[1])),2) .
+    zeroAdd(dechex(str_replace(")", "", $txtAdj2[2])),2);
 
   $setTxt3 =
-    dechex(str_replace("rgba(", "", $txtAdj3[0])) .
-    dechex(str_replace("rgba(", "", $txtAdj3[1])) .
-    dechex(str_replace("rgba(", "", $txtAdj3[2]));
+    zeroAdd(dechex(str_replace("rgb(", "", $txtAdj3[0])),2) .
+    zeroAdd(dechex(str_replace("rgb(", "", $txtAdj3[1])),2) .
+    zeroAdd(dechex(str_replace(")", "", $txtAdj3[2])),2);
 
   $setTxt4 =
-    dechex(str_replace("rgba(", "", $txtAdj4[0])) .
-    dechex(str_replace("rgba(", "", $txtAdj4[1])) .
-    dechex(str_replace("rgba(", "", $txtAdj4[2]));
+    zeroAdd(dechex(str_replace("rgb(", "", $txtAdj4[0])),2) .
+    zeroAdd(dechex(str_replace("rgb(", "", $txtAdj4[1])),2) .
+    zeroAdd(dechex(str_replace(")", "", $txtAdj4[2])),2);
 
   $setTxt5 =
-    dechex(str_replace("rgba(", "", $txtAdj5[0])) .
-    dechex(str_replace("rgba(", "", $txtAdj5[1])) .
-    dechex(str_replace("rgba(", "", $txtAdj5[2]));
+    zeroAdd(dechex(str_replace("rgb(", "", $txtAdj5[0])),2) .
+    zeroAdd(dechex(str_replace("rgb(", "", $txtAdj5[1])),2) .
+    zeroAdd(dechex(str_replace(")", "", $txtAdj5[2])),2);
 
   $setTxt6 =
-    dechex(str_replace("rgba(", "", $txtAdj6[0])) .
-    dechex(str_replace("rgba(", "", $txtAdj6[1])) .
-    dechex(str_replace("rgba(", "", $txtAdj6[2]));
+    zeroAdd(dechex(str_replace("rgb(", "", $txtAdj6[0])),2) .
+    zeroAdd(dechex(str_replace("rgb(", "", $txtAdj6[1])),2) .
+    zeroAdd(dechex(str_replace(")", "", $txtAdj6[2])),2);
   ?>
   <div class="w-100 d-flex flex-wrap">
     <div class="card p-0 m-4">

@@ -3,9 +3,12 @@
 		text-align: center;
 	}
 </style>
-<?php $uri = explode("/",$_SERVER['REQUEST_URI']);?>
+<?php include 'conn.php';
+$uri = explode("/",$_SERVER['REQUEST_URI']);
+$data = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM `company` WHERE id=1"));?>
 <aside class="sidebar-left-collapse">
-	<img style="width:5vw" src="../img/riau.png"></img>
+	<img style="width:5vw" src="./gambar/logo/logo.png"></img>
+	<label class="text-light"><?php echo $data[1]?></label>
 	<div class="sidebar-links">
 		<div class="link-blue 
 		<?php if($uri[sizeof($uri)-1] == "logo.php") { echo "selected"; }?>">
@@ -51,14 +54,14 @@
 				<li><a href="covid.php">Covid Data</a></li>
 			</ul>
 		</div>
-		<div class="link-green">
+		<!-- <div class="link-green">
 			<a href="#">
 				<i class="fa fa-cogs"></i>General
 			</a>
 			<ul class="sub-links">
 				<li><a href="clock/clock.php">Color Panel</a></li>
 			</ul>
-		</div>
+		</div> -->
 		<div class="link-yellow">
 			<a href="refresh.php">
 				<i class="fa fa-check"></i> <span>Apply</span> </i>

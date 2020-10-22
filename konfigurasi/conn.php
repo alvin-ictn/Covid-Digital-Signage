@@ -1,10 +1,12 @@
 <?php
- $con = mysqli_connect('localhost','root','','peternakan') OR die(mysql_error());
+ $con = mysqli_connect('localhost','root','','peternakan');
 ?>
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
 if (!isset($_SESSION['username'])) {
-	
     header('Location: ../login.php');
 }
 

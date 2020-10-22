@@ -1,5 +1,8 @@
 <?php
-include './conn.php'; ?>
+include './conn.php'; 
+$styledata1 = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM `covidstyle` WHERE id=1"));
+$styledata2 = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM `covidstyle` WHERE id=2"));
+?>
 <!doctype html>
 <html>
 
@@ -88,29 +91,48 @@ include './conn.php'; ?>
 
 		.menu--content {
 			display: flex;
-			flex-direction: column;
-			justify-content: space-between;
+
 			text-align: center;
+			flex-direction: column;
+			min-height: 100%;
 		}
 
-		.menu--content--item:nth-child(1){
-			background-color:red;
+		.menu--content > * {
+			min-height: calc(100% / 6);
 		}
 
+		.menu--content { 
+			flex: 1;
+		}
+		
 		.menu--content--item:nth-child(1){
-			background-color:red;
+			background-color: <?php echo $styledata1[1]?>;
+			color: <?php echo $styledata2[1] ?>;
 		}
 
-		.menu--content--item:nth-child(1){
-			background-color:red;
+		.menu--content--item:nth-child(2){
+			background-color: <?php echo $styledata1[2]?>;
+			color: <?php echo $styledata2[2] ?>;
 		}
 
-		.menu--content--item:nth-child(1){
-			background-color:red;
+		.menu--content--item:nth-child(3){
+			background-color: <?php echo $styledata1[3]?>;
+			color: <?php echo $styledata2[3] ?>;
 		}
 
-		.menu--content--item:nth-child(1){
-			background-color:red;
+		.menu--content--item:nth-child(4){
+			background-color: <?php echo $styledata1[4]?>;
+			color: <?php echo $styledata2[4] ?>;
+		}
+
+		.menu--content--item:nth-child(5){
+			background-color: <?php echo $styledata1[5]?>;
+			color: <?php echo $styledata2[5] ?>;
+		}
+
+		.menu--content--item:nth-child(6){
+			background-color: <?php echo $styledata1[6]?>;
+			color: <?php echo $styledata2[6] ?>;
 		}
 
 		.row {
@@ -223,13 +245,13 @@ include './conn.php'; ?>
 				<?php $datacovid = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `covid`")); ?>
 				<div class="menu--content--item">
 					<div class="menu--content--item--title">Suspek</div>
-					<div class="menu--content--item--info text-light">
+					<div class="menu--content--item--info">
 						<?php echo number_format($datacovid["suspek"], 0, ",", "."); ?>
 					</div>
 				</div>
 				<div class="menu--content--item">
 					<div class="menu--content--item--title">Konfirmasi</div>
-					<div class="menu--content--item--info text-warning">
+					<div class="menu--content--item--info">
 						<?php echo number_format($datacovid["konfirmasi"], 0, ",", "."); ?>
 					</div>
 				</div>
@@ -240,7 +262,7 @@ include './conn.php'; ?>
 							<?php echo number_format($datacovid["isolasi"] / $datacovid["konfirmasi"] * 100, 2, ",", ".") . "%"; ?>
 						</div>
 					</div>
-					<div class="menu--content--item--info text-primary">
+					<div class="menu--content--item--info">
 						<?php echo number_format($datacovid["isolasi"], 0, ",", "."); ?>
 					</div>
 				</div>
@@ -251,7 +273,7 @@ include './conn.php'; ?>
 							<?php echo number_format($datacovid["rawat"] / $datacovid["konfirmasi"] * 100, 2, ",", ".") . "%"; ?>
 						</div>
 					</div>
-					<div class="menu--content--item--info text-info">
+					<div class="menu--content--item--info">
 						<?php echo number_format($datacovid["rawat"], 0, ",", "."); ?>
 					</div>
 				</div>
@@ -262,7 +284,7 @@ include './conn.php'; ?>
 							<?php echo number_format($datacovid["sembuh"] / $datacovid["konfirmasi"] * 100, 2, ",", ".") . "%"; ?>
 						</div>
 					</div>
-					<div class="menu--content--item--info text-success">
+					<div class="menu--content--item--info">
 						<?php echo number_format($datacovid["sembuh"], 0, ",", "."); ?>
 					</div>
 				</div>
@@ -273,7 +295,7 @@ include './conn.php'; ?>
 							<?php echo number_format($datacovid["wafat"] / $datacovid["konfirmasi"] * 100, 2, ",", ".") . "%"; ?>
 						</div>
 					</div>
-					<div class="menu--content--item--info text-danger">
+					<div class="menu--content--item--info">
 						<?php echo number_format($datacovid["wafat"], 0, ",", "."); ?>
 					</div>
 				</div>

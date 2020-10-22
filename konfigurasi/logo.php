@@ -4,9 +4,9 @@ include 'head.php';
 
 if (isset($_POST['postImage'])) {
 	if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-		$lokasi = 'C:/xampp/htdocs/darq/konfigurasi/gambar/logo/';
+		$lokasi = 'C:/xampp/htdocs/covidinfo/konfigurasi/gambar/logo/';
 	} else {
-		$lokasi = '/var/www/konfigurasi/gambar/logo/';
+		$lokasi = '/var/www/covidinfo/konfigurasi/gambar/logo/';
 	}
 	$judul = basename($_FILES['gambar']['name']);
 	$uploadfile = $lokasi . "logo.png";

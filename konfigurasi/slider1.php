@@ -14,9 +14,9 @@ function set_progress($val = 0)
 
 if (isset($_POST['tambahslide'])) {
 	if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-		$lokasi = 'C:/xampp/htdocs/darq/konfigurasi/gambar/slide-utama/';
+		$lokasi = 'C:/xampp/htdocs/covidinfo/konfigurasi/gambar/slide-utama/';
 	} else {
-		$lokasi = '/var/www/konfigurasi/gambar/slide-utama/';
+		$lokasi = '/var/www/covidinfo/konfigurasi/gambar/slide-utama/';
 	}
 	$judul = basename($_FILES['gambar']['name']) or $judul = basename($_FILES['video']['name']);
 	$uploadfile = $lokasi . $judul;

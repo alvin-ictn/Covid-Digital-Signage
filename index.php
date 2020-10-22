@@ -2,6 +2,7 @@
 include './conn.php'; 
 $styledata1 = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM `covidstyle` WHERE id=1"));
 $styledata2 = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM `covidstyle` WHERE id=2"));
+$data = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM `company` WHERE id=1"));
 ?>
 <!doctype html>
 <html>
@@ -206,8 +207,8 @@ $styledata2 = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM `covidstyle` W
 	<div class="grid-container">
 		<div class="profile">
 			<div class="profile--content">
-				<img src="./Adobe-Logo.png" />
-				<p>Adobo Corporation</p>
+				<img src="./konfigurasi/gambar/logo/logo.png" />
+				<label class="text-light font-weight-bold" style="font-size:1.5rem;"><?php echo $data[1]?></label>
 			</div>
 		</div>
 		<div class="slider">

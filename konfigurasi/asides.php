@@ -17,12 +17,12 @@
 			</ul>
 		</div>
 		<div class="link-blue 
-		<?php if($uri[sizeof($uri)-1] == "logo.php") { echo "selected"; }?>">
+		<?php if($uri[sizeof($uri)-1] == "company.php") { echo "selected"; }?>">
 			<a href="#">
-			<i class="fal fa-hand-receiving"></i>Logo
+			<i class="fas fa-building"></i>Company
 			</a>
 			<ul class="sub-links">
-				<li><a href="logo.php">Logo Changer</a></li>
+				<li><a href="company.php">Company Info</a></li>
 			</ul>
 		</div>
 		<div class="link-red 

@@ -12,16 +12,23 @@ if (isset($_POST['updateCovid'])) {
   mysqli_query($con,"UPDATE `covid` SET `suspek`='$suspek',`konfirmasi`='$konfirmasi',`isolasi`='$isolasi',`rawat`='$rawat',`sembuh`='$sembuh',`wafat`='$wafat' WHERE id=1");
 }
 
-if (isset($_POST['updateSuspek'])) {
-  if(!empty($_POST['post_suspek_bg'])){
-    $bgSuspekPost = $_POST['post_suspek_bg'];
-    mysqli_query($con,"UPDATE `covidstyle` SET `suspek`='$bgSuspekPost' WHERE id=1");
-  }
-
-  if(!empty($_POST['post_suspek_txt'])){
-    $txtSuspekPost = $_POST['post_suspek_txt'];
-    mysqli_query($con,"UPDATE `covidstyle` SET `suspek`='$txtSuspekPost' WHERE id=2");
-  }
+if (isset($_POST['updateColor'])) {
+  foreach ($_POST as $key => $value) {
+    if(htmlspecialchars($key) != "updateColor"){
+      $postHandle = explode("_",htmlspecialchars($key));
+      $columnKey = $postHandle[1];
+      if(!empty($_POST['post_'.$columnKey.'_bg'])){
+        $bgPost = $_POST['post_'.$columnKey.'_bg'];
+        mysqli_query($con,"UPDATE `covidstyle` SET `".$columnKey."`='$bgPost' WHERE id=1");
+      }
+    
+      if(!empty($_POST['post_'.$columnKey.'_txt'])){
+        $txtPost = $_POST['post_'.$columnKey.'_txt'];
+        mysqli_query($con,"UPDATE `covidstyle` SET `$postHandle[1]`='$txtPost' WHERE id=2");
+      }
+    }
+}
+  
 }
 
 $defaultValue = [
@@ -391,7 +398,7 @@ $styledata2 = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM `covidstyle` W
           padding:1em;
           background-color:<?php echo $styledata1[1]?>;
           color:<?php echo $styledata2[1]?>">Suspek</em>
-        <button class="btn btn-danger" name="updateSuspek" type="submit">Update</button>
+        <button class="btn btn-danger" name="updateColor" type="submit">Update</button>
       </form>
     </div>
 
@@ -417,7 +424,7 @@ $styledata2 = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM `covidstyle` W
           padding:1em;
           background-color:<?php echo $styledata1[2]?>;
           color:<?php echo $styledata2[2]?>">Konfirmasi</em>
-        <button class="btn btn-danger" name="updateKonfirmasi" type="submit">Update</button>
+        <button class="btn btn-danger" name="updateColor" type="submit">Update</button>
       </form>
     </div>
     <div class="card p-0 m-4">
@@ -442,7 +449,7 @@ $styledata2 = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM `covidstyle` W
           padding:1em;
           background-color:<?php echo $styledata1[3]?>;
           color:<?php echo $styledata2[3]?>">Isolasi</em>
-        <button class="btn btn-danger" name="updateIsolasi" type="submit">Update</button>
+        <button class="btn btn-danger" name="updateColor" type="submit">Update</button>
       </form>
     </div>
     <div class="card p-0 m-4">
@@ -467,7 +474,7 @@ $styledata2 = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM `covidstyle` W
           padding:1em;
           background-color:<?php echo $styledata1[4]?>;
           color:<?php echo $styledata2[4]?>">Rawat</em>
-        <button class="btn btn-danger" name="updateRawat" type="submit">Update</button>
+        <button class="btn btn-danger" name="updateColor" type="submit">Update</button>
       </form>
     </div>
     <div class="card p-0 m-4">
@@ -492,7 +499,7 @@ $styledata2 = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM `covidstyle` W
           padding:1em;
           background-color:<?php echo $styledata1[5]?>;
           color:<?php echo $styledata2[5]?>">Sembuh</em>
-        <button class="btn btn-danger" name="updateSembuh" type="submit">Update</button>
+        <button class="btn btn-danger" name="updateColor" type="submit">Update</button>
       </form>
     </div>
     <div class="card p-0 m-4">
@@ -517,7 +524,7 @@ $styledata2 = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM `covidstyle` W
           padding:1em;
           background-color:<?php echo $styledata1[6]?>;
           color:<?php echo $styledata2[6]?>">Meninggal</em>
-        <button class="btn btn-danger" name="updateWafat" type="submit">Update</button>
+        <button class="btn btn-danger" name="updateColor" type="submit">Update</button>
       </form>
     </div>
   </div>

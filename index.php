@@ -207,8 +207,8 @@ $data = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM `company` WHERE id=1
 	<div class="grid-container">
 		<div class="profile">
 			<div class="profile--content">
-				<img src="./konfigurasi/gambar/logo/logo.png" />
-				<label class="text-light font-weight-bold" style="font-size:1.5rem;"><?php echo $data[1]?></label>
+				<img style="width:5vw;height:5vh;" src="./konfigurasi/gambar/logo/logo.png" />
+				<label class="text-light font-weight-bold text-center" style="font-size:1.5vw;"><?php echo $data[1]?></label>
 			</div>
 		</div>
 		<div class="slider">
@@ -350,13 +350,16 @@ $data = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM `company` WHERE id=1
 			let s = addZero(date.getSeconds());
 			$('#waktu').html(`
 			<div class="d-flex justify-content-between flex-column justify-content-end align-items-end h-100">
+				<div style="font-size: 2.25vw" class="text-center justify-content-center row w-100 bg-danger">
+					<label class="font-weight-bold mx-1 text-light">${dateData.days[numDay]}, ${h}:${m}:${s}</label>
+				</div>
 				<div class="row w-100">
 					<div class="p-0 d-flex justify-content-between w-100">
 						<div style="
-								width:80px; 
-								height: 80px;"
-								class="
-								m-2 
+								width:6vw; 
+								height: 6vw;
+								margin: 0.5vw;"
+								class=" 
 								p-0 
 								d-flex 
 								flex-column
@@ -365,10 +368,10 @@ $data = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM `company` WHERE id=1
 								badge 
 								badge-primary">
 							<p 
-								style="font-size: 50px"
+								style="font-size: 4vw"
 								class="m-0">${date.getDate()}</p>
 							<p 
-								style="font-size: 20px"
+								style="font-size: 2vw"
 								class="m-0">${dateData.months[numMonth]}</p>
 						</div>
 						<div 
@@ -385,14 +388,12 @@ $data = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM `company` WHERE id=1
 								badge 
 								badge-success">
 							<p 
-								style="font-size: 60px"
+								style="font-size: 4.5vw"
 								class="m-0">${date.getFullYear()}</p>
 						</div>
 					</div>
 				</div>
-				<div style="font-size: 2.05vw" class="text-center justify-content-center row w-100 bg-danger">
-					<label class="font-weight-bold mx-2 text-light">${dateData.days[numDay]}, ${h}:${m}:${s}</label>
-				</div>
+				
 			</div>
 			`);
 		}

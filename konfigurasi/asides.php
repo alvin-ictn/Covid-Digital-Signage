@@ -3,6 +3,9 @@
 		text-align: center;
 	}
 </style>
+<?php
+
+?>
 <?php include 'conn.php';
 $uri = explode("/",$_SERVER['REQUEST_URI']);
 $data = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM `company` WHERE id=1"));?>
@@ -64,7 +67,12 @@ $data = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM `company` WHERE id=1
 		</div> -->
 		<div class="link-yellow">
 			<a href="refresh.php">
-				<i class="fa fa-check"></i> <span>Apply</span> </i>
+				<i class="fa fa-check"></i> <span>Apply</span>
+			</a>
+		</div>
+		<div class="link-yellow">
+			<a href="logout.php">
+				<i class="fas fa-sign-out-alt"></i> <span>Logout</span>
 			</a>
 		</div>
 	</div>

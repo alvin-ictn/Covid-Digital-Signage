@@ -11,7 +11,7 @@ function set_progress($val = 0)
 	</div>";
 	return $data;
 }
-
+echo getcwd();
 if (isset($_POST['tambahslide'])) {
 	if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
 		$lokasi = 'C:/xampp/htdocs/covidinfo/konfigurasi/gambar/slide-utama/';
@@ -29,11 +29,14 @@ if (isset($_POST['tambahslide'])) {
 			$image_properties = getimagesize($uploadfile);
 			$width_image = $image_properties[0];
 			$height_image = $image_properties[1];
+			var_dump($image_properties);
+			echo "<br>WIDTH".$width_image;
+			echo "<br>HEIGHT".$height_image;
 			$keterangan = $_POST['keterangan'];
 			$durasi = $_POST['durasi'];
 			$duration = $durasi / 1000;
 			$tipe = 1;
-			exec("ffmpeg -loop 1 -i " . $uploadfile . " -c:v libx264 -t " . $duration . " -pix_fmt yuv420p -vf scale=" . $width_image . ":" . $height_image . " " . $uploadfile2 . ".mp4");
+			exec("ffmpeg -loop 1 -i " . $uploadfile . " -c:v libx264 -t " . $duration . " -pix_fmt yuv420p -vf scale=1280:720 " . $uploadfile2 . ".mp4");
 			$judul_konversi = $without_extension . ".mp4";
 			mysqli_query($con, "INSERT INTO `slider`(`keterangan`,`judul`,`judul_konversi`,`tipe`,`durasi`) VALUES ('$keterangan','$judul_konversi','$judul',$tipe,'$durasi')");
 			echo "<div class='alert alert-success' role='alert' style='top:10%;width:70%;float:none;margin:0 auto;'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>Berhasil!</strong> File Telah diupload!</div>";
@@ -51,7 +54,7 @@ if (isset($_POST['tambahslide'])) {
 	}
 } elseif (isset($_POST['hapusslider'])) {
 	if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-		$lokasi = 'C:/xampp/htdocs/darq/konfigurasi/gambar/slide-utama/';
+		$lokasi = 'C:/xampp/htdocs/covidinfo/konfigurasi/gambar/slide-utama/';
 	} else {
 		$lokasi = '/var/www/konfigurasi/gambar/slide-utama/';
 	}

@@ -1,19 +1,10 @@
 <?php 
 include './conn.php';
-session_start();
 if (isset($_POST['login'])) {
     $username = $_POST['username'];
     $password = md5($_POST['password']);
     $cek = mysqli_fetch_array(mysqli_query($con, "SELECT * from user where username='$username' AND password='$password'"));
-    if ($cek) {
-        $_SESSION['username'] = $cek[1];
-        header('Location: konfigurasi');
-    } else {
-        header('Location: login.php');
-    }
-}
-if (isset($_SESSION['username'])) {
-    header('Location: konfigurasi');
+    print_r($cek); 
 } ?>
 <!DOCTYPE html>
 <html>
@@ -107,7 +98,7 @@ h2 {
 }
 </style>
 </head>
-<?php $warna=mysqli_query($con, "SELECT * FROM `konfigurasi`") or die(mysql_error());
+<?php $warna=mysqli_query($con, "SELECT * FROM `konfigurasi`") or die(mysql_error(1));
 $data_warna=mysqli_fetch_array($warna);?>
 <body style="background-color:<?php echo $data_warna['clockcolor'];?>">
  <div class="loginBox">
@@ -123,4 +114,4 @@ $data_warna=mysqli_fetch_array($warna);?>
 </div>
 
 </body>
-</html>
+</html>	

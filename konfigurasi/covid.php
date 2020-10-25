@@ -493,7 +493,7 @@ $styledata2 = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM `covidstyle` W
           </div>
         </div>
         <input type="hidden" id="post_sembuh_bg" name="post_sembuh_bg" value="" />
-        <input type="hidden" id="post_sembuh_txt" name="post_suspek_txt" value="" />
+        <input type="hidden" id="post_sembuh_txt" name="post_sembuh_txt" value="" />
         <em id="pr5" style="
           display:inline-block; 
           padding:1em;

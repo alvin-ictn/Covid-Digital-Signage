@@ -26,8 +26,11 @@
 include 'head.php';
 include 'conn.php';
 $data = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `company` WHERE id=1"));
-echo $_SESSION;
-
+if(isset($_SESSION)){
+  if($_SESSION['username'])  header("Location: .");
+}else{
+  echo "";
+}
 ?>
 
 <body>

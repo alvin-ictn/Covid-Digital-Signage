@@ -202,7 +202,7 @@ $data = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `company` WHERE id=
 	</style>
 </head>
 
-<body style="background: #<?php echo $datamain[3] ?>">
+<body>
 	<?php $datamain = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `konfigurasi`")); ?>
 	<div class="grid-container">
 		<div class="profile">
@@ -321,7 +321,7 @@ $data = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `company` WHERE id=
 
 		$(document).ready(function() {
 			clockUpdate();
-			setInterval(clockUpdate, 10000);
+			setInterval(clockUpdate, 1000);
 		})
 
 		function clockUpdate() {

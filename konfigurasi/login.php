@@ -26,6 +26,7 @@
 include 'head.php';
 include 'conn.php';
 $data = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `company` WHERE id=1"));
+echo $_SESSION;
 
 ?>
 
@@ -38,7 +39,7 @@ $data = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `company` WHERE id=
         ?>
       </div>
       <div class="col-8 border h-100">
-        <form class="h-100 d-flex justify-content-center flex-column p-5">
+        <form class="h-100 d-flex justify-content-center flex-column p-5" method="post" action="action-login.php">
           <div class="form-group">
             <label for="exampleInputEmail1">Username</label>
             <input type="text" name="username" class="form-control" aria-describedby="emailHelp" placeholder="Enter Username">
@@ -49,7 +50,15 @@ $data = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `company` WHERE id=
             <input type="password" name="password" class="form-control" placeholder="Password">
             <small id="emailHelp" class="form-text text-muted">masukan password sesuai username yang tertera</small>
           </div>
-          <button type="submit" name="login" class="btn btn-primary">Submit</button>
+          <div class="row">
+            <div class="col w-100">
+              <input type="submit" name="login" class="btn btn-primary w-100" value="Login"/>
+            </div>
+            <div class="col">
+            <input type="reset" name="reset" class="btn btn-danger w-100" value="Reset"/>
+            </div>
+          </div>
+
         </form>
       </div>
     </div>

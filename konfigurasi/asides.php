@@ -4,7 +4,8 @@
 	}
 </style>
 <?php
-
+session_start();
+	print_r($_SESSION);
 ?>
 <?php include 'conn.php';
 $uri = explode("/",$_SERVER['REQUEST_URI']);

@@ -1,8 +1,8 @@
 <?php
-include './conn.php'; 
-$styledata1 = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM `covidstyle` WHERE id=1"));
-$styledata2 = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM `covidstyle` WHERE id=2"));
-$data = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM `company` WHERE id=1"));
+include './conn.php';
+$styledata1 = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `covidstyle` WHERE id=1"));
+$styledata2 = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `covidstyle` WHERE id=2"));
+$data = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `company` WHERE id=1"));
 ?>
 <!doctype html>
 <html>
@@ -98,41 +98,41 @@ $data = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM `company` WHERE id=1
 			min-height: 100%;
 		}
 
-		.menu--content > * {
+		.menu--content>* {
 			min-height: calc(100% / 6);
 		}
 
-		.menu--content { 
+		.menu--content {
 			flex: 1;
 		}
-		
-		.menu--content--item:nth-child(1){
-			background-color: <?php echo $styledata1[1]?>;
+
+		.menu--content--item:nth-child(1) {
+			background-color: <?php echo $styledata1[1] ?>;
 			color: <?php echo $styledata2[1] ?>;
 		}
 
-		.menu--content--item:nth-child(2){
-			background-color: <?php echo $styledata1[2]?>;
+		.menu--content--item:nth-child(2) {
+			background-color: <?php echo $styledata1[2] ?>;
 			color: <?php echo $styledata2[2] ?>;
 		}
 
-		.menu--content--item:nth-child(3){
-			background-color: <?php echo $styledata1[3]?>;
+		.menu--content--item:nth-child(3) {
+			background-color: <?php echo $styledata1[3] ?>;
 			color: <?php echo $styledata2[3] ?>;
 		}
 
-		.menu--content--item:nth-child(4){
-			background-color: <?php echo $styledata1[4]?>;
+		.menu--content--item:nth-child(4) {
+			background-color: <?php echo $styledata1[4] ?>;
 			color: <?php echo $styledata2[4] ?>;
 		}
 
-		.menu--content--item:nth-child(5){
-			background-color: <?php echo $styledata1[5]?>;
+		.menu--content--item:nth-child(5) {
+			background-color: <?php echo $styledata1[5] ?>;
 			color: <?php echo $styledata2[5] ?>;
 		}
 
-		.menu--content--item:nth-child(6){
-			background-color: <?php echo $styledata1[6]?>;
+		.menu--content--item:nth-child(6) {
+			background-color: <?php echo $styledata1[6] ?>;
 			color: <?php echo $styledata2[6] ?>;
 		}
 
@@ -152,7 +152,7 @@ $data = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM `company` WHERE id=1
 			text-align: right !important;
 		}
 
-		.menu--content>* >div[class*="title"] {
+		.menu--content>*>div[class*="title"] {
 			/* menu */
 			font-size: 1.4rem;
 		}
@@ -208,7 +208,7 @@ $data = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM `company` WHERE id=1
 		<div class="profile">
 			<div class="profile--content">
 				<img style="width:5vw;height:5vh;" src="./konfigurasi/gambar/logo/logo.png" />
-				<label class="text-light font-weight-bold text-center" style="font-size:1.5vw;"><?php echo $data[1]?></label>
+				<label class="text-light font-weight-bold text-center" style="font-size:1.5vw;"><?php echo $data[1] ?></label>
 			</div>
 		</div>
 		<div class="slider">
@@ -321,7 +321,7 @@ $data = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM `company` WHERE id=1
 
 		$(document).ready(function() {
 			clockUpdate();
-			setInterval(clockUpdate, 1000);
+			setInterval(clockUpdate, 10000);
 		})
 
 		function clockUpdate() {
@@ -350,49 +350,22 @@ $data = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM `company` WHERE id=1
 			let s = addZero(date.getSeconds());
 			$('#waktu').html(`
 			<div class="d-flex justify-content-between flex-column justify-content-end align-items-end h-100">
-				<div style="font-size: 2.25vw" class="text-center justify-content-center row w-100 bg-danger">
-					<label class="font-weight-bold mx-1 text-light">${dateData.days[numDay]}, ${h}:${m}:${s}</label>
+				<div style="font-size: 1.85vw" class="text-center justify-content-center row w-100 bg-danger">
+					<label class="font-weight-bold mx-1 text-light">${dateData.days[numDay]},
+					${date.getDate()}/${date.getMonth()}/${date.getFullYear()}</label>
 				</div>
-				<div class="row w-100">
-					<div class="p-0 d-flex justify-content-between w-100">
-						<div style="
-								width:6vw; 
-								height: 6vw;
-								margin: 0.5vw;"
-								class=" 
-								p-0 
-								d-flex 
-								flex-column
-								justify-content-center 
-								align-items-center 
-								badge 
-								badge-primary">
-							<p 
-								style="font-size: 4vw"
-								class="m-0">${date.getDate()}</p>
-							<p 
-								style="font-size: 2vw"
-								class="m-0">${dateData.months[numMonth]}</p>
-						</div>
+
+					<div class="p-0 d-flex justify-content-between h-100">
 						<div 
-							style="
-								width:150px; 
-								height: 80px;"
-							class="
-								m-2 
-								p-0 
-								d-flex 
-								flex-column
-								justify-content-center 
-								align-items-center 
+							style="font-size: 4.5vw"
+							class=" 
 								badge 
-								badge-success">
+								badge-success d-flex justify-content-center">
 							<p 
-								style="font-size: 4.5vw"
-								class="m-0">${date.getFullYear()}</p>
+								class="m-0">${h}:${m}:${s}</p>
 						</div>
 					</div>
-				</div>
+
 				
 			</div>
 			`);

@@ -27,7 +27,7 @@ $data = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM `company` WHERE id=1
 			height: 100vh;
 			display: grid;
 			grid-template-columns: 20% 60% 20%;
-			grid-template-rows: 20% 60% 20%;
+			grid-template-rows: 30% 50% 20%;
 			gap: 0px 0px;
 			grid-template-areas:
 				"slider slider logo"

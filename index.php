@@ -47,13 +47,17 @@ $data = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `company` WHERE id=
 
 		.waktu {
 			grid-area: waktu;
+			margin-left: 4%;
 		}
+		
+		
+		
 
 		.slider {
 			grid-area: slider;
 			//width:95%;
 			//height: 95%;
-			padding:2.5%;
+			padding:1%;
 		}
 
 		.profile {
@@ -362,15 +366,18 @@ $data = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `company` WHERE id=
 			let s = addZero(date.getSeconds());
 			$('#waktu').html(`
 			<div class="d-flex justify-content-between flex-column justify-content-end align-items-end h-100">
-				<div style="font-size: 1.85vw" class="text-center justify-content-center row w-100 bg-danger">
+				<div style="font-size: 1.85vw;height: 12vh;" class="text-center justify-content-center align-items-center row w-100 bg-danger">
 					<label class="font-weight-bold mx-1 text-light">${dateData.days[numDay]},
 					${date.getDate()}/${date.getMonth()}/${date.getFullYear()}</label>
 				</div>
 
-					<div class="p-0 d-flex justify-content-between h-100">
+					<div class="p-0 d-flex justify-content-between h-100 align-items-center">
 						<div 
-							style="font-size: 4.5vw"
+							
+							style="font-size: 3.98vw"
 							class=" 
+								align-items-center
+								h-100
 								badge 
 								badge-success d-flex justify-content-center">
 							<p 

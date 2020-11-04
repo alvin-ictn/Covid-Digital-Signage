@@ -11,7 +11,7 @@ function set_progress($val = 0)
 	</div>";
 	return $data;
 }
-echo getcwd();
+
 if (isset($_POST['tambahslide'])) {
 	if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
 		$lokasi = 'C:/xampp/htdocs/covidinfo/konfigurasi/gambar/slide-utama/';

@@ -21,6 +21,7 @@ $data = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `company` WHERE id=
 			padding: 0;
 			box-sizing: border-box;
 		}
+		
 
 		.grid-container {
 			width: 100vw;
@@ -33,11 +34,15 @@ $data = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `company` WHERE id=
 				"slider slider logo"
 				"slider slider menu"
 				"waktu running menu";
+			background-image: url("https://wallpaperaccess.com/full/391239.jpg");
+		}
+		
+		.grid-container > *{
+			
 		}
 
 		.running {
 			grid-area: running;
-			background: red;
 		}
 
 		.waktu {
@@ -46,23 +51,25 @@ $data = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `company` WHERE id=
 
 		.slider {
 			grid-area: slider;
-			background: blue;
+			//width:95%;
+			//height: 95%;
+			padding:2.5%;
 		}
 
 		.profile {
 			grid-area: logo;
-			background: green;
+			background-color: rgba(52,58,64,0.8);
 		}
 
 		.menu {
 			grid-area: menu;
-			background: yellow;
 			box-shadow: -10px 0px 10px -10px rgba(0, 0, 0, 0.4);
+			background-color: rgba(52,58,64,0.8);
 		}
 
 		.profile--content {
 			box-shadow: inset -0px -10px 20px -8px rgba(0, 0, 0, 0.4);
-			width: 100%;
+			width: 95%;
 			height: 20%;
 			padding: 0 10px;
 			display: flex;
@@ -72,13 +79,14 @@ $data = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `company` WHERE id=
 		}
 
 		.profile--content>img {
-			max-width: 100%;
-			max-height: 100%;
+			max-width: 95%;
+			max-height: 95%;
 			height: auto !important;
 		}
 
 		div[class$="content"] {
-			background: #343a40;
+			background: transparent;
+			//background: #343a40;
 			width: 100%;
 			height: 100%;
 			color: white;
@@ -87,7 +95,11 @@ $data = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `company` WHERE id=
 		.running--content {
 			display: flex;
 			align-items: center;
-			height: 100%;
+			height: 95%;
+		}
+		
+		.running--content > * {
+			background-color: rgba(0,0,0,0.4);
 		}
 
 		.menu--content {
@@ -95,11 +107,11 @@ $data = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `company` WHERE id=
 
 			text-align: center;
 			flex-direction: column;
-			min-height: 100%;
+			min-height: 95%;
 		}
 
 		.menu--content>* {
-			min-height: calc(100% / 6);
+			min-height: calc(95% / 6);
 		}
 
 		.menu--content {
@@ -172,8 +184,8 @@ $data = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `company` WHERE id=
 
 		.menu--item {
 			min-height: 90vh;
-			width: 100%;
-			max-width: 100%;
+			width: 95%;
+			max-width: 95%;
 		}
 
 		.card.company-profile {
@@ -181,7 +193,7 @@ $data = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `company` WHERE id=
 		}
 
 		.card.company-profile>img {
-			width: 100%;
+			width: 95%;
 			height: auto;
 		}
 
@@ -213,7 +225,7 @@ $data = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `company` WHERE id=
 		</div>
 		<div class="slider">
 			<div class="slider--content" style="align-items:center;
-				height: 100vh;
+				
 				justify-content:center; 
 				overflow: hidden;
 				<?php if ($datamain[2] == 1) {	?>padding:0px;<?php } ?>">
@@ -223,7 +235,7 @@ $data = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `company` WHERE id=
 					while ($slide_utama = mysqli_fetch_array($dataslideutama)) {
 						$i += 1; ?>
 						<li style="height:100vh;" class="panel<?php $i; ?>">
-							<video autoplay muted style=" object-fit: fill;height:100%;">
+							<video autoplay muted style=" object-fit: fill;height:95%;">
 								<source src="./konfigurasi/gambar/slide-utama/<?php echo $slide_utama[2]; ?>" type="video/mp4">
 							</video>
 						</li>

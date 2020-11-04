@@ -34,7 +34,7 @@ $data = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `company` WHERE id=
 				"slider slider logo"
 				"slider slider menu"
 				"waktu running menu";
-			background-image: url("https://wallpaperaccess.com/full/391239.jpg");
+			background-image: url("./konfigurasi/gambar/background/bg.png");
 		}
 		
 		.grid-container > *{

@@ -54,6 +54,17 @@ $data = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `company` WHERE id=
 			</ul>
 		</div>
 		<div class="link-red 
+		<?php if ($uri[sizeof($uri) - 1] == "background.php") {
+			echo "selected";
+		} ?>">
+			<a href="#">
+			<i class="fas fa-image"></i>Background
+			</a>
+			<ul class="sub-links">
+				<li><a href="background.php">Background</a></li>
+			</ul>
+		</div>
+		<div class="link-red 
 		<?php if ($uri[sizeof($uri) - 1] == "slider1.php") {
 			echo "selected";
 		} ?>">

@@ -21,7 +21,7 @@ $data = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `company` WHERE id=
 			padding: 0;
 			box-sizing: border-box;
 		}
-		
+
 
 		.grid-container {
 			width: 100vw;
@@ -36,10 +36,8 @@ $data = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `company` WHERE id=
 				"waktu running menu";
 			background-image: url("./konfigurasi/gambar/background/bg.png");
 		}
-		
-		.grid-container > *{
-			
-		}
+
+		.grid-container>* {}
 
 		.running {
 			grid-area: running;
@@ -49,26 +47,24 @@ $data = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `company` WHERE id=
 			grid-area: waktu;
 			margin-left: 4%;
 		}
-		
-		
-		
+
+
+
 
 		.slider {
 			grid-area: slider;
-			//width:95%;
-			//height: 95%;
-			padding:1%;
+			padding: 1%;
 		}
 
 		.profile {
 			grid-area: logo;
-			background-color: rgba(52,58,64,0.8);
+			background-color: rgba(52, 58, 64, 0.8);
 		}
 
 		.menu {
 			grid-area: menu;
 			box-shadow: -10px 0px 10px -10px rgba(0, 0, 0, 0.4);
-			background-color: rgba(52,58,64,0.8);
+			background-color: rgba(52, 58, 64, 0.8);
 		}
 
 		.profile--content {
@@ -90,7 +86,6 @@ $data = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `company` WHERE id=
 
 		div[class$="content"] {
 			background: transparent;
-			//background: #343a40;
 			width: 100%;
 			height: 100%;
 			color: white;
@@ -101,9 +96,9 @@ $data = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `company` WHERE id=
 			align-items: center;
 			height: 95%;
 		}
-		
-		.running--content > * {
-			background-color: rgba(0,0,0,0.4);
+
+		.running--content>* {
+			background-color: rgba(0, 0, 0, 0.4);
 		}
 
 		.menu--content {
@@ -253,8 +248,9 @@ $data = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `company` WHERE id=
 				<?php
 				$bodytext = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `beritagabung`ORDER BY ID DESC LIMIT 1"));
 				$jeda = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `konfigurasi`"));
+				$dataspeed = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `konfigurasi` WHERE id=1"));
 				?>
-				<marquee style="font-size:5rem;"><?php echo $bodytext[1]; ?></marquee>
+				<marquee scrollamount="<?php echo $dataspeed["timeslide"]/100?>" style="font-size:5rem;"><?php echo $bodytext[1]; ?></marquee>
 			</div>
 		</div>
 		<div class="menu">

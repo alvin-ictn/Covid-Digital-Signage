@@ -1,4 +1,5 @@
 <?php include './conn.php';
+
 function set_progress($val = 0)
 {
 	$data = "
@@ -10,6 +11,12 @@ function set_progress($val = 0)
 		</div>";
 	return $data;
 }
+
+if (isset($_POST["textspeedpost"])) {
+	$postData = $_POST["textspeed"];
+	mysqli_query($con, "UPDATE `konfigurasi` SET `timeslide`='$postData' WHERE id=1");
+}
+$dataspeed = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `konfigurasi` WHERE id=1"));
 if (isset($_POST['addberita'])) {
 	$info = $_POST['info'];
 	mysqli_query($con, "INSERT INTO `berita`(`info`) VALUES ('$info')");
@@ -134,46 +141,58 @@ if (isset($_POST['addberita'])) {
 			</div>
 		</div>
 	</div>
-		<h1>Running Text</h1>
-		<button class="btn btn-success waves-effect waves-light" data-id='0' data-toggle="modal" data-target="#tambah-databerita"><i class="glyphicon glyphicon-plus"></i> Berita</button>
-
-		<div class="main-content">
-			<div class="table-responsive">
-				<table class="table" id="datatable-editable">
-					<thead>
-						<tr>
-							<th>Id</th>
-							<th>Informasi</th>
-							<th>Aksi</th>
-						</tr>
-					</thead>
-					<tbody>
-						<?php
-						$x = 0;
-						$query = mysqli_query($con, "SELECT * FROM berita");
-
-						while ($row1 = mysqli_fetch_array($query)) {
-							$datagabung[] = $row1['info'];
-							$comb2 = implode("&nbsp&nbsp| &nbsp&nbsp", $datagabung);
-							$x = $x + 1;
-						?>
-							<tr class="gradeX">
-								<td style="vertical-align: middle;"><?php echo $x ?></td>
-								<td style="vertical-align: middle;"><?php echo $row1[1]; ?></td>
-								<td style="vertical-align: middle;"><a class="btn btn-xs btn-danger" href="javascript:;" data-id="<?php echo $row1[0]; ?>" data-toggle="modal" data-target="#modal-konfirmasiberita"><i class="glyphicon glyphicon-trash"></i></a>
-									<a class="btn btn-xs btn-warning" href="javascript:;" data-id="<?php echo $row1[0]; ?>" data-info="<?php echo $row1[1]; ?>" data-toggle="modal" data-target="#edit-databerita">
-										<i class="glyphicon glyphicon-edit"></i>
-
-									</a></td>
-							</tr>
-						<?php  }
-						mysqli_query($con, "INSERT INTO `beritagabung`(`info`) VALUES ('$comb2')"); ?>
-
-					</tbody>
-				</table>
+	<h1>Running Text</h1>
+	<div class="float-right justify-content-end mx-4 align-items-center">
+		<form class="label-control row vertical-align-center" method="post">
+			<label class="mx-3 p-0 m-2 col-sm-3">Text Speed</label>
+			<div class="input-group col-sm-4">
+				<input class="form-control " type="text" name="textspeed" value="<?php echo $dataspeed["timeslide"] ?>" />
+				<div class="input-group-append">
+					<span class="input-group-text" id="basic-addon2">ms</span>
+				</div>
 			</div>
+			<button class="btn btn-primary mx-3 col-sm-3" name="textspeedpost" type="submit">Submit</button>
+		</form>
+	</div>
+	<button class="btn btn-success waves-effect waves-light" data-id='0' data-toggle="modal" data-target="#tambah-databerita"><i class="glyphicon glyphicon-plus"></i> Berita</button>
+
+	<div class="main-content">
+		<div class="table-responsive">
+			<table class="table" id="datatable-editable">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Informasi</th>
+						<th>Aksi</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php
+					$x = 0;
+					$query = mysqli_query($con, "SELECT * FROM berita");
+
+					while ($row1 = mysqli_fetch_array($query)) {
+						$datagabung[] = $row1['info'];
+						$comb2 = implode("&nbsp&nbsp| &nbsp&nbsp", $datagabung);
+						$x = $x + 1;
+					?>
+						<tr class="gradeX">
+							<td style="vertical-align: middle;"><?php echo $x ?></td>
+							<td style="vertical-align: middle;"><?php echo $row1[1]; ?></td>
+							<td style="vertical-align: middle;"><a class="btn btn-xs btn-danger" href="javascript:;" data-id="<?php echo $row1[0]; ?>" data-toggle="modal" data-target="#modal-konfirmasiberita"><i class="glyphicon glyphicon-trash"></i></a>
+								<a class="btn btn-xs btn-warning" href="javascript:;" data-id="<?php echo $row1[0]; ?>" data-info="<?php echo $row1[1]; ?>" data-toggle="modal" data-target="#edit-databerita">
+									<i class="glyphicon glyphicon-edit"></i>
+
+								</a></td>
+						</tr>
+					<?php  }
+					mysqli_query($con, "INSERT INTO `beritagabung`(`info`) VALUES ('$comb2')"); ?>
+
+				</tbody>
+			</table>
 		</div>
-	
+	</div>
+
 
 	<?php include 'foot.php'; ?>
 </body>

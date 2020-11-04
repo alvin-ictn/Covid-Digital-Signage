@@ -14,7 +14,7 @@ if(isset($_POST['waktuset'])){
 <div class="main-content my-5 pt-5 mr-5">
   <form enctype="multipart/form-data" method="post">
     <label class="my-3 font-weight-bold">Set Time</label>
-    <input class="my-5 form-control" name="waktu"/>
+    <input class="my-5 form-control" name="waktu" placeholder="Tahun-Bulan-Tanggal Jam:Menit:Detik"/>
     <button class="btn btn-info " name="waktuset" type="submit">
       Update Time
     </button>

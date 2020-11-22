@@ -17,26 +17,6 @@ if (isset($_POST['postImage'])) {
 			<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
 		<strong>Selamat!</strong> Logo Berhasil di upload!</div>";
 	}
-} elseif (isset($_POST['edit'])) {
-	if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-		$lokasi = 'C:/xampp/htdocs/covidinfo/konfigurasi/gambar/background/';
-	} else {
-		$lokasi = '/var/www/html/covidinfo/konfigurasi/gambar/background/';
-	}
-	$judul = basename($_FILES['gambar']['name']);
-	$uploadfile = $lokasi . $judul;
-	$id = $_POST['id'];
-	$keterangan = $_POST['keterangan'];
-	$tmp_judul = mysqli_fetch_array(mysqli_query($con, "SELECT judul FROM kanan_bawah WHERE id=$id"));
-	$hapus_slider = $lokasi . $tmp_judul[0];
-	if ($judul != NULL) {
-		unlink($hapus_slider);
-		if (move_uploaded_file($_FILES['gambar']['tmp_name'], $uploadfile)) {
-			mysqli_query($con, "UPDATE `kanan_bawah` SET `keterangan`='$keterangan', `judul`='$judul' WHERE id=$id");
-		}
-	} else {
-		mysqli_query($con, "UPDATE `kanan_bawah` SET `keterangan`='$keterangan' WHERE id=$id");
-	}
 }
 ?>
 <style>

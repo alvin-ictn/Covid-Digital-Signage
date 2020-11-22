@@ -92,10 +92,10 @@ if (isset($_POST['postImage'])) {
 	<form enctype="multipart/form-data" method="post">
 		<div class="logoContainer">
 			<img src="<?php if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-									echo './gambar/logo/logo.png';
-								} else {
-									echo './gambar/logo/logo.png';
-								} ?>">
+				echo 'gambar/logo/logo.png';
+			} else {
+				echo 'gambar/logo/logo.png';
+			} ?>">
 		</div>
 		<div class="fileContainer sprite">
 			<span>choose file</span>

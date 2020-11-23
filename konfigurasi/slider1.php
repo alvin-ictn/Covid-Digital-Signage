@@ -1,4 +1,6 @@
 <?php include './conn.php';
+$config['assetsdir'] = "/gambar";
+$config['mainslidedir'] = "/slide-utama";
 
 function set_progress($val = 0)
 {
@@ -12,26 +14,21 @@ function set_progress($val = 0)
 	return $data;
 }
 
+$lokasi = getcwd() . $config['assetsdir'] . $config['mainslidedir'] . "/";
 if (isset($_POST['tambahslide'])) {
-	if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-		$lokasi = 'C:/xampp/htdocs/covidinfo/konfigurasi/gambar/slide-utama/';
-	} else {
-		$lokasi = '/var/www/covidinfo/konfigurasi/gambar/slide-utama/';
-	}
 	$judul = basename($_FILES['gambar']['name']) or $judul = basename($_FILES['video']['name']);
 	$uploadfile = $lokasi . $judul;
 	$without_extension = substr($judul, 0, strrpos($judul, "."));
 	$uploadfile2 = $lokasi . $without_extension;
+
 	if (file_exists($uploadfile)) {
 		echo "<div class='alert alert-danger' role='alert' style='top:10%;width:70%;float:none;margin:0 auto;'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>Terjadi Kesalahan!</strong> File sejenisnya sudah ada!</div>";
 	} else {
 		if (move_uploaded_file($_FILES['gambar']['tmp_name'], $uploadfile)) {
+
 			$image_properties = getimagesize($uploadfile);
 			$width_image = $image_properties[0];
 			$height_image = $image_properties[1];
-			var_dump($image_properties);
-			echo "<br>WIDTH".$width_image;
-			echo "<br>HEIGHT".$height_image;
 			$keterangan = $_POST['keterangan'];
 			$durasi = $_POST['durasi'];
 			$duration = $durasi / 1000;
@@ -160,6 +157,8 @@ if (isset($_POST['tambahslide'])) {
 		mysqli_query($con, "UPDATE `slider` SET `keterangan`='$keterangan' WHERE id=$id");
 	}
 }
+
+echo getcwd() . $config['assetsdir'] . $config['mainslidedir'] . "/";
 ?>
 <html>
 
@@ -225,13 +224,13 @@ if (isset($_POST['tambahslide'])) {
 									</i>
 								</a>
 								<a class="btn btn-xs btn-warning" href="javascript:;" data-id="<?php echo $row1[0]; ?>" data-keterangan="<?php echo $row1[1]; ?>" data-judul="<?php echo $row1[2]; ?>" <?php if ($b == 1) { ?> data-durasi="<?php echo $row1[5]; ?>" <?php } else {
-																																																																																																																								} ?> data-toggle="modal" data-target="<?php
-																													if ($b == 1) {
-																														echo "#edit-slide-gambar";
-																													} elseif ($b == 2) {
-																														echo "#edit-slide-video";
-																													}
-																													?>">
+																																																																																																																										} ?> data-toggle="modal" data-target="<?php
+																																																																																																																																											if ($b == 1) {
+																																																																																																																																												echo "#edit-slide-gambar";
+																																																																																																																																											} elseif ($b == 2) {
+																																																																																																																																												echo "#edit-slide-video";
+																																																																																																																																											}
+																																																																																																																																											?>">
 									<i class="glyphicon glyphicon-edit"></i>
 								</a>
 							</td>

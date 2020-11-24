@@ -21,6 +21,7 @@
 					</div>
 					<div class="form-group">
 						<label class="control-label" for="gamslidut">Gambar</label>
+								<input type="hidden" name="prevGambar" id="prevGambar"/>
 								<input type="file" name="gambar" id="gambar" class="form-control" style="width: 100%;height:auto" accept="image/*">
 					</div> 
 				<fieldset>		
@@ -78,7 +79,7 @@ $(function() {
 
 		var id = div.data('id');
 		var keterangan = div.data('keterangan');
-		var gambar = div.data('gambar');
+		var gambar = div.data('judul');
 		var modal = $(this);
 		var durasi = div.data('durasi');
 		// Isi nilai pada field

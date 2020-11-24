@@ -1,6 +1,7 @@
 <?php include './conn.php';
 $config['assetsdir'] = "/gambar";
 $config['mainslidedir'] = "/slide-utama";
+$config['prefixname'] = "sliderUtama24112020";
 
 function set_progress($val = 0)
 {
@@ -15,11 +16,24 @@ function set_progress($val = 0)
 }
 
 $lokasi = getcwd() . $config['assetsdir'] . $config['mainslidedir'] . "/";
+
+$getSliderData = mysqli_query($con, "SELECT * FROM `slider`");
+$num = $getSliderData->num_rows + 1;
+
 if (isset($_POST['tambahslide'])) {
 	$judul = basename($_FILES['gambar']['name']) or $judul = basename($_FILES['video']['name']);
-	$uploadfile = $lokasi . $judul;
+	if (strlen(basename($_FILES['gambar']['type'])) > 1) {
+		$extension = basename($_FILES['gambar']['type']);
+	} else {
+		$extension = basename($_FILES['video']['type']);
+	}
+
+	$uploadfile = $lokasi . $config['prefixname'] . $num . "." . $extension;
 	$without_extension = substr($judul, 0, strrpos($judul, "."));
-	$uploadfile2 = $lokasi . $without_extension;
+	$uploadfile2 = $lokasi . $config['prefixname'] . $num;
+
+	echo $uploadfile;
+	echo "<br>" . $uploadfile2;
 
 	if (file_exists($uploadfile)) {
 		echo "<div class='alert alert-danger' role='alert' style='top:10%;width:70%;float:none;margin:0 auto;'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>Terjadi Kesalahan!</strong> File sejenisnya sudah ada!</div>";
@@ -34,7 +48,8 @@ if (isset($_POST['tambahslide'])) {
 			$duration = $durasi / 1000;
 			$tipe = 1;
 			exec("ffmpeg -loop 1 -i " . $uploadfile . " -c:v libx264 -t " . $duration . " -pix_fmt yuv420p -vf scale=1280:720 " . $uploadfile2 . ".mp4");
-			$judul_konversi = $without_extension . ".mp4";
+			$judul_konversi = $config['prefixname'] . $num . ".mp4";
+			$judul = $config['prefixname'] . $num . "." . $extension;
 			mysqli_query($con, "INSERT INTO `slider`(`keterangan`,`judul`,`judul_konversi`,`tipe`,`durasi`) VALUES ('$keterangan','$judul_konversi','$judul',$tipe,'$durasi')");
 			echo "<div class='alert alert-success' role='alert' style='top:10%;width:70%;float:none;margin:0 auto;'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>Berhasil!</strong> File Telah diupload!</div>";
 		} else if (move_uploaded_file($_FILES['video']['tmp_name'], $uploadfile)) {
@@ -50,11 +65,6 @@ if (isset($_POST['tambahslide'])) {
 		}
 	}
 } elseif (isset($_POST['hapusslider'])) {
-	if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-		$lokasi = 'C:/xampp/htdocs/covidinfo/konfigurasi/gambar/slide-utama/';
-	} else {
-		$lokasi = '/var/www/konfigurasi/gambar/slide-utama/';
-	}
 	$id = $_POST['id'];
 	$tmp_judul = mysqli_fetch_array(mysqli_query($con, "SELECT judul FROM slider WHERE id=$id"));
 	$tmp_judul2 = mysqli_fetch_array(mysqli_query($con, "SELECT judul_konversi FROM slider WHERE id=$id"));
@@ -69,13 +79,11 @@ if (isset($_POST['tambahslide'])) {
 	}
 	mysqli_query($con, "delete FROM `slider` WHERE id=$id");
 } elseif (isset($_POST['editgambar'])) {
-	if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-		$lokasi = 'C:/xampp/htdocs/darq/konfigurasi/gambar/slide-utama/';
-	} else {
-		$lokasi = '/var/www/konfigurasi/gambar/slide-utama/';
-	}
 	$judul = basename($_FILES['gambar']['name']);
+	echo $judul;
+	echo "WORK HEREEEEEEEE";
 	$uploadfile = $lokasi . $judul;
+	echo $uploadfile;
 	$id = $_POST['id'];
 	$keterangan = $_POST['keterangan'];
 	$without_extension = substr($judul, 0, strrpos($judul, "."));
@@ -122,11 +130,6 @@ if (isset($_POST['tambahslide'])) {
 		echo "<div class='alert alert-primary' role='alert' style='top:10%;width:70%;float:none;margin:0 auto;'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>Berhasil!</strong> Deskripsi slider Telah diganti!</div>";
 	}
 } elseif (isset($_POST['editvideo'])) {
-	if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-		$lokasi = 'C:/xampp/htdocs/darq/konfigurasi/gambar/slide-utama/';
-	} else {
-		$lokasi = '/var/www/konfigurasi/gambar/slide-utama/';
-	}
 	$judul = basename($_FILES['video']['name']);
 	$uploadfile = $lokasi . $judul;
 	$without_extension = substr($judul, 0, strrpos($judul, "."));
@@ -157,8 +160,6 @@ if (isset($_POST['tambahslide'])) {
 		mysqli_query($con, "UPDATE `slider` SET `keterangan`='$keterangan' WHERE id=$id");
 	}
 }
-
-echo getcwd() . $config['assetsdir'] . $config['mainslidedir'] . "/";
 ?>
 <html>
 
@@ -225,12 +226,12 @@ echo getcwd() . $config['assetsdir'] . $config['mainslidedir'] . "/";
 								</a>
 								<a class="btn btn-xs btn-warning" href="javascript:;" data-id="<?php echo $row1[0]; ?>" data-keterangan="<?php echo $row1[1]; ?>" data-judul="<?php echo $row1[2]; ?>" <?php if ($b == 1) { ?> data-durasi="<?php echo $row1[5]; ?>" <?php } else {
 																																																																																																																										} ?> data-toggle="modal" data-target="<?php
-																																																																																																																																											if ($b == 1) {
-																																																																																																																																												echo "#edit-slide-gambar";
-																																																																																																																																											} elseif ($b == 2) {
-																																																																																																																																												echo "#edit-slide-video";
-																																																																																																																																											}
-																																																																																																																																											?>">
+																																																																																																																																													if ($b == 1) {
+																																																																																																																																														echo "#edit-slide-gambar";
+																																																																																																																																													} elseif ($b == 2) {
+																																																																																																																																														echo "#edit-slide-video";
+																																																																																																																																													}
+																																																																																																																																													?>">
 									<i class="glyphicon glyphicon-edit"></i>
 								</a>
 							</td>

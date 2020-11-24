@@ -17,8 +17,8 @@ function set_progress($val = 0)
 
 $lokasi = getcwd() . $config['assetsdir'] . $config['mainslidedir'] . "/";
 
-$getSliderData = mysqli_query($con, "SELECT * FROM `slider`");
-$num = $getSliderData->num_rows + 1;
+$getSliderData = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM `slider` ORDER BY ID DESC LIMIT 1"));
+$num = $getSliderData['id'] + 1;
 
 if (isset($_POST['tambahslide'])) {
 	$judul = basename($_FILES['gambar']['name']) or $judul = basename($_FILES['video']['name']);
@@ -28,39 +28,37 @@ if (isset($_POST['tambahslide'])) {
 		$extension = basename($_FILES['video']['type']);
 	}
 
-	$uploadfile = $lokasi . $config['prefixname'] . $num . "." . $extension;
-	$without_extension = substr($judul, 0, strrpos($judul, "."));
-	$uploadfile2 = $lokasi . $config['prefixname'] . $num;
-
-	echo $uploadfile;
-	echo "<br>" . $uploadfile2;
-
-	if (file_exists($uploadfile)) {
+	$newTitle = $config['prefixname'] . $num;
+	$pathFile = $lokasi . $newTitle;
+	$fullFile = $newTitle . "." . $extension;
+	$fullPath = $pathFile . "." . $extension;
+	$keterangan = $_POST['keterangan'];
+	// $uploadfile = $lokasi . $config['prefixname'] . $num . "." . $extension;
+	// $without_extension = substr($judul, 0, strrpos($judul, "."));
+	// $uploadfile2 = $lokasi . $config['prefixname'] . $num;
+	if (file_exists($fullPath)) {
 		echo "<div class='alert alert-danger' role='alert' style='top:10%;width:70%;float:none;margin:0 auto;'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>Terjadi Kesalahan!</strong> File sejenisnya sudah ada!</div>";
 	} else {
-		if (move_uploaded_file($_FILES['gambar']['tmp_name'], $uploadfile)) {
-
-			$image_properties = getimagesize($uploadfile);
-			$width_image = $image_properties[0];
-			$height_image = $image_properties[1];
-			$keterangan = $_POST['keterangan'];
+		if (move_uploaded_file($_FILES['gambar']['tmp_name'], $fullPath)) {
+			// $image_properties = getimagesize($fullPath);
+			// $width_image = $image_properties[0];
+			// $height_image = $image_properties[1];
 			$durasi = $_POST['durasi'];
 			$duration = $durasi / 1000;
 			$tipe = 1;
-			exec("ffmpeg -loop 1 -i " . $uploadfile . " -c:v libx264 -t " . $duration . " -pix_fmt yuv420p -vf scale=1280:720 " . $uploadfile2 . ".mp4");
-			$judul_konversi = $config['prefixname'] . $num . ".mp4";
-			$judul = $config['prefixname'] . $num . "." . $extension;
-			mysqli_query($con, "INSERT INTO `slider`(`keterangan`,`judul`,`judul_konversi`,`tipe`,`durasi`) VALUES ('$keterangan','$judul_konversi','$judul',$tipe,'$durasi')");
+			exec("ffmpeg -loop 1 -i " . $fullPath . " -c:v libx264 -t " . $duration . " -pix_fmt yuv420p -vf scale=1280:720 " . $pathFile . ".mp4");
+			$judul_konversi = $newTitle . ".mp4";
+			mysqli_query($con, "INSERT INTO `slider`(`keterangan`,`judul`,`judul_konversi`,`tipe`,`durasi`) VALUES ('$keterangan','$judul_konversi','$fullFile',$tipe,'$durasi')");
 			echo "<div class='alert alert-success' role='alert' style='top:10%;width:70%;float:none;margin:0 auto;'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>Berhasil!</strong> File Telah diupload!</div>";
-		} else if (move_uploaded_file($_FILES['video']['tmp_name'], $uploadfile)) {
-			$time = exec("ffprobe -i " . $uploadfile . " -show_entries format=duration -v quiet -of csv=\"p=0\"", $output);
+		} else if (move_uploaded_file($_FILES['video']['tmp_name'], $fullPath)) {
+			$time = exec("ffprobe -i " . $fullPath . " -show_entries format=duration -v quiet -of csv=\"p=0\"", $output);
 			$tumnel = $time / 2;
 			$durasi = $time * 1000;
-			exec("ffmpeg -i " . $uploadfile . " -ss " . $tumnel . " -vframes 1 " . $uploadfile2 . ".png");
-			$judul_konversi = $without_extension . ".png";
-			$keterangan = $_POST['keterangan'];
+			exec("ffmpeg -i " . $fullPath . " -ss " . $tumnel . " -vframes 1 " . $pathFile . ".png");
+			$judul_konversi = $newTitle . ".png";
+			
 			$tipe = 2;
-			mysqli_query($con, "INSERT INTO `slider`(`keterangan`,`judul`,`judul_konversi`,`tipe`,`durasi`) VALUES ('$keterangan','$judul','$judul_konversi',$tipe,'$durasi')");
+			mysqli_query($con, "INSERT INTO `slider`(`keterangan`,`judul`,`judul_konversi`,`tipe`,`durasi`) VALUES ('$keterangan','$fullFile','$judul_konversi',$tipe,'$durasi')");
 			echo "<div class='alert alert-success' role='alert' style='top:10%;width:70%;float:none;margin:0 auto;'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>Berhasil!</strong> File Telah diupload!</div>";
 		}
 	}

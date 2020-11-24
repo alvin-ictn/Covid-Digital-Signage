@@ -78,10 +78,7 @@ if (isset($_POST['tambahslide'])) {
 	mysqli_query($con, "delete FROM `slider` WHERE id=$id");
 } elseif (isset($_POST['editgambar'])) {
 	$judul = basename($_FILES['gambar']['name']);
-	echo $judul;
-	echo "WORK HEREEEEEEEE";
 	$uploadfile = $lokasi . $judul;
-	echo $uploadfile;
 	$id = $_POST['id'];
 	$keterangan = $_POST['keterangan'];
 	$without_extension = substr($judul, 0, strrpos($judul, "."));
